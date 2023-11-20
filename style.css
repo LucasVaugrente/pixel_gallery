@@ -82,5 +82,7 @@ svg {
     width: 50px;
     height: 100px;
     background-color: grey;
-    position: absolute;
+    position: fixed;
+    left: 50%;
+    top: 50%;
 }
