@@ -1,0 +1,74 @@
+@font-face {
+    font-family: lele;
+    src: url("fonts/stolen.ttf");
+}
+
+body {
+    background-color: #2d323b;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    font-family: lele;
+    color: white;
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dessin {
+    width: 45%;
+    height: 40vh;
+    background-color: #464c57;
+    margin: 2em;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.dessin:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px #1b1d21;
+}
+
+.gauche {
+    align-self: flex-start;
+}
+
+.droite {
+    align-self: flex-end;
+}
+
+@keyframes windowHover {
+    0% {
+        transform: translateX(0);
+        fill: white;
+    }
+
+    100% {
+        transform: translate(150%);
+        fill: white;
+    }
+}
+
+svg {
+    height: 100%;
+    width: 100%;
+}
+
+
+.dessin:hover .p1 {
+    animation: windowHover 0.7s ease-in-out 1;
+}
+
+.dessin:hover .p2 {
+    animation: windowHover 0.8s ease-in-out 1;
+}
