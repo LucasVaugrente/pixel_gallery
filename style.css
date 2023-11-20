@@ -10,11 +10,16 @@ body {
 header {
     display: flex;
     justify-content: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
 }
 
 h1 {
     font-family: lele;
     color: white;
+    font-size: 5em;
+    margin: 3em;
 }
 
 
@@ -71,4 +76,11 @@ svg {
 
 .dessin:hover .p2 {
     animation: windowHover 0.8s ease-in-out 1;
+}
+
+.fusee {
+    width: 50px;
+    height: 100px;
+    background-color: grey;
+    position: absolute;
 }
