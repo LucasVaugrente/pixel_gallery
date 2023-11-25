@@ -41,6 +41,7 @@ main {
     border-radius: 10px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
+    z-index: 200;
 }
 
 .dessin:hover {
@@ -85,12 +86,73 @@ svg {
 .svg_fusee {
     width: 50px;
     height: 100px;
-    background-color: grey;
+    background-image: url("img/rocket.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     position: fixed;
-    left: calc(55% - 25px);
-    top: 50%;
+    left: 1%;
+    top: 1%;
+    z-index: 100;
+    margin: 1em;
 }
 
-.rocket_left {
-    left: calc(45% - 25px);
+.svg_fusee.fusee_depart {
+    animation: fuseeDepart 1s ease-in-out 1;
+    transform: rotate(135deg);
+}
+
+.svg_fusee.fusee_arrivee {
+    animation: fuseeArrivee 1s ease-in-out 1;
+    transform: rotate(0deg);
+}
+
+@keyframes fuseeDepart {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(135deg);
+    }
+}
+
+@keyframes fuseeArrivee {
+    0% {
+        transform: rotate(135deg);
+    }
+
+    100% {
+        transform: rotate(-0deg);
+    }
+}
+
+.svg_fusee.rotate_top {
+    animation: rotateTop 0.8s ease-in-out 1;
+    transform: rotate(-45deg);
+}
+
+.svg_fusee.rotate_bottom {
+    animation: rotateBottom 0.8s ease-in-out 1;
+    transform: rotate(135deg);
+}
+
+@keyframes rotateTop {
+    0% {
+        transform: rotate(135deg);
+    }
+
+    100% {
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes rotateBottom {
+    0% {
+        transform: rotate(-45deg);
+    }
+
+    100% {
+        transform: rotate(135deg);
+    }
 }

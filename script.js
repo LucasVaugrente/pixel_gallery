@@ -1,56 +1,75 @@
-document.addEventListener('DOMContentLoaded', function () {
-    let rocket = document.querySelector('.svg_fusee');
-    let containers = document.querySelectorAll('.dessin');
+let scroll_count = 0;
 
-    const body = document.body;
-    const html = document.documentElement;
-    const height = Math.max(body.scrollHeight, body.offsetHeight,
-        html.clientHeight, html.scrollHeight, html.offsetHeight);
+document.addEventListener("scroll", function () {
+    const scrollPercentage = getScrollPercentage();
+    const rocket = document.querySelector('.svg_fusee');
 
+    const maxLeft = window.innerWidth - rocket.offsetWidth - 30;
+    const maxTop = window.innerHeight - rocket.offsetHeight - 30;
 
-    document.addEventListener('scroll', function () {
+    const newLeft = (scrollPercentage / 100) * maxLeft;
+    const newTop = (scrollPercentage / 100) * maxTop;
 
-        let containers_tab = [];
+    if (scrollPercentage > scroll_count) {
+        console.log("-- BAS --");
 
-        containers.forEach(element => {
-            containers_tab.push([element.classList, element.getBoundingClientRect().top]);
-        });
-
-        console.log(containers_tab);
-
-        let rocket_rect = rocket.getBoundingClientRect();
-
-        let rocket_bottom = rocket_rect.top + rocket_rect.height;
-
-        for (let index = 0; index < containers_tab.length; index++) {
-
-            if (rocket_bottom > containers_tab[index][1] && containers_tab[index + 1] !== undefined) {
-
-                if (rocket_bottom < containers_tab[index + 1][1]) {
-
-                    if (containers_tab[index][0].contains("droite")) {
-                        rocket.classList.add('rocket_left');
-                    }
-
-                    if (containers_tab[index][0].contains("gauche")) {
-                        rocket.classList.remove('rocket_left');
-                    }
-                }
-            } else {
-                if(rocket_bottom > containers_tab[4][1]) {
-                    if (containers_tab[index][0].contains("droite")) {
-                        rocket.classList.add('rocket_left');
-                    }
-
-                    if (containers_tab[index][0].contains("gauche")) {
-                        rocket.classList.remove('rocket_left');
-                    }
-                }
-            }
+        if (scrollPercentage < 2) {
+            rocket.classList.add("fusee_depart");
         }
-    });
+    
+        if (scrollPercentage > 94) {
+            rocket.classList.add("fusee_arrivee");
+        } 
+
+        if(scrollPercentage > 2 && scrollPercentage < 94) {
+            console.log("anim bas");
+            rocket.classList.add("rotate_bottom");
+            rocket.classList.remove("rotate_top");
+        }
+
+    } else {
+
+        console.log("-- HAUT --");
+        if (scrollPercentage < 2) {
+            rocket.classList.add("fusee_depart");
+        }
+
+        if (scrollPercentage > 94) {
+            rocket.classList.add("fusee_arrivee");
+        }
+        
+        if(scrollPercentage > 2 && scrollPercentage < 94) {
+            console.log("anim haut");
+            rocket.classList.add("rotate_top");
+            rocket.classList.remove("rotate_bottom");
+        }
+    }
+
+    rocket.style.left = newLeft + 'px';
+    rocket.style.top = newTop + 'px';
+
+    scroll_count = scrollPercentage;
 });
 
+function goLeft(scrollPercentage) {
+    const rocket = document.querySelector('.svg_fusee');
+    const maxLeft = window.innerWidth - rocket.offsetWidth;
+    const newLeft = (scrollPercentage / 100) * maxLeft;
+    rocket.style.left = newLeft + 'px';
+}
+
+function goRight(scrollPercentage) {
+    const rocket = document.querySelector('.svg_fusee');
+    const maxLeft = window.innerWidth - rocket.offsetWidth;
+    const newLeft = (scrollPercentage / 100) * maxLeft;
+    rocket.style.left = newLeft + 'px';
+}
+
+/**
+ * 
+ * @returns {number} Le pourcentage de défilement
+ *
+ */
 function getScrollPercentage() {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
