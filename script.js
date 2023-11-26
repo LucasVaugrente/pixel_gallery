@@ -10,38 +10,30 @@ document.addEventListener("scroll", function () {
     const newLeft = (scrollPercentage / 100) * maxLeft;
     const newTop = (scrollPercentage / 100) * maxTop;
 
+    // Vérification du sens du scroll
     if (scrollPercentage > scroll_count) {
-        console.log("-- BAS --");
-
         if (scrollPercentage < 2) {
-            rocket.classList.add("fusee_depart");
+            rocket.style.transform = "rotate(0deg)";
         }
     
         if (scrollPercentage > 94) {
-            rocket.classList.add("fusee_arrivee");
+            rocket.style.transform = "rotate(0deg)";
         } 
 
         if(scrollPercentage > 2 && scrollPercentage < 94) {
-            console.log("anim bas");
-            rocket.classList.add("rotate_bottom");
-            rocket.classList.remove("rotate_top");
+            rocket.style.transform = "rotate(135deg)";
         }
-
     } else {
-
-        console.log("-- HAUT --");
         if (scrollPercentage < 2) {
-            rocket.classList.add("fusee_depart");
+            rocket.style.transform = "rotate(0deg)";
         }
 
         if (scrollPercentage > 94) {
-            rocket.classList.add("fusee_arrivee");
+            rocket.style.transform = "rotate(0deg)";
         }
         
         if(scrollPercentage > 2 && scrollPercentage < 94) {
-            console.log("anim haut");
-            rocket.classList.add("rotate_top");
-            rocket.classList.remove("rotate_bottom");
+            rocket.style.transform = "rotate(-45deg)";
         }
     }
 
@@ -51,22 +43,9 @@ document.addEventListener("scroll", function () {
     scroll_count = scrollPercentage;
 });
 
-function goLeft(scrollPercentage) {
-    const rocket = document.querySelector('.svg_fusee');
-    const maxLeft = window.innerWidth - rocket.offsetWidth;
-    const newLeft = (scrollPercentage / 100) * maxLeft;
-    rocket.style.left = newLeft + 'px';
-}
-
-function goRight(scrollPercentage) {
-    const rocket = document.querySelector('.svg_fusee');
-    const maxLeft = window.innerWidth - rocket.offsetWidth;
-    const newLeft = (scrollPercentage / 100) * maxLeft;
-    rocket.style.left = newLeft + 'px';
-}
-
 /**
  * 
+ * @summary Retourne le pourcentage de défilement
  * @returns {number} Le pourcentage de défilement
  *
  */
@@ -86,3 +65,10 @@ function getScrollPercentage() {
     const scrollPercent = scrollTop / (docHeight - winHeight);
     return scrollPercent * 100;
 }
+
+/**
+ * 
+ * @summary Met à jour les frames de la fusée lorsqu'on scroll
+ * 
+ */ 
+function updateFrames() {}
