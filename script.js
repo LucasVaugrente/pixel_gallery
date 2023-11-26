@@ -1,11 +1,13 @@
 let scroll_count = 0;
 
-document.addEventListener("scroll", function () {
-    const scrollPercentage = getScrollPercentage();
-    const rocket = document.querySelector('.svg_fusee');
+const rocket = document.querySelector('.svg_fusee');
 
-    const maxLeft = window.innerWidth - rocket.offsetWidth - 30;
-    const maxTop = window.innerHeight - rocket.offsetHeight - 30;
+const maxLeft = window.innerWidth - rocket.offsetWidth - 30;
+const maxTop = window.innerHeight - rocket.offsetHeight - 30;
+
+document.addEventListener("scroll", function () {
+
+    const scrollPercentage = getScrollPercentage();
 
     const newLeft = (scrollPercentage / 100) * maxLeft;
     const newTop = (scrollPercentage / 100) * maxTop;
@@ -23,7 +25,8 @@ document.addEventListener("scroll", function () {
         if(scrollPercentage > 2 && scrollPercentage < 94) {
             rocket.style.transform = "rotate(135deg)";
         }
-    } else {
+    } 
+    else {
         if (scrollPercentage < 2) {
             rocket.style.transform = "rotate(0deg)";
         }
