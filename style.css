@@ -114,14 +114,16 @@ svg {
 }
 
 .active {
-    position: absolute;
+    position: fixed;
     filter: opacity(1);
+    top: 0;
     left: 0;
     z-index: 500;
-    width: 100vw;
-    height: 100vh;
+    width: 96%;
+    height: 90%;
+    background-size: cover;
 }
 
-.dessin.active .p1:hover, .dessin.active .p2:hover {
+.dessin.active:hover .p1, .dessin.active:hover .p2 {
     animation: none;
 }
