@@ -46,6 +46,14 @@ document.addEventListener("scroll", function () {
     scroll_count = scrollPercentage;
 });
 
+const containers = document.querySelectorAll('.dessin');
+
+containers.forEach(dessin => {
+    dessin.addEventListener("click", function () {
+        dessin.classList.toggle("active");
+    });
+});
+
 /**
  * 
  * @summary Retourne le pourcentage de défilement

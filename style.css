@@ -42,11 +42,26 @@ main {
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     z-index: 200;
+    filter: opacity(0.8);
+}
+
+
+.dessin1 {
+    background-image: url("img/projects/sunrise.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.dessin2 {
+    background-image: url("img/projects/mood_ghibli.png");
+    background-position: center;
+    background-size: cover;
 }
 
 .dessin:hover {
     transform: scale(1.02);
     box-shadow: 0 0 20px #1b1d21;
+    filter: opacity(1);
 }
 
 .gauche {
@@ -96,4 +111,17 @@ svg {
     z-index: 100;
     margin: 1em;
     transition: transform 0.8s ease-in-out;
+}
+
+.active {
+    position: absolute;
+    filter: opacity(1);
+    left: 0;
+    z-index: 500;
+    width: 100vw;
+    height: 100vh;
+}
+
+.dessin.active .p1:hover, .dessin.active .p2:hover {
+    animation: none;
 }
