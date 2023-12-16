@@ -49,8 +49,26 @@ document.addEventListener("scroll", function () {
 const containers = document.querySelectorAll('.dessin');
 
 containers.forEach(dessin => {
-    dessin.addEventListener("click", function () {
-        dessin.classList.toggle("active");
+    const fermer = document.querySelector(".fermer");
+    const image = document.querySelector(".image_projet");
+    let isActive = false;
+
+    dessin.addEventListener("click", function (event) {
+        // if (event.target !== fermer) {
+            // if (!isActive) {
+                console.log(image);
+                image.classList.add("active");
+                fermer.classList.add("active");
+                isActive = true;
+            // }
+        // }
+    });
+
+    fermer.addEventListener("click", function (event) {
+        event.stopPropagation();
+        image.classList.toggle("active");
+        fermer.classList.toggle("active");
+        isActive = false;
     });
 });
 
