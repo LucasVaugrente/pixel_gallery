@@ -1,12 +1,27 @@
 let scroll_count = 0;
+let starsNumber = 70;
 
-const rocket = document.querySelector('.svg_fusee');
+const body = document.querySelector('body');
+const rocket = document.querySelector('.svg_rocket');
 
 const maxLeft = window.innerWidth - rocket.offsetWidth - 30;
 const maxTop = window.innerHeight - rocket.offsetHeight - 30;
 
-document.addEventListener("scroll", function () {
+// Stars generation (random positions)
+for (let i = 0; i < starsNumber; i++) {
+    const star = document.createElement('div');
+    star.classList.add('mini-star');
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.top = Math.random() * document.documentElement.scrollHeight + 'px'; // Modify this line
 
+    const widthANDheight = Math.random() * 5 + 1;
+    star.style.width = widthANDheight + 'px';
+    star.style.height = widthANDheight + 'px';
+
+    body.appendChild(star);
+}
+
+document.addEventListener("scroll", function () {
     const scrollPercentage = getScrollPercentage();
 
     const newLeft = (scrollPercentage / 100) * maxLeft;
@@ -44,32 +59,6 @@ document.addEventListener("scroll", function () {
     rocket.style.top = newTop + 'px';
 
     scroll_count = scrollPercentage;
-});
-
-const containers = document.querySelectorAll('.dessin');
-
-containers.forEach(dessin => {
-    const fermer = document.querySelector(".fermer");
-    const image = document.querySelector(".image_projet");
-    let isActive = false;
-
-    dessin.addEventListener("click", function (event) {
-        // if (event.target !== fermer) {
-            // if (!isActive) {
-                console.log(image);
-                image.classList.add("active");
-                fermer.classList.add("active");
-                isActive = true;
-            // }
-        // }
-    });
-
-    fermer.addEventListener("click", function (event) {
-        event.stopPropagation();
-        image.classList.toggle("active");
-        fermer.classList.toggle("active");
-        isActive = false;
-    });
 });
 
 /**

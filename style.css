@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #2d323b;
+    background: linear-gradient(black, #020f24, #020f24, #20509e);
 }
 
 header {
@@ -26,6 +26,11 @@ h1 {
     margin: 3em;
 }
 
+h2 {
+    font-family: lele;
+    color: white;
+    font-size: 3em;
+}
 
 main {
     display: flex;
@@ -33,7 +38,8 @@ main {
     align-items: center;
 }
 
-.dessin {
+.drawing {
+    position: relative;
     width: 45%;
     height: 40vh;
     background-color: #464c57;
@@ -41,45 +47,33 @@ main {
     border-radius: 10px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
-    z-index: 2;
+    background-position: center;
+    background-size: cover;
 }
 
-.image_projet {
-    display: none;
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    width: 98vw;
-    z-index: 3;
+.inProgress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.image_projet img {
-    width: inherit;
-    height: initial;
-    border-radius: 10px;
-}
-
-.image_projet.active {
-    display: block;
-}
-
-.fermer {
-    display: none;
-}
-
-.dessin1 {
+.drawing1 {
     background-image: url("img/projects/sunrise.png");
-    background-position: center;
-    background-size: cover;
 }
 
-.dessin2 {
+.drawing2 {
     background-image: url("img/projects/mood_ghibli.png");
-    background-position: center;
-    background-size: cover;
 }
 
-.dessin:hover {
+.drawing3 {
+    background-image: url("img/projects/stanportal.png");
+}
+
+.drawing4 {
+    background-image: url("img/projects/montsaintmichel.png");
+}
+
+.drawing:hover {
     box-shadow: 0 0 20px #1b1d21;
 }
 
@@ -103,20 +97,34 @@ main {
     }
 }
 
+/* @keyframes animationRocket {
+    0% {
+        transform: translateY(10px);
+    }
+    
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(10px);
+    }
+} */
+
 svg {
     height: 100%;
     width: 100%;
 }
 
-.dessin:hover .p1 {
+.drawing:hover .p1 {
     animation: windowHover 0.7s ease-in-out 1;
 }
 
-.dessin:hover .p2 {
+.drawing:hover .p2 {
     animation: windowHover 0.8s ease-in-out 1;
 }
 
-.svg_fusee {
+.svg_rocket {
     width: 50px;
     height: 100px;
     background-image: url("img/rocket.png");
@@ -129,19 +137,11 @@ svg {
     z-index: 1;
     margin: 1em;
     transition: transform 0.8s ease-in-out;
+    animation: animationRocket 1.5s ease infinite;
 }
 
-.fermer.active {
-    display: block;
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    top: 10px;
-    right: 10px;
-    transition: all 0.2s ease-in-out;
+.mini-star {    
+    background-color: white;
     border-radius: 50%;
-}
-
-.fermer:hover {
-    background-color: rgba(0, 0, 0, 0.21);
+    position: absolute;
 }
