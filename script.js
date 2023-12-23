@@ -1,5 +1,5 @@
+const starsNumber = 70;
 let scroll_count = 0;
-let starsNumber = 70;
 
 const body = document.querySelector('body');
 const rocket = document.querySelector('.svg_rocket');
@@ -19,6 +19,12 @@ for (let i = 0; i < starsNumber; i++) {
     star.style.height = widthANDheight + 'px';
 
     body.appendChild(star);
+}
+
+let stars = document.querySelectorAll('.mini-star');
+for (let index = 0; index < 20; index++) {
+    let star = stars[Math.floor(Math.random() * stars.length)];
+    star.style.animation = "twinkle 3s ease-in-out infinite";
 }
 
 document.addEventListener("scroll", function () {

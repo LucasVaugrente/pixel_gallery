@@ -49,12 +49,19 @@ main {
     cursor: pointer;
     background-position: center;
     background-size: cover;
+    z-index: 2;
 }
 
 .inProgress {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: none;
+    border: solid 2px white;
+}
+
+.inProgress:hover {
+    box-shadow: none;
 }
 
 .drawing1 {
@@ -111,6 +118,22 @@ main {
     }
 } */
 
+@keyframes twinkle {
+    0% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+}
+
 svg {
     height: 100%;
     width: 100%;
@@ -131,6 +154,7 @@ svg {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
     position: fixed;
     left: 1%;
     top: 1%;
