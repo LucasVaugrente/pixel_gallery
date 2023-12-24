@@ -11,8 +11,8 @@ const maxTop = window.innerHeight - rocket.offsetHeight - 30;
 for (let i = 0; i < starsNumber; i++) {
     const star = document.createElement('div');
     star.classList.add('mini-star');
-    star.style.left = Math.random() * 100 + 'vw';
-    star.style.top = Math.random() * document.documentElement.scrollHeight + 'px'; // Modify this line
+    star.style.left = Math.random() * 98 + 'vw';
+    star.style.top = Math.random() * document.documentElement.scrollHeight + 'px';
 
     const widthANDheight = Math.random() * 5 + 1;
     star.style.width = widthANDheight + 'px';

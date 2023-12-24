@@ -40,7 +40,7 @@ main {
 
 .drawing {
     position: relative;
-    width: 45%;
+    width: 700px;
     height: 40vh;
     background-color: #464c57;
     margin: 2em;
@@ -81,7 +81,12 @@ main {
 }
 
 .drawing:hover {
-    box-shadow: 0 0 20px #1b1d21;
+    transform: scale(105%);
+    box-shadow: 0 0 20px #9c9c9c;
+}
+
+.drawing:active {
+    transform: scale(100%);
 }
 
 .gauche {
@@ -103,20 +108,6 @@ main {
         fill: white;
     }
 }
-
-/* @keyframes animationRocket {
-    0% {
-        transform: translateY(10px);
-    }
-    
-    50% {
-        transform: translateY(-10px);
-    }
-
-    100% {
-        transform: translateY(10px);
-    }
-} */
 
 @keyframes twinkle {
     0% {
