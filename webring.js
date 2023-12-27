@@ -61,7 +61,7 @@ class Webring extends HTMLElement {
             .then((sites) => {
                 // Va chercher les infos du site actuel dans le json
                 const matchedSiteIndex = sites.findIndex(
-                    (site) => site.url === currentSite
+                    (site) => site.name === currentSite
                 )
 
                 // stocke les index des sites avant et après dans le json

@@ -1,11 +1,13 @@
-const starsNumber = 70;
-let scroll_count = 0;
-
 const body = document.querySelector('body');
 const rocket = document.querySelector('.svg_rocket');
 
 const maxLeft = window.innerWidth - rocket.offsetWidth - 30;
 const maxTop = window.innerHeight - rocket.offsetHeight - 30;
+
+const starsNumber = 70;
+let scroll_count = 0;
+const lineHeader = 10;
+const lineFooter = 90;
 
 // Stars generation (random positions)
 for (let i = 0; i < starsNumber; i++) {
@@ -35,34 +37,40 @@ document.addEventListener("scroll", function () {
 
     // Vérification du sens du scroll
     if (scrollPercentage > scroll_count) {
-        if (scrollPercentage < 2) {
-            rocket.style.transform = "rotate(0deg)";
+        if (scrollPercentage < lineHeader) {
+            // Animation personnalisée Header
+            console.log("Header");
         }
     
-        if (scrollPercentage > 94) {
-            rocket.style.transform = "rotate(0deg)";
+        if (scrollPercentage > lineHeader && scrollPercentage < lineFooter) {
+            // Animation en "zigzag" tout en au long de la page
+            console.log("Body");
         } 
 
-        if(scrollPercentage > 2 && scrollPercentage < 94) {
-            rocket.style.transform = "rotate(135deg)";
+        if(scrollPercentage > lineFooter) {
+            // Animation personnalisée Footer
+            console.log("Footer");
         }
     } 
     else {
-        if (scrollPercentage < 2) {
-            rocket.style.transform = "rotate(0deg)";
+        if (scrollPercentage < lineHeader) {
+            // Animation personnalisée Header
+            console.log("Header");
         }
+    
+        if (scrollPercentage > lineHeader && scrollPercentage < lineFooter) {
+            // Animation en "zigzag" tout en au long de la page
+            console.log("Body");
+        } 
 
-        if (scrollPercentage > 94) {
-            rocket.style.transform = "rotate(0deg)";
-        }
-        
-        if(scrollPercentage > 2 && scrollPercentage < 94) {
-            rocket.style.transform = "rotate(-45deg)";
+        if(scrollPercentage > lineFooter) {
+            // Animation personnalisée Footer
+            console.log("Footer");
         }
     }
 
-    rocket.style.left = newLeft + 'px';
-    rocket.style.top = newTop + 'px';
+    // rocket.style.left = newLeft + 'px';
+    // rocket.style.top = newTop + 'px';
 
     scroll_count = scrollPercentage;
 });

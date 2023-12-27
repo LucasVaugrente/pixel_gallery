@@ -19,17 +19,22 @@ footer {
     height: 10em;
 }
 
-h1 {
+h1, h2, h3 {
     font-family: lele;
     color: white;
-    font-size: 5em;
+}
+
+h1 {
     margin: 3em;
+    font-size: 5em;
 }
 
 h2 {
-    font-family: lele;
-    color: white;
     font-size: 3em;
+}
+
+h3 {
+    font-size: 2em;
 }
 
 main {
@@ -147,8 +152,9 @@ svg {
     background-position: center;
     cursor: pointer;
     position: fixed;
-    left: 1%;
-    top: 1%;
+    left: 100px;
+    top: 100px;
+    transform: rotate(35deg);
     z-index: 1;
     margin: 1em;
     transition: transform 0.8s ease-in-out;
@@ -159,4 +165,24 @@ svg {
     background-color: white;
     border-radius: 50%;
     position: absolute;
+}
+
+.drawing h3 {
+    background: linear-gradient(rgba(0, 0, 0, 0.637), #00000097, #00000067);
+    box-shadow: 0 5px 50px black;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: inherit;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    padding: 15px 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.drawing:hover h3 {
+    opacity: 1;
 }
