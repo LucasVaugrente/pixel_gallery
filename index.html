@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lulu le dj</title>
+    <title>Pixel Art Gallery</title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="img/icon.png" style="border-radius: 50px;">
+
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,12 +14,13 @@
     
     <header>
         <h1>Welcome</h1>
+        <p>This is my pixel art gallery, I draw in my spare time when I have inspiration.</p>
         <nav></nav>
     </header>
 
-    <div class="rocket">
-        <div class="svg_rocket"></div>
-    </div>
+    <div class="svg_rocket"></div>
+    <div id="tooltip_rocket">
+        <span class="tooltip-text"></span></div>
 
     <main>
         <div class="drawing gauche drawing1">
@@ -30,7 +34,6 @@
             </a>
         </div>
 
-
         <div class="drawing droite drawing2">
             <h3>Mood Ghibli</h3>
             <a href="https://www.pixilart.com/art/mood-totoro-sr2d222d4cd6eaws3?ft=user&ft_id=1779570"
@@ -41,7 +44,7 @@
                 </svg>
             </a>
         </div>
-
+        
         <div class="drawing gauche drawing3">
             <h3>Stan Portal</h3>
             <a href="https://www.pixilart.com/art/stan-portal-sr2fa6917bd6eaws3?ft=user&ft_id=1779570"
@@ -65,13 +68,57 @@
             </a>
         </div>
 
+        <div class="drawing gauche drawing5">
+            <h3>Spirited Away</h3>
+            <a href="https://www.pixilart.com/art/sprited-away-train-sr2f564d21a96aws3?ft=user&ft_id=1779570"
+            target="_blank">
+                <svg>
+                    <polygon class="p1" points="-30,0 0,0 -70,500 -100,500" fill="none" />
+                    <polygon class="p2" points="-110,0 -90,0 -170,500 -190,500" fill="none" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="drawing droite drawing6">
+            <h3>Week-end</h3>
+            <a href="https://www.pixilart.com/art/week-end-sr2b1e7e0ca56aws3?ft=user&ft_id=1779570"
+            target="_blank">
+                <svg>
+                    <polygon class="p1" points="-30,0 0,0 -70,500 -100,500" fill="none" />
+                    <polygon class="p2" points="-110,0 -90,0 -170,500 -190,500" fill="none" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="drawing gauche drawing7">
+            <h3>Outer Wilds</h3>
+            <a href="https://www.pixilart.com/art/outer-wilds-sr2e74f44c9a4aws3?ft=user&ft_id=1779570"
+            target="_blank">
+                <svg>
+                    <polygon class="p1" points="-30,0 0,0 -70,500 -100,500" fill="none" />
+                    <polygon class="p2" points="-110,0 -90,0 -170,500 -190,500" fill="none" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="drawing droite drawing8">
+            <h3>Bike ride</h3>
+            <a href="https://www.pixilart.com/art/bike-ride-sr220b289be85aws3?ft=user&ft_id=1779570"
+            target="_blank">
+                <svg>
+                    <polygon class="p1" points="-30,0 0,0 -70,500 -100,500" fill="none" />
+                    <polygon class="p2" points="-110,0 -90,0 -170,500 -190,500" fill="none" />
+                </svg>
+            </a>
+        </div>
+
         <a class="drawing gauche inProgress">
-            <h2>In progress...</h1>
+            <h2>Drawing in progress...</h1>
         </a>
     </main>
 
     <footer>
-        <webring-iutechno site="lululedj"></webring-iutechno>
+        <webring-iutechno style="display: flex; justify-content: center;" site="lululedj"></webring-iutechno>
         <script src="./webring.js"></script>
     </footer>
 

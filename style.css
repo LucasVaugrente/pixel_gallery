@@ -4,18 +4,23 @@
 }
 
 body {
-    background: linear-gradient(black, #020f24, #020f24, #20509e);
+    background: linear-gradient(black, #230e70, #1a0d46, #020f24, #020f24, #7a4ba5, #298d67, #093885, #186bf1);
 }
 
 header {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    gap: 100px;
     margin: 0;
     padding: 0;
     height: 100vh;
 }
 
 footer {
+    position: relative;
+    z-index: 1;
     height: 20em;
     background: url("img/footer.png");
     background-size: cover;
@@ -23,28 +28,39 @@ footer {
     background-position: center;
 }
 
-h1, h2, h3 {
+h1, h2, h3, p, div {
     font-family: lele;
     color: white;
 }
 
 h1 {
-    margin: 3em;
-    font-size: 5em;
+    font-size: 80px;
+    text-align: center;
 }
 
 h2 {
-    font-size: 3em;
+    font-size: clamp(10px, 8vw, 40px);
+    text-align: center;
 }
 
 h3 {
-    font-size: 2em;
+    font-size: 30px;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+    text-align: center;
 }
 
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+    margin: 0 10% 130px 10%;
 }
 
 .drawing {
@@ -52,7 +68,6 @@ main {
     width: 700px;
     height: 40vh;
     background-color: #464c57;
-    margin: 2em;
     border-radius: 10px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
@@ -82,11 +97,27 @@ main {
 }
 
 .drawing3 {
-    background-image: url("img/projects/stanportal.png");
+    background-image: url("img/projects/stan_portal.png");
 }
 
 .drawing4 {
     background-image: url("img/projects/montsaintmichel.png");
+}
+
+.drawing5 {
+    background-image: url("img/projects/spirited_away.png");
+}
+ 
+.drawing6 {
+    background-image: url("img/projects/week-end.png");
+}
+
+.drawing7 {
+    background-image: url("img/projects/outer_wilds.png");
+}
+
+.drawing8 {
+    background-image: url("img/projects/bike_ride.png");
 }
 
 .drawing:hover {
@@ -147,6 +178,27 @@ svg {
     animation: windowHover 0.8s ease-in-out 1;
 }
 
+#tooltip_rocket {
+    position: fixed;
+    margin: 20px;
+    padding: 10px;
+    right: 100px;
+    border-radius: 10px;
+    background-color: rgb(117, 59, 139);
+    color: white;
+    z-index: 3;
+    opacity: 0;
+    width: 250px;
+    height: 100px;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.tooltip-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .svg_rocket {
     width: 50px;
     height: 100px;
@@ -156,13 +208,11 @@ svg {
     background-position: center;
     cursor: pointer;
     position: fixed;
-    left: 100px;
-    top: 100px;
-    transform: rotate(35deg);
+    filter: drop-shadow(0 40px 15px rgb(255, 240, 25));    
+    right: 20px;
     z-index: 1;
     margin: 1em;
     transition: transform 0.8s ease-in-out;
-    animation: animationRocket 1.5s ease infinite;
 }
 
 .mini-star {    
@@ -189,4 +239,20 @@ svg {
 
 .drawing:hover h3 {
     opacity: 1;
+}
+
+@media screen and (max-width: 850px) {
+    main {
+        margin: 0 90px 0 0;
+    }
+
+    .drawing {
+        width: 90%;
+        align-self: auto;
+    }
+
+    .drawing h3 {
+        opacity: 1;
+        width: 100%;
+    }
 }

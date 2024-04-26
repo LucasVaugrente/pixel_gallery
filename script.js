@@ -1,8 +1,9 @@
 const body = document.querySelector('body');
 const rocket = document.querySelector('.svg_rocket');
+const tooltip_rocket = document.getElementById('tooltip_rocket')
+const footer = document.querySelector('footer');
 
-const maxLeft = window.innerWidth - rocket.offsetWidth - 30;
-const maxTop = window.innerHeight - rocket.offsetHeight - 30;
+const maxTop = window.innerHeight - footer.offsetHeight / 1.5;
 
 const starsNumber = 70;
 let scroll_count = 0;
@@ -32,45 +33,18 @@ for (let index = 0; index < 20; index++) {
 document.addEventListener("scroll", function () {
     const scrollPercentage = getScrollPercentage();
 
-    const newLeft = (scrollPercentage / 100) * maxLeft;
     const newTop = (scrollPercentage / 100) * maxTop;
 
     // Vérification du sens du scroll
     if (scrollPercentage > scroll_count) {
-        if (scrollPercentage < lineHeader) {
-            // Animation personnalisée Header
-            console.log("Header");
-        }
-    
-        if (scrollPercentage > lineHeader && scrollPercentage < lineFooter) {
-            // Animation en "zigzag" tout en au long de la page
-            console.log("Body");
-        } 
-
-        if(scrollPercentage > lineFooter) {
-            // Animation personnalisée Footer
-            console.log("Footer");
-        }
+        // console.log("b");
     } 
     else {
-        if (scrollPercentage < lineHeader) {
-            // Animation personnalisée Header
-            console.log("Header");
-        }
-    
-        if (scrollPercentage > lineHeader && scrollPercentage < lineFooter) {
-            // Animation en "zigzag" tout en au long de la page
-            console.log("Body");
-        } 
-
-        if(scrollPercentage > lineFooter) {
-            // Animation personnalisée Footer
-            console.log("Footer");
-        }
+        // console.log("m");
     }
 
-    // rocket.style.left = newLeft + 'px';
-    // rocket.style.top = newTop + 'px';
+    rocket.style.top = newTop + 'px';
+    tooltip_rocket.style.top = newTop + 'px';
 
     scroll_count = scrollPercentage;
 });
@@ -104,3 +78,56 @@ function getScrollPercentage() {
  * 
  */ 
 function updateFrames() {}
+
+const textTooltip = "Helloooo !! :D";
+
+let indexLetter = 0;
+
+function animateText() {
+    if (indexLetter < textTooltip.length) {
+        tooltip_rocket.textContent += textTooltip[indexLetter];
+        indexLetter++;
+        setTimeout(animateText, 100);
+    }
+}
+
+function eraseText() {
+    tooltip_rocket.textContent = ""
+}
+
+rocket.addEventListener('mouseenter', () => {
+    animateText()
+});
+
+rocket.addEventListener('mouseleave', () => {
+    eraseText()
+    indexLetter = 0;
+});
+
+/**
+ * 
+ * @summary Détecte si l'utilisateur est sur un appareil mobile
+ * 
+ */ 
+function detectMob() {
+    const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+    ];
+    
+    return toMatch.some((toMatchItem) => {
+        return navigator.userAgent.match(toMatchItem);
+    });
+}
+
+if(detectMob()) {
+    const titlesDrawing = document.querySelectorAll('.drawing h3');
+    titlesDrawing.forEach(function (titleDrawing, currentIndex) {
+        titleDrawing.style.opacity = '1';
+    }, "myThisArg");
+}
