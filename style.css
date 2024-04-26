@@ -165,6 +165,20 @@ main {
     }
 }
 
+@keyframes rocketMove {
+    0% {
+        transform: translateY(5px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(5px);
+    }
+}
+
 svg {
     height: 100%;
     width: 100%;
@@ -208,11 +222,16 @@ svg {
     background-position: center;
     cursor: pointer;
     position: fixed;
-    filter: drop-shadow(0 40px 15px rgb(255, 240, 25));    
+    filter: drop-shadow(0 40px 15px rgb(255, 240, 25));  
+    top: 10px;  
     right: 20px;
     z-index: 1;
     margin: 1em;
     transition: transform 0.8s ease-in-out;
+}
+
+.svg_rocket.animation {
+    animation: rocketMove 2s ease-in-out infinite;
 }
 
 .mini-star {    

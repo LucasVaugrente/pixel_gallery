@@ -1,0 +1,5 @@
+- Animation du feu de la fusée
+- Etoiles Filantes en haut de la page
+- Refaire le footer
+- Faire le tooltip et les différents messages
+- Animation de décollage et = d'atterissage de la fusée

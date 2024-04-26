@@ -43,6 +43,12 @@ document.addEventListener("scroll", function () {
         // console.log("m");
     }
 
+    if (scrollPercentage === 100) {
+        rocket.classList.remove('animation');
+    } else {
+        rocket.classList.add('animation');
+    }
+
     rocket.style.top = newTop + 'px';
     tooltip_rocket.style.top = newTop + 'px';
 
