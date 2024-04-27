@@ -1,0 +1,74 @@
+:root {
+    --path-projects: "../img/projects/";
+ }
+
+@font-face {
+    font-family: lele;
+    src: url("../fonts/stolen.ttf");
+}
+
+body {
+    background: linear-gradient(black, #230e70, #1a0d46, #020f24, #020f24, #7a4ba5, #298d67, #093885, #186bf1);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+footer {
+    position: relative;
+    z-index: 1;
+    height: 20em;
+    background: url("../img/footer.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h1, h2, h3, p, div {
+    font-family: lele;
+    color: white;
+}
+
+h1 {
+    font-size: 80px;
+    text-align: center;
+}
+
+h2 {
+    font-size: clamp(10px, 8vw, 40px);
+    text-align: center;
+}
+
+h3 {
+    font-size: 30px;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+    margin: 0 10% 130px 10%;
+}
+
+@media screen and (max-width: 850px) {
+    main {
+        margin: 0 90px 0 0;
+    }
+}

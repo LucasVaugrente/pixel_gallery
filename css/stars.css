@@ -1,0 +1,21 @@
+.mini-star {    
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+}

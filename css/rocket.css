@@ -1,0 +1,90 @@
+svg {
+    height: 100%;
+    width: 100%;
+}
+
+.drawing:hover .p1 {
+    animation: windowHover 0.7s ease-in-out 1;
+}
+
+.drawing:hover .p2 {
+    animation: windowHover 0.8s ease-in-out 1;
+}
+
+.tip {
+    position: relative;
+}
+
+.tip span {
+    white-space: wrap;
+}
+
+#tooltip_rocket {
+    position: fixed;
+    margin: 20px;
+    padding: 10px;
+    right: 100px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.55);
+    box-shadow: 0 0 10px #545454;
+    color: white;
+    z-index: 3;
+    opacity: 0;
+    width: 250px;
+    height: 100px;
+    transition: opacity 0.2s ease-in-out;
+}
+
+#tooltip_rocket:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid rgb(12, 12, 12);
+    border-radius: 8px;
+    right: -13px;
+    top: 45px;
+}
+
+.tooltip-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.svg_rocket {
+    width: 100px;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    position: fixed;
+    filter: drop-shadow(0 40px 15px rgb(255, 240, 25));  
+    top: 10px;  
+    right: 20px;
+    z-index: 1;
+    margin: 1em;
+    transition: transform 0.8s ease-in-out;
+}
+
+.svg_rocket.animation {
+    animation: rocketMove 2s ease-in-out infinite;
+}
+
+@keyframes rocketMove {
+    0% {
+        transform: translateY(5px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(5px);
+    }
+}

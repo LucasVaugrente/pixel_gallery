@@ -1,7 +1,10 @@
 const body = document.querySelector('body');
 const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket')
+const tooltip_rocket_text = document.querySelector('.tooltip-text')
 const footer = document.querySelector('footer');
+
+const landing = false;
 
 const maxTop = window.innerHeight - footer.offsetHeight / 1.5;
 
@@ -80,32 +83,42 @@ function getScrollPercentage() {
 
 /**
  * 
- * @summary Met à jour les frames de la fusée lorsqu'on scroll
+ * @summary Met à jour les frames de la fusée
  * 
  */ 
-function updateFrames() {}
+function updateFrames() {
 
-const textTooltip = "Helloooo !! :D";
+    function updateBackground() {
+        let index = Math.floor(Math.random() * 10) + 1;
+        rocket.style.backgroundImage = `url('img/rocket/rocket${index}.png')`;
+    }
+
+    setInterval(updateBackground, 100);
+}
+
+const textTooltipBegin = "Vous pouvez me suivre tout au long du périple en me survolant :)";
 
 let indexLetter = 0;
 
 function animateText() {
-    if (indexLetter < textTooltip.length) {
-        tooltip_rocket.textContent += textTooltip[indexLetter];
+    if (indexLetter < textTooltipBegin.length) {
+        tooltip_rocket_text.textContent += textTooltipBegin[indexLetter];
         indexLetter++;
         setTimeout(animateText, 100);
     }
 }
 
 function eraseText() {
-    tooltip_rocket.textContent = ""
+    tooltip_rocket_text.textContent = ""
 }
 
 rocket.addEventListener('mouseenter', () => {
+    tooltip_rocket.style.opacity = "1";
     animateText()
 });
 
 rocket.addEventListener('mouseleave', () => {
+    tooltip_rocket.style.opacity = "";
     eraseText()
     indexLetter = 0;
 });
@@ -115,7 +128,7 @@ rocket.addEventListener('mouseleave', () => {
  * @summary Détecte si l'utilisateur est sur un appareil mobile
  * 
  */ 
-function detectMob() {
+function detectMobile() {
     const toMatch = [
         /Android/i,
         /webOS/i,
@@ -131,9 +144,11 @@ function detectMob() {
     });
 }
 
-if(detectMob()) {
+if(detectMobile()) {
     const titlesDrawing = document.querySelectorAll('.drawing h3');
     titlesDrawing.forEach(function (titleDrawing, currentIndex) {
         titleDrawing.style.opacity = '1';
     }, "myThisArg");
 }
+
+updateFrames()
