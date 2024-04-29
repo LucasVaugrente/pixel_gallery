@@ -3,14 +3,6 @@ svg {
     width: 100%;
 }
 
-.drawing:hover .p1 {
-    animation: windowHover 0.7s ease-in-out 1;
-}
-
-.drawing:hover .p2 {
-    animation: windowHover 0.8s ease-in-out 1;
-}
-
 .tip {
     position: relative;
 }
@@ -55,6 +47,14 @@ svg {
     overflow: hidden;
 }
 
+.svg_rocket2 {
+    width: 100px;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;background-image: url('../img/rocket/rocket.png');
+}
+
 .svg_rocket {
     width: 100px;
     height: 200px;
@@ -66,6 +66,7 @@ svg {
     filter: drop-shadow(0 40px 15px rgb(255, 240, 25));  
     top: 10px;  
     right: 20px;
+    background-image: url('../img/rocket/rocket.png');
     z-index: 1;
     margin: 1em;
     transition: transform 0.8s ease-in-out;

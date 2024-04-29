@@ -19,6 +19,14 @@
     border: solid 2px white;
 }
 
+.drawing:hover .p1 {
+    animation: windowHover 0.7s ease-in-out 1;
+}
+
+.drawing:hover .p2 {
+    animation: windowHover 0.8s ease-in-out 1;
+}
+
 .inProgress:hover {
     box-shadow: none;
 }

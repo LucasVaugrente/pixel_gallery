@@ -33,23 +33,45 @@ for (let index = 0; index < 20; index++) {
     star.style.animation = "twinkle 3s ease-in-out infinite";
 }
 
+const rocketFrameImages = [
+    'img/rocket/rocket1.png',
+    'img/rocket/rocket2.png',
+    'img/rocket/rocket3.png',
+    'img/rocket/rocket4.png',
+    'img/rocket/rocket5.png',
+    'img/rocket/rocket6.png',
+    'img/rocket/rocket7.png',
+    'img/rocket/rocket8.png',
+    'img/rocket/rocket9.png',
+    'img/rocket/rocket10.png'
+];
+
+
+function preloadImages(urls) {
+    urls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+}
+
+preloadImages(rocketFrameImages);
+
+updateFrames(true)
+
 document.addEventListener("scroll", function () {
     const scrollPercentage = getScrollPercentage();
 
     const newTop = (scrollPercentage / 100) * maxTop;
 
-    // Vérification du sens du scroll
-    if (scrollPercentage > scroll_count) {
-        // console.log("b");
-    } 
-    else {
-        // console.log("m");
-    }
-
     if (scrollPercentage === 100) {
+        rocket.style.filter = "none";
+        rocket.style.backgroundImage = `url('img/rocket/rocket.png')`;
         rocket.classList.remove('animation');
+        updateFrames(false);
     } else {
+        rocket.style.filter = "drop-shadow(0 40px 15px rgb(255, 240, 25))";
         rocket.classList.add('animation');
+        updateFrames(true); // Activer l'animation lorsque vous n'êtes pas en bas de la page
     }
 
     rocket.style.top = newTop + 'px';
@@ -86,14 +108,20 @@ function getScrollPercentage() {
  * @summary Met à jour les frames de la fusée
  * 
  */ 
-function updateFrames() {
-
-    function updateBackground() {
-        let index = Math.floor(Math.random() * 10) + 1;
-        rocket.style.backgroundImage = `url('img/rocket/rocket${index}.png')`;
+function updateFrames(active) {
+    if (active && scroll_count !== 100) {
+        function updateBackground() {
+            let index = Math.floor(Math.random() * rocketFrameImages.length);
+            rocket.style.backgroundImage = `url('${rocketFrameImages[index]}')`;
+        }
+        // Vous pouvez également vérifier si l'intervalle est déjà en cours pour éviter de le réinitialiser à chaque fois.
+        if (!updateFrames.intervalId) {
+            updateFrames.intervalId = setInterval(updateBackground, 100);
+        }
+    } else {
+        clearInterval(updateFrames.intervalId);
+        updateFrames.intervalId = null;
     }
-
-    setInterval(updateBackground, 100);
 }
 
 const textTooltipBegin = "Vous pouvez me suivre tout au long du périple en me survolant :)";
@@ -151,4 +179,61 @@ if(detectMobile()) {
     }, "myThisArg");
 }
 
-updateFrames()
+const launchButton = document.querySelector('.launchRocket');
+
+launchButton.addEventListener('click', () => {
+    document.documentElement.classList.add('smooth-scroll');
+
+    slowScrollToTop();
+});
+
+const slow = 10000;
+const effect = easeInOutCuaic;
+
+function slowScrollToTop() {
+    const e = document.documentElement;
+    let floor = e.scrollHeight - e.scrollTop - e.clientHeight === 0;
+    if (floor) {
+      scrollTo(0, slow);
+    }
+}
+
+// Element to move + duration in milliseconds
+function scrollTo(element, duration) {
+    var e = document.documentElement;
+    if (e.scrollTop === 0) {
+      var t = e.scrollTop;
+      ++e.scrollTop;
+      e = t + 1 === e.scrollTop-- ? e : document.body;
+    }
+    scrollToC(e, e.scrollTop, element, duration);
+}
+
+// Element to move, element or px from, element or px to, time in ms to animate
+function scrollToC(element, from, to, duration) {
+    if (duration <= 0) return;
+    if (typeof from === "object") from = from.offsetTop;
+    if (typeof to === "object") to = to.offsetTop;
+    scrollToX(element, from, to, 0, 1 / duration, 20, effect);
+}
+
+function scrollToX(element, xFrom, xTo, t01, speed, step, motion) {
+    if (t01 < 0 || t01 > 1 || speed <= 0) {
+        element.scrollTop = xTo;
+        return;
+    }
+    element.scrollTop = xFrom - (xFrom - xTo) * motion(t01);
+    t01 += speed * step;
+
+    setTimeout(function() {
+        scrollToX(element, xFrom, xTo, t01, speed, step, motion);
+    }, step);
+}
+
+
+function easeInOutCuaic(t) {
+    t /= 0.5;
+    if (t < 1) return t * t * t / 2;
+    t -= 2;
+    return (t * t * t + 2) / 2;
+  }
