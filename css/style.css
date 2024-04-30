@@ -9,11 +9,12 @@
 
 @font-face {
     font-family: pixelart;
-    src: url("../fonts/pixelart.ttf");
+    src: url("../fonts/Minecraft.ttf");
 }
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -78,7 +79,7 @@ main {
 
 .footer_left_image {
     position: absolute;
-    width:600px;
+    width:575px;
     height:400px;
     bottom: 0;
     left: 0;
@@ -89,7 +90,9 @@ main {
     bottom: 30px;
     right: 30px;
     font-family: pixelart;
-    background-color: #c71616;
+    font-size: 20px;
+    opacity: 0;
+    background-color: #ad3737;
     color: white;
     text-decoration: none;
     border: solid 2px rgb(22, 51, 105);
@@ -97,13 +100,18 @@ main {
     padding: 10px;
     cursor: pointer;
     transform-style: preserve-3d;
+    transition: background 0.1s ease-in-out;
+}
+
+.launchRocket.visible {
+    opacity: 1;
 }
 
 .launchRocket::before {
     position: absolute;
     content: "";
-    width: 208px;
-    height: 100%;
+    width: 183px;
+    height: 40px;
     top: 0;
     left: -2px;
     right: 0;
@@ -115,11 +123,27 @@ main {
 
 .launchRocket:active {
     background: rgb(22, 51, 105);
-    transform: translate(0em, 0.75em);
+    transform: translate(0em, 10px);
 }
 
 .launchRocket:active::before {
     transform: translate3d(0, 0, -1em);
+}
+
+.launchRocket:hover {
+    background-color: #952f2f;
+}
+
+.launchRocket:hover:active {
+    background: rgb(17, 40, 82);
+}
+
+.pixelSmoke {
+    background-color: rgba(90, 56, 56, 0.527);
+    position: absolute;
+    z-index: 3;
+    transition: right 1.5s ease-out, bottom 1.5s ease-out, background-color 1s;
+    opacity: 0;
 }
 
 .smooth-scroll {

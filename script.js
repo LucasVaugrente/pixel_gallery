@@ -3,6 +3,64 @@ const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket')
 const tooltip_rocket_text = document.querySelector('.tooltip-text')
 const footer = document.querySelector('footer');
+const launchButton = document.querySelector('.launchRocket');
+
+function animatePixel(pixelSmoke, rightMax) {
+    pixelSmoke.style.right = `${rightMax}px`;
+    pixelSmoke.style.backgroundColor = "rgba(114, 114, 114, 0.37)";
+    setTimeout(() => {
+        pixelSmoke.style.backgroundColor = "rgba(190, 190, 190, 0.192)";
+        setTimeout(() => {
+            pixelSmoke.style.backgroundColor = "transparent";
+            setTimeout(() => {
+                pixelSmoke.parentNode.removeChild(pixelSmoke);
+            }, 1000);
+        }, 1000);
+    }, 1000);
+    if (Math.random() < 0.5) {
+        setTimeout(function() {
+            pixelSmoke.style.bottom = Math.floor(Math.random() * 51) + 300 + "px";
+        }, 500);
+    }
+    setTimeout(function() {
+        // pixelSmoke.parentNode.removeChild(pixelSmoke);
+    }, 3000);
+}
+
+function generateSmoke() {
+    for (let index = 0; index < 1000; index++) {
+        const smokeRocket = document.querySelector(".smokeRocket");
+        const blockSmoke = document.createElement("div");
+        blockSmoke.classList.add("pixelSmoke");
+    
+        const bottom = Math.floor(Math.random() * 51) + 250;
+        const rightMin = 1000;
+        const width_height = Math.floor(Math.random() * 11) + 5;
+
+        blockSmoke.style.right = `${rightMin}px`;
+        blockSmoke.style.bottom = `${bottom}px`;
+        blockSmoke.style.width = `${width_height}px`;
+        blockSmoke.style.height = `${width_height}px`;
+    
+        smokeRocket.appendChild(blockSmoke);
+
+        let randomNumber;
+        if (Math.random() < 0.5) {
+            randomNumber = Math.floor(Math.random() * 401) + 1000;
+        } else {
+            randomNumber = Math.floor(Math.random() * 401) + 600;
+        }
+        
+        const rightMax = randomNumber;
+        const delay = Math.floor(Math.random() * 1001) + 1000;
+        setTimeout(() => {
+            blockSmoke.style.opacity = "1";
+            animatePixel(blockSmoke, rightMax);
+        }, delay);
+    }
+}
+
+// generateSmoke()
 
 const landing = false;
 
@@ -68,9 +126,11 @@ document.addEventListener("scroll", function () {
         rocket.style.backgroundImage = `url('img/rocket/rocket.png')`;
         rocket.classList.remove('animation');
         updateFrames(false);
+        launchButton.classList.add("visible")
     } else {
         rocket.style.filter = "drop-shadow(0 40px 15px rgb(255, 240, 25))";
         rocket.classList.add('animation');
+        launchButton.classList.remove("visible")
         updateFrames(true); // Activer l'animation lorsque vous n'êtes pas en bas de la page
     }
 
@@ -179,9 +239,11 @@ if(detectMobile()) {
     }, "myThisArg");
 }
 
-const launchButton = document.querySelector('.launchRocket');
-
 launchButton.addEventListener('click', () => {
+    const titleWelcome = document.querySelector('header h1');
+    const subtitleWelcome = document.querySelector('header p');
+    titleWelcome.innerHTML = "Oh... are you back ? 👀";
+    subtitleWelcome.innerHTML = "Thank you for visiting my page 🤗";
     document.documentElement.classList.add('smooth-scroll');
 
     slowScrollToTop();
