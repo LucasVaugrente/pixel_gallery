@@ -91,8 +91,7 @@ main {
     right: 30px;
     font-family: pixelart;
     font-size: 20px;
-    opacity: 0;
-    background-color: #ad3737;
+    background-color: #d13333;
     color: white;
     text-decoration: none;
     border: solid 2px rgb(22, 51, 105);
@@ -101,10 +100,6 @@ main {
     cursor: pointer;
     transform-style: preserve-3d;
     transition: background 0.1s ease-in-out;
-}
-
-.launchRocket.visible {
-    opacity: 1;
 }
 
 .launchRocket::before {
