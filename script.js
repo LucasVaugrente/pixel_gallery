@@ -15,7 +15,7 @@ let scroll_count = 0;
 const textTooltipBegin = "Vous pouvez me suivre tout au long du périple en me survolant :)";
 let indexLetter = 0;
 
-const slow = 11000;
+const slow = 10000;
 const effect = easeInOutCuaic;
 
 const rocketFrameImages = [];
@@ -45,10 +45,13 @@ document.addEventListener("scroll", function () {
         rocket.style.filter = "drop-shadow(0 40px 15px rgb(255, 240, 25))";
         rocket.classList.add('animation');
         updateFrames(true);
-        generateSmokeZone = false;
     }
 
-    if (!generateSmokeZone && scrollPercentage > 95 && scrollPercentage < 100) {
+    if (scrollPercentage > 98 && scrollPercentage < 100) {
+        generateSmokeZone = false;
+        generateSmoke();
+    } else {
+        generateSmokeZone = true;
         generateSmoke();
     }
 
@@ -214,9 +217,9 @@ function generateSmoke() {
         const blockSmoke = document.createElement("div");
         blockSmoke.classList.add("pixelSmoke");
 
-        const bottom = Math.floor(Math.random() * 51) + 150;
-        const rightMin = 70;
-        const width_height = Math.floor(Math.random() * 7) + 2;
+        const bottom = Math.floor(Math.random() * 31) + 200;
+        const rightMin = 60;
+        const width_height = Math.floor(Math.random() * 5) + 3;
 
         blockSmoke.style.right = `${rightMin}px`;
         blockSmoke.style.bottom = `${bottom}px`;
