@@ -134,7 +134,7 @@ main {
 }
 
 .pixelSmoke {
-    background-color: rgba(90, 56, 56, 0.527);
+    background-color: rgba(94, 94, 94, 0.637);
     position: absolute;
     z-index: 3;
     transition: right 1.5s ease-out, bottom 1.5s ease-out, background-color 1s;

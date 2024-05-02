@@ -8,13 +8,14 @@ const launchButton = document.querySelector('.launchRocket');
 
 const maxTop = window.innerHeight - footer.offsetHeight / 2;
 const numberSmoke = 200;
+let generateSmokeZone = false;
 const starsNumber = 70;
 let scroll_count = 0;
 
 const textTooltipBegin = "Vous pouvez me suivre tout au long du périple en me survolant :)";
 let indexLetter = 0;
 
-const slow = 10000;
+const slow = 11000;
 const effect = easeInOutCuaic;
 
 const rocketFrameImages = [];
@@ -31,7 +32,6 @@ generateStars();
 
 document.addEventListener("scroll", function () {
     const scrollPercentage = getScrollPercentage();
-
     const newTop = (scrollPercentage / 100) * maxTop;
 
     if (scrollPercentage === 100) {
@@ -39,10 +39,17 @@ document.addEventListener("scroll", function () {
         rocket.style.backgroundImage = `url('img/rocket/rocket.png')`;
         rocket.classList.remove('animation');
         updateFrames(false);
+        generateSmokeZone = true;
+        generateSmoke();
     } else {
         rocket.style.filter = "drop-shadow(0 40px 15px rgb(255, 240, 25))";
         rocket.classList.add('animation');
-        updateFrames(true); // Activer l'animation lorsque vous n'êtes pas en bas de la page
+        updateFrames(true);
+        generateSmokeZone = false;
+    }
+
+    if (!generateSmokeZone && scrollPercentage > 95 && scrollPercentage < 100) {
+        generateSmoke();
     }
 
     rocket.style.top = newTop + 'px';
@@ -175,9 +182,9 @@ function eraseText() {
 function animatePixel(pixelSmoke, rightMax, goToRight) {
     let delay = 4000;
     pixelSmoke.style.right = `${rightMax}px`;
-    pixelSmoke.style.backgroundColor = "rgba(114, 114, 114, 0.37)";
+    pixelSmoke.style.backgroundColor = "rgba(114, 114, 114, 0.637)";
     setTimeout(() => {
-        pixelSmoke.style.backgroundColor = "rgba(190, 190, 190, 0.192)";
+        pixelSmoke.style.backgroundColor = "rgba(190, 190, 190, 0.658)";
         setTimeout(() => {
             pixelSmoke.style.backgroundColor = "transparent";
         }, 1000);
@@ -200,11 +207,13 @@ function animatePixel(pixelSmoke, rightMax, goToRight) {
 }
 
 function generateSmoke() {
-    for (let index = 0; index < numberSmoke; index++) {
+    let smokeCount = 0;
+
+    function generatePixelSmoke() {
         const smokeRocket = document.querySelector(".smokeRocket");
         const blockSmoke = document.createElement("div");
         blockSmoke.classList.add("pixelSmoke");
-    
+
         const bottom = Math.floor(Math.random() * 51) + 150;
         const rightMin = 70;
         const width_height = Math.floor(Math.random() * 7) + 2;
@@ -213,24 +222,33 @@ function generateSmoke() {
         blockSmoke.style.bottom = `${bottom}px`;
         blockSmoke.style.width = `${width_height}px`;
         blockSmoke.style.height = `${width_height}px`;
-    
+
         smokeRocket.appendChild(blockSmoke);
 
         let randomNumber;
         let goToRight = false;
         if (Math.random() < 0.8) {
-            randomNumber = Math.floor(Math.random() * 401) + rightMin;
+            randomNumber = Math.floor(Math.random() * 401) + rightMin + 90;
         } else {
             randomNumber = Math.floor(Math.random() * rightMin);
             goToRight = true;
         }
-        
+
         const rightMax = randomNumber;
         const delay = Math.floor(Math.random() * 1001) + 1000;
         setTimeout(() => {
             blockSmoke.style.opacity = "1";
             animatePixel(blockSmoke, rightMax, goToRight);
         }, delay);
+
+        smokeCount++;
+
+        if (smokeCount < 200 && !generateSmokeZone) {
+            setTimeout(generatePixelSmoke, 100);
+        }
+    }
+    if(!generateSmokeZone) {
+        generatePixelSmoke();
     }
 }
 
