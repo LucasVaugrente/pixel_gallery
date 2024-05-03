@@ -52,7 +52,8 @@ svg {
     height: 200px;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;background-image: url('../img/rocket/rocket.png');
+    background-position: center;
+    background-image: url('../img/rocket/rocket.png');
 }
 
 .svg_rocket {
@@ -74,6 +75,62 @@ svg {
 
 .svg_rocket.animation {
     animation: rocketMove 2s ease-in-out infinite;
+}
+
+.launchRocket {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    font-family: pixelart;
+    font-size: 20px;
+    background-color: #d13333;
+    color: white;
+    text-decoration: none;
+    border: solid 2px rgb(22, 51, 105);
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: background 0.1s ease-in-out, left 1s ease-in-out;
+}
+
+.launchRocket::before {
+    position: absolute;
+    content: "";
+    width: 183px;
+    height: 40px;
+    top: 0;
+    left: -2px;
+    right: 0;
+    bottom: 0;
+    background: rgb(22, 51, 105);
+    border-radius: inherit;
+    transform: translate3d(0, 0.75em, -1em);
+}
+
+.launchRocket:active {
+    background: rgb(22, 51, 105);
+    transform: translate(0em, 10px);
+}
+
+.launchRocket:active::before {
+    transform: translate3d(0, 0, -1em);
+}
+
+.launchRocket:hover {
+    background-color: #952f2f;
+}
+
+.launchRocket:hover:active {
+    background: rgb(17, 40, 82);
+}
+
+.pixelSmoke {
+    background-color: rgba(153, 153, 153, 0.774);
+    position: absolute;
+    z-index: 3;
+    transition: right 1.5s ease-out, bottom 1.5s ease-out, background-color 1s;
+    opacity: 0;
 }
 
 @keyframes rocketMove {

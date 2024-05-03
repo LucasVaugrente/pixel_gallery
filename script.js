@@ -7,10 +7,12 @@ const launchButton = document.querySelector('.launchRocket');
 
 
 const maxTop = window.innerHeight - footer.offsetHeight / 2;
-const numberSmoke = 200;
+const numberSmoke = 700;
 let generateSmokeZone = false;
+let generateSmokeInProgress = false;
 const starsNumber = 70;
 let scroll_count = 0;
+let previousScrollPercentage = getScrollPercentage();
 
 const textTooltipBegin = "Vous pouvez me suivre tout au long du périple en me survolant :)";
 let indexLetter = 0;
@@ -32,6 +34,7 @@ generateStars();
 
 document.addEventListener("scroll", function () {
     const scrollPercentage = getScrollPercentage();
+    const scrollDirection = scrollPercentage > previousScrollPercentage ? 'down' : 'up';
     const newTop = (scrollPercentage / 100) * maxTop;
 
     if (scrollPercentage === 100) {
@@ -39,6 +42,7 @@ document.addEventListener("scroll", function () {
         rocket.style.backgroundImage = `url('img/rocket/rocket.png')`;
         rocket.classList.remove('animation');
         updateFrames(false);
+        generateSmokeInProgress = false;
         generateSmokeZone = true;
         generateSmoke();
     } else {
@@ -47,18 +51,30 @@ document.addEventListener("scroll", function () {
         updateFrames(true);
     }
 
-    if (scrollPercentage > 98 && scrollPercentage < 100) {
+    if (!generateSmokeInProgress && scrollPercentage > 98 && scrollPercentage < 100) {
+        generateSmokeInProgress = true;
         generateSmokeZone = false;
         generateSmoke();
-    } else {
+    } 
+    if(scrollPercentage < 98) {
+        generateSmokeInProgress = false;
         generateSmokeZone = true;
         generateSmoke();
+    }
+
+    if (scrollPercentage > 99 && scrollDirection === 'down') {
+        launchButton.style.left = document.body.scrollWidth - launchButton.clientWidth - 30 + "px";
+    }
+
+    if (scrollPercentage < 99 && scrollDirection === 'up') {
+        launchButton.style.left = "0";
     }
 
     rocket.style.top = newTop + 'px';
     tooltip_rocket.style.top = newTop + 'px';
 
     scroll_count = scrollPercentage;
+    previousScrollPercentage = scrollPercentage;
 });
 
 rocket.addEventListener('mouseenter', () => {
@@ -75,9 +91,10 @@ rocket.addEventListener('mouseleave', () => {
 launchButton.addEventListener('click', () => {
     const titleWelcome = document.querySelector('header h1');
     const subtitleWelcome = document.querySelector('header p');
-    titleWelcome.innerHTML = "Oh... are you back ? 👀";
-    subtitleWelcome.innerHTML = "Thank you for visiting my page 🤗";
+    titleWelcome.innerHTML = "Thank you for visiting my page 🤗";
+    subtitleWelcome.innerHTML = "";
     document.documentElement.classList.add('smooth-scroll');
+    launchButton.style.left = "0";
     
     generateSmoke();
     slowScrollToTop();
@@ -94,6 +111,11 @@ if(detectMobile()) {
 /* ##############################################  FONCTIONS  ############################################## */
 /* ######################################################################################################### */
 
+/**
+ * 
+ * @summary Preload all frames of the rocket at the beginning
+ *
+ */
 function preloadImages(urls) {
     urls.forEach(url => {
         const img = new Image();
@@ -129,8 +151,8 @@ function generateStars() {
 
 /**
  * 
- * @summary Retourne le pourcentage de défilement
- * @returns {number} Le pourcentage de défilement
+ * @summary Return the scroll percentage
+ * @returns {scrollPercent} Scroll percentage
  *
  */
 function getScrollPercentage() {
@@ -182,6 +204,12 @@ function eraseText() {
     tooltip_rocket_text.textContent = ""
 }
 
+/**
+ * 
+ * @summary Retourne le pourcentage de défilement
+ * @returns {number} Le pourcentage de défilement
+ *
+ */
 function animatePixel(pixelSmoke, rightMax, goToRight) {
     let delay = 4000;
     pixelSmoke.style.right = `${rightMax}px`;
@@ -238,7 +266,7 @@ function generateSmoke() {
         }
 
         const rightMax = randomNumber;
-        const delay = Math.floor(Math.random() * 1001) + 1000;
+        const delay = Math.floor(Math.random() * 1001) + 100;
         setTimeout(() => {
             blockSmoke.style.opacity = "1";
             animatePixel(blockSmoke, rightMax, goToRight);
@@ -246,13 +274,16 @@ function generateSmoke() {
 
         smokeCount++;
 
-        if (smokeCount < 200 && !generateSmokeZone) {
-            setTimeout(generatePixelSmoke, 100);
+        if (smokeCount < numberSmoke && !generateSmokeZone) {
+            setTimeout(generatePixelSmoke, 10);
         }
     }
     if(!generateSmokeZone) {
         generatePixelSmoke();
     }
+}
+
+function generateShootingStars() {
 }
 
 function slowScrollToTop() {
