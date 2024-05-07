@@ -14,8 +14,18 @@ const starsNumber = 70;
 let scroll_count = 0;
 let previousScrollPercentage = getScrollPercentage();
 
-const textTooltipBegin = "Vous pouvez me suivre tout au long du périple en me survolant :)";
+const textToolTip = "Where do you want to go ?";
+const drawings = document.querySelectorAll(".drawing");
+const allDrawingLinkWebsite = {};
+for (let i = 0; i < drawings.length -1; i++) {
+    allDrawingLinkWebsite[i] = [
+        drawings[i].innerText,
+        `#drawing${i+1}`
+    ];
+}
+
 let indexLetter = 0;
+let tooltipTimer;
 
 const slow = 10000;
 const effect = easeInOutCuaic;
@@ -63,11 +73,11 @@ document.addEventListener("scroll", function () {
     }
 
     if (scrollPercentage > 99 && scrollDirection === 'down') {
-        launchButton.style.left = document.body.scrollWidth - launchButton.clientWidth - 30 + "px";
+        launchButton.classList.add("show")
     }
 
     if (scrollPercentage < 99 && scrollDirection === 'up') {
-        launchButton.style.left = "0";
+        launchButton.classList.remove("show")
     }
 
     rocket.style.top = newTop + 'px';
@@ -78,14 +88,31 @@ document.addEventListener("scroll", function () {
 });
 
 rocket.addEventListener('mouseenter', () => {
+    eraseText();
+    indexLetter = 0;
+    clearTimeout(tooltipTimer);
+    animateText();
+});
+
+tooltip_rocket.addEventListener('mouseenter', () => {
+    clearTimeout(tooltipTimer);
     tooltip_rocket.style.opacity = "1";
-    animateText()
 });
 
 rocket.addEventListener('mouseleave', () => {
-    tooltip_rocket.style.opacity = "";
-    eraseText()
-    indexLetter = 0;
+    tooltipTimer = setTimeout(() => {
+        tooltip_rocket.style.opacity = "0";
+        eraseText();
+    }, 3000);
+});
+
+tooltip_rocket.addEventListener('mouseleave', () => {
+    tooltip_rocket.style.opacity = "0";
+    eraseText();
+});
+
+tooltip_rocket.addEventListener('mouseenter', () => {
+    clearTimeout(tooltipTimer);
 });
 
 launchButton.addEventListener('click', () => {
@@ -94,7 +121,6 @@ launchButton.addEventListener('click', () => {
     titleWelcome.innerHTML = "Thank you for visiting my page 🤗";
     subtitleWelcome.innerHTML = "";
     document.documentElement.classList.add('smooth-scroll');
-    launchButton.style.left = "0";
     
     generateSmoke();
     slowScrollToTop();
@@ -193,12 +219,38 @@ function updateFrames(active) {
 }
 
 function animateText() {
-    if (indexLetter < textTooltipBegin.length) {
-        tooltip_rocket_text.textContent += textTooltipBegin[indexLetter];
+    if (indexLetter < textToolTip.length) {
+        tooltip_rocket_text.textContent += textToolTip[indexLetter];
         indexLetter++;
-        setTimeout(animateText, 100);
+        setTimeout(animateText, 50);
+    } else {
+        addLinksToTooltip();
     }
 }
+
+function addLinksToTooltip() {
+    const list = document.createElement("ul");
+    list.classList.add("listDrawingTooltip");
+    for (let key in allDrawingLinkWebsite) {
+        if (allDrawingLinkWebsite.hasOwnProperty(key)) {
+            let link = document.createElement('a');
+            let targetBlockId = allDrawingLinkWebsite[key][1];
+            let targetBlock = document.querySelector(targetBlockId);
+            let targetTopPosition = targetBlock.offsetTop - 60;
+            link.href = targetBlockId;
+            link.textContent = allDrawingLinkWebsite[key][0];
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                targetBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                window.scrollBy(0, -60);
+            });
+            list.appendChild(link);
+        }
+    }
+    tooltip_rocket_text.appendChild(list);
+    tooltip_rocket.style.opacity = "1";
+}
+
 
 function eraseText() {
     tooltip_rocket_text.textContent = ""
