@@ -26,6 +26,7 @@ for (let i = 0; i < drawings.length -1; i++) {
 
 let indexLetter = 0;
 let tooltipTimer;
+let rocketHovered = false;
 
 const slow = 10000;
 const effect = easeInOutCuaic;
@@ -89,26 +90,29 @@ document.addEventListener("scroll", function () {
 
 rocket.addEventListener('mouseenter', () => {
     eraseText();
-    indexLetter = 0;
-    clearTimeout(tooltipTimer);
     animateText();
+    clearTimeout(tooltipTimer);
+    indexLetter = 0;
+    tooltip_rocket.style.pointerEvents = "all";
+    rocketHovered = true;
+    tooltip_rocket.style.opacity = "1";
+
 });
 
 tooltip_rocket.addEventListener('mouseenter', () => {
     clearTimeout(tooltipTimer);
-    tooltip_rocket.style.opacity = "1";
 });
 
 rocket.addEventListener('mouseleave', () => {
     tooltipTimer = setTimeout(() => {
         tooltip_rocket.style.opacity = "0";
-        eraseText();
-    }, 3000);
+        tooltip_rocket.style.pointerEvents = "none";
+    }, 300);
 });
 
 tooltip_rocket.addEventListener('mouseleave', () => {
     tooltip_rocket.style.opacity = "0";
-    eraseText();
+    tooltip_rocket.style.pointerEvents = "none";
 });
 
 tooltip_rocket.addEventListener('mouseenter', () => {
@@ -219,6 +223,7 @@ function updateFrames(active) {
 }
 
 function animateText() {
+    console.log(indexLetter);
     if (indexLetter < textToolTip.length) {
         tooltip_rocket_text.textContent += textToolTip[indexLetter];
         indexLetter++;
@@ -234,15 +239,10 @@ function addLinksToTooltip() {
     for (let key in allDrawingLinkWebsite) {
         if (allDrawingLinkWebsite.hasOwnProperty(key)) {
             let link = document.createElement('a');
-            let targetBlockId = allDrawingLinkWebsite[key][1];
-            let targetBlock = document.querySelector(targetBlockId);
-            let targetTopPosition = targetBlock.offsetTop - 60;
-            link.href = targetBlockId;
             link.textContent = allDrawingLinkWebsite[key][0];
+            link.classList.add(allDrawingLinkWebsite[key][1]);
             link.addEventListener('click', function(event) {
-                event.preventDefault();
-                targetBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                window.scrollBy(0, -60);
+                console.log(event);
             });
             list.appendChild(link);
         }
