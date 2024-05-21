@@ -171,3 +171,9 @@ svg {
         transform: translateY(5px);
     }
 }
+
+@media screen and (max-width: 1160px) {
+    .svg_rocket  {
+        right: -10px;
+    }
+}

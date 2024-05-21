@@ -8,7 +8,7 @@ const launchButton = document.querySelector('.launchRocket');
 
 
 const maxTop = window.innerHeight - footer.offsetHeight / 2;
-const numberSmoke = 700;
+const numberSmoke = 10000;
 let generateSmokeZone = false;
 let generateSmokeInProgress = false;
 const starsNumber = 70;
@@ -75,11 +75,11 @@ document.addEventListener("scroll", function () {
     }
 
     if (scrollPercentage > 99 && scrollDirection === 'down') {
-        launchButton.classList.add("show")
+        launchButton.classList.add("show");
     }
 
-    if (scrollPercentage < 99 && scrollDirection === 'up') {
-        launchButton.classList.remove("show")
+    if (scrollPercentage < 99.95 && scrollDirection === 'up') {
+        launchButton.classList.remove("show");
     }
 
     rocket.style.top = newTop + 'px';
