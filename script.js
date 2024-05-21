@@ -1,7 +1,8 @@
 const body = document.querySelector('body');
 const rocket = document.querySelector('.svg_rocket');
-const tooltip_rocket = document.getElementById('tooltip_rocket')
-const tooltip_rocket_text = document.querySelector('.tooltip-text')
+const tooltip_rocket = document.getElementById('tooltip_rocket');
+const tooltip_rocket_text = document.querySelector('.tooltip-text');
+const listDrawingTooltip = document.querySelector('.listDrawingTooltip');
 const footer = document.querySelector('footer');
 const launchButton = document.querySelector('.launchRocket');
 
@@ -89,14 +90,8 @@ document.addEventListener("scroll", function () {
 });
 
 rocket.addEventListener('mouseenter', () => {
-    eraseText();
-    animateText();
-    clearTimeout(tooltipTimer);
-    indexLetter = 0;
     tooltip_rocket.style.pointerEvents = "all";
-    rocketHovered = true;
     tooltip_rocket.style.opacity = "1";
-
 });
 
 tooltip_rocket.addEventListener('mouseenter', () => {
@@ -113,10 +108,6 @@ rocket.addEventListener('mouseleave', () => {
 tooltip_rocket.addEventListener('mouseleave', () => {
     tooltip_rocket.style.opacity = "0";
     tooltip_rocket.style.pointerEvents = "none";
-});
-
-tooltip_rocket.addEventListener('mouseenter', () => {
-    clearTimeout(tooltipTimer);
 });
 
 launchButton.addEventListener('click', () => {
@@ -222,39 +213,34 @@ function updateFrames(active) {
     }
 }
 
-function animateText() {
-    console.log(indexLetter);
-    if (indexLetter < textToolTip.length) {
-        tooltip_rocket_text.textContent += textToolTip[indexLetter];
-        indexLetter++;
-        setTimeout(animateText, 50);
-    } else {
-        addLinksToTooltip();
-    }
-}
+// function animateText() {
+//     if (indexLetter < textToolTip.length) {
+//         tooltip_rocket_text.textContent += textToolTip[indexLetter];
+//         indexLetter++;
+//         setTimeout(animateText, 50);
+//     } else {
+//         addLinksToTooltip();
+//     }
+// }
 
-function addLinksToTooltip() {
-    const list = document.createElement("ul");
-    list.classList.add("listDrawingTooltip");
-    for (let key in allDrawingLinkWebsite) {
-        if (allDrawingLinkWebsite.hasOwnProperty(key)) {
-            let link = document.createElement('a');
-            link.textContent = allDrawingLinkWebsite[key][0];
-            link.classList.add(allDrawingLinkWebsite[key][1]);
-            link.addEventListener('click', function(event) {
-                console.log(event);
-            });
-            list.appendChild(link);
-        }
-    }
-    tooltip_rocket_text.appendChild(list);
-    tooltip_rocket.style.opacity = "1";
-}
-
-
-function eraseText() {
-    tooltip_rocket_text.textContent = ""
-}
+// function addLinksToTooltip() {
+//     for (let key in allDrawingLinkWebsite) {
+//         if (allDrawingLinkWebsite.hasOwnProperty(key)) {
+//             let link = document.createElement('a');
+//             link.textContent = allDrawingLinkWebsite[key][0];
+//             link.classList.add(allDrawingLinkWebsite[key][1]);
+//             link.addEventListener('click', function(event) {
+//                 event.preventDefault();  // Empêche le comportement par défaut du lien
+//                 const drawing = document.querySelector(`${event.target.classList[0]}`);
+//                 if (drawing) {
+//                     drawing.scrollIntoView({ behavior: 'smooth' });
+//                 }
+//             });
+//             listDrawingTooltip.appendChild(link);
+//         }
+//     }
+//     tooltip_rocket.style.opacity = "1";
+// }
 
 /**
  * 

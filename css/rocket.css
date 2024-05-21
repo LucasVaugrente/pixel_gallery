@@ -3,38 +3,10 @@ svg {
     width: 100%;
 }
 
-.tip {
-    position: relative;
-}
-
-.tip span {
-    white-space: wrap;
-}
-
-.listDrawingTooltip {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    width: 100%;
-}
-
-.listDrawingTooltip a {
-    color: white;
-    text-decoration: none;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: all 0.2s ease-in-out;
-}
-
-.listDrawingTooltip a:hover {
-    background-color: rgb(71, 71, 71);
-}
-
 #tooltip_rocket {
     position: fixed;
     margin: 20px;
-    padding: 10px;
+    padding: 10px 9px;
     right: 100px;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.55);
@@ -66,6 +38,31 @@ svg {
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
+    font-size: 18px;
+}
+
+.tip {
+    position: relative;
+}
+
+.listDrawingTooltip {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.listDrawingTooltip a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.listDrawingTooltip a:hover {
+    background-color: rgba(185, 185, 185, 0.342);
 }
 
 .svg_rocket2 {
@@ -107,7 +104,7 @@ svg {
     background-color: #d13333;
     color: white;
     text-decoration: none;
-    border: solid 2px rgb(22, 51, 105);
+    border: solid 2px rgb(3, 15, 37);
     padding: 10px;
     cursor: pointer;
     transform-style: preserve-3d;
@@ -131,13 +128,13 @@ svg {
     left: -2px;
     right: 0;
     bottom: 0;
-    background: rgb(22, 51, 105);
+    background: rgb(3, 15, 37);
     border-radius: inherit;
     transform: translate3d(0, 0.75em, -1em);
 }
 
 .launchRocket:active {
-    background: rgb(22, 51, 105);
+    background: rgb(3, 15, 37);
     transform: translate(0em, 10px);
 }
 
@@ -150,7 +147,7 @@ svg {
 }
 
 .launchRocket:hover:active {
-    background: rgb(17, 40, 82);
+    background: rgb(3, 15, 37);
 }
 
 .pixelSmoke {
