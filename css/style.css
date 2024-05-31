@@ -37,9 +37,10 @@ footer {
     z-index: 1;
     height: 700px;
     background: url("../img/footer.png");
-    background-size: cover;
+    background-size: auto 100%;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: right center;
+    width: 100%;
 }
 
 h1, h2, h3, p, div {

@@ -1,7 +1,7 @@
 .mini-star {    
     background-color: white;
-    border-radius: 50%;
     position: absolute;
+    will-change: opacity, transform;
 }
 
 @keyframes twinkle {

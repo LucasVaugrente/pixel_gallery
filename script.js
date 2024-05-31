@@ -261,7 +261,7 @@ function animatePixel(pixelSmoke, rightMax, goToRight) {
     if (Math.random() < 0.7) {
         setTimeout(function() {
             if (rightMax > 250) {
-                pixelSmoke.style.bottom = Math.floor(Math.random() * 101) + 200 + "px";
+                pixelSmoke.style.bottom = Math.floor(Math.random() * 71) + 200 + "px";
             }
         }, 500);
     }
@@ -283,7 +283,7 @@ function generateSmoke() {
         const blockSmoke = document.createElement("div");
         blockSmoke.classList.add("pixelSmoke");
 
-        const bottom = Math.floor(Math.random() * 31) + 200;
+        const bottom = Math.floor(Math.random() * 16) + 200;
         const rightMin = 60;
         const width_height = Math.floor(Math.random() * 5) + 3;
 
