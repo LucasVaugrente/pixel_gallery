@@ -7,7 +7,6 @@ const footer = document.querySelector('footer');
 const launchButton = document.querySelector('.launchRocket');
 
 
-const maxTop = window.innerHeight - footer.offsetHeight / 2;
 const numberSmoke = 10000;
 let generateSmokeZone = false;
 let generateSmokeInProgress = false;
@@ -47,6 +46,7 @@ generateStars();
 document.addEventListener("scroll", function () {
     const scrollPercentage = getScrollPercentage();
     const scrollDirection = scrollPercentage > previousScrollPercentage ? 'down' : 'up';
+    const maxTop = window.innerHeight - footer.offsetHeight / 2;
     const newTop = (scrollPercentage / 100) * maxTop;
 
     if (scrollPercentage >= 100) {

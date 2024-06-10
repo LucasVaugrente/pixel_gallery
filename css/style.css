@@ -1,6 +1,6 @@
 :root {
     --path-projects: "../img/projects/";
- }
+}
 
 @font-face {
     font-family: lele;
@@ -90,6 +90,38 @@ main {
 .smooth-scroll {
     scroll-behavior: auto;
     transition-timing-function: ease-in;
+}
+
+.credits {
+    text-align: center;
+    font-family: pixelart;
+    color: white;
+    text-align: center;
+    display: block;
+    margin-top: 40px;
+}
+
+.credits a {
+    animation: color-change 10s infinite;
+}
+
+.credits a:hover {
+    color: #cd4e4e;
+    animation: none;
+}
+
+@keyframes color-change {
+    0% { color: rgb(204, 38, 38); }
+    10% { color: rgb(235, 134, 19); }
+    20% { color: rgb(223, 236, 35); }
+    30% { color: rgb(59, 219, 20); }
+    40% { color: rgb(17, 247, 235); }
+    50% { color: rgb(70, 143, 240); }
+    60% { color: rgb(190, 71, 245); }
+    70% { color: rgb(156, 21, 209); }
+    80% { color: rgb(216, 59, 190); }
+    90% { color: rgb(223, 61, 136); }
+    100% { color: rgb(204, 38, 38); }
 }
 
 @keyframes launchButton {
