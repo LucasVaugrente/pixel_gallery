@@ -49,7 +49,7 @@ document.addEventListener("scroll", function () {
     const scrollDirection = scrollPercentage > previousScrollPercentage ? 'down' : 'up';
     const newTop = (scrollPercentage / 100) * maxTop;
 
-    if (scrollPercentage === 100) {
+    if (scrollPercentage >= 100) {
         rocket.style.filter = "none";
         rocket.style.backgroundImage = `url('img/rocket/rocket.png')`;
         rocket.classList.remove('animation');
