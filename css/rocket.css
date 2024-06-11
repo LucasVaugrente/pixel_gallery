@@ -105,41 +105,25 @@ svg {
     color: white;
     text-decoration: none;
     border: solid 2px rgb(3, 15, 37);
-    padding: 10px;
+    padding: 10px 9px 7px 10px;
     cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     transform-style: preserve-3d;
-    margin-right: -230px;
-    transition: margin 0.3s ease-in-out;
-    /* transform: scale(0); */
-    /* transform-origin: center; */
+    z-index: 3;
+    box-shadow: 0 0.375em 0 black;
+    transition: opacity 0.2s ease-in-out !important;
+    animation: hideLaunchButton 0.4s ease-out forwards;
 }
 
 .launchRocket.show {
-    margin-right: 0;
-    animation: displayLaunchButton 0.5s ease-out forwards;
-}
-
-.launchRocket::before {
-    position: absolute;
-    content: "";
-    width: 183px;
-    height: 40px;
-    top: 0;
-    left: -2px;
-    right: 0;
-    bottom: 0;
-    background: rgb(3, 15, 37);
-    border-radius: inherit;
-    transform: translate3d(0, 0.75em, -1em);
+    animation: showLaunchButton 0.4s ease-out forwards;
 }
 
 .launchRocket:active {
     background: rgb(3, 15, 37);
-    transform: translate(0em, 10px);
-}
-
-.launchRocket:active::before {
-    transform: translate3d(0, 0, -1em);
+    box-shadow: 0 0 0 black;
+    transform: translate(0em, 10px) !important;
 }
 
 .launchRocket:hover {
@@ -157,6 +141,35 @@ svg {
     transition: right 1.5s ease-out, bottom 1.5s ease-out, background-color 1s;
     opacity: 0;
 }
+
+@keyframes showLaunchButton {
+    0% {
+        transform: scale(0);
+    }
+
+    80% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes hideLaunchButton {
+    0% {
+        transform: scale(1);
+    }
+
+    80% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
 
 @keyframes rocketMove {
     0% {
