@@ -1,5 +1,8 @@
 - Animation du feu de la fusée
-- Etoiles Filantes en haut de la page
+- Etoiles Filantes
 - Refaire le footer
 - Faire le tooltip et les différents messages
 - Animation de décollage et = d'atterissage de la fusée
+- Changer l'animation de la fusée avec qu'une seule image et une animation infinite css
+- Pouvoir déplacer les étoiles avec la souris (drag and drop)
+- Pouvoir faire collisionner 2 étoiles si j'en déplace une vers une autre qui a le même width et height (avec une explosion collision)
