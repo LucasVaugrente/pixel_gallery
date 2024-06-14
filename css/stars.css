@@ -2,6 +2,7 @@
     background-color: white;
     position: absolute;
     will-change: opacity, transform;
+    cursor: pointer;
 }
 
 @keyframes twinkle {

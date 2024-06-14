@@ -1,6 +1,23 @@
-svg {
-    height: 100%;
-    width: 100%;
+.svg_rocket {
+    cursor: pointer;
+    position: fixed;
+    filter: drop-shadow(0 40px 15px rgb(255, 240, 25));  
+    top: 10px;  
+    right: 0;
+    background: url("../img/rocket/rocket.png");
+    background-size: cover;
+    background-position: center;
+    width: 120px;
+    height: 200px;
+    z-index: 2;
+    margin: 1em;
+    transition: transform 0.8s ease-in-out;
+}
+
+.svg_rocket.animation {
+    background: url('../img/rocket/rocket_animation.png') 0px 0px;
+    background-size: 1200px 200px;
+    animation: rocketFire 0.8s steps(10) infinite, rocketMove 2s ease-in-out infinite;
 }
 
 #tooltip_rocket {
@@ -65,36 +82,6 @@ svg {
     background-color: rgba(185, 185, 185, 0.342);
 }
 
-.svg_rocket2 {
-    width: 100px;
-    height: 200px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url('../img/rocket/rocket.png');
-}
-
-.svg_rocket {
-    width: 100px;
-    height: 200px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    position: fixed;
-    filter: drop-shadow(0 40px 15px rgb(255, 240, 25));  
-    top: 10px;  
-    right: 0;
-    background-image: url('../img/rocket/rocket.png');
-    z-index: 2;
-    margin: 1em;
-    transition: transform 0.8s ease-in-out;
-}
-
-.svg_rocket.animation {
-    animation: rocketMove 2s ease-in-out infinite;
-}
-
 .launchRocket {
     position: absolute;
     bottom: 30px;
@@ -141,6 +128,15 @@ svg {
     transition: right 1.5s ease-out, bottom 1.5s ease-out, background-color 1s;
     opacity: 0;
 }
+
+@keyframes rocketFire {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -1200px 0;
+    }
+  }
 
 @keyframes showLaunchButton {
     0% {

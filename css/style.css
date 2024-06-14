@@ -43,6 +43,11 @@ footer {
     width: 100%;
 }
 
+svg {
+    height: 100%;
+    width: 100%;
+}
+
 h1, h2, h3, p, div {
     font-family: lele;
     color: white;
@@ -51,21 +56,23 @@ h1, h2, h3, p, div {
 h1 {
     font-size: clamp(10px, 12vw, 70px);
     text-align: center;
+    user-select: none;
 }
 
 h2 {
-    font-size: clamp(10px, 8vw, 40px);
+    font-size: clamp(20px, 3vw, 120px);
     text-align: center;
 }
 
 h3 {
-    font-size: 30px;
+    font-size: clamp(20px, 3vw, 100px);
     text-align: center;
 }
 
 p {
     font-size: 20px;
     text-align: center;
+    user-select: none;
 }
 
 main {
@@ -139,7 +146,7 @@ main {
     }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 1150px) {
     main {
         margin: 0 90px 0 0;
     }

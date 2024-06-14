@@ -28,18 +28,8 @@ let indexLetter = 0;
 let tooltipTimer;
 let rocketHovered = false;
 
-const slow = 10000;
+const slow = 15000;
 const effect = easeInOutCuaic;
-
-const rocketFrameImages = [];
-const numberRocketFrames = 10;
-
-for (let i = 1; i <= numberRocketFrames; i++) {
-    rocketFrameImages.push(`img/rocket/rocket${i}.png`);
-}
-
-preloadImages(rocketFrameImages);
-updateFrames(true);
 
 generateStars();
 
@@ -51,16 +41,15 @@ document.addEventListener("scroll", function () {
 
     if (scrollPercentage >= 100) {
         rocket.style.filter = "none";
-        rocket.style.backgroundImage = `url('img/rocket/rocket.png')`;
         rocket.classList.remove('animation');
-        updateFrames(false);
+        rocket.classList.add('land');
         generateSmokeInProgress = false;
         generateSmokeZone = true;
         generateSmoke();
     } else {
         rocket.style.filter = "drop-shadow(0 40px 15px rgb(255, 240, 25))";
         rocket.classList.add('animation');
-        updateFrames(true);
+        rocket.classList.remove('land');
     }
 
     if (!generateSmokeInProgress && scrollPercentage > 98 && scrollPercentage < 100) {
@@ -160,6 +149,8 @@ function generateStars() {
         star.style.width = widthANDheight + 'px';
         star.style.height = widthANDheight + 'px';
 
+        star.addEventListener('mousedown', onMouseDown);
+
         body.appendChild(star);
     }
 
@@ -168,6 +159,32 @@ function generateStars() {
         let star = stars[Math.floor(Math.random() * stars.length)];
         star.style.animation = "twinkle 3s ease-in-out infinite";
     }
+}
+
+let selectedStar = null;
+let offsetX = 0;
+let offsetY = 0;
+
+function onMouseDown(e) {
+    selectedStar = e.target;
+    offsetX = e.clientX - selectedStar.getBoundingClientRect().left;
+    offsetY = e.clientY - selectedStar.getBoundingClientRect().top;
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+}
+
+function onMouseMove(e) {
+    if (selectedStar) {
+        selectedStar.style.left = e.clientX - offsetX + window.scrollX + 'px';
+        selectedStar.style.top = e.clientY - offsetY + window.scrollY + 'px';
+    }
+}
+
+function onMouseUp() {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+    selectedStar = null;
 }
 
 /**
@@ -198,20 +215,20 @@ function getScrollPercentage() {
  * @summary Updates rocket frames
  * 
  */ 
-function updateFrames(active) {
-    if (active && scroll_count !== 100) {
-        function updateBackground() {
-            let index = Math.floor(Math.random() * rocketFrameImages.length);
-            rocket.style.backgroundImage = `url('${rocketFrameImages[index]}')`;
-        }
-        if (!updateFrames.intervalId) {
-            updateFrames.intervalId = setInterval(updateBackground, 100);
-        }
-    } else {
-        clearInterval(updateFrames.intervalId);
-        updateFrames.intervalId = null;
-    }
-}
+// function updateFrames(active) {
+//     if (active && scroll_count !== 100) {
+//         function updateBackground() {
+//             let index = Math.floor(Math.random() * rocketFrameImages.length);
+//             rocket.style.backgroundImage = `url('${rocketFrameImages[index]}')`;
+//         }
+//         if (!updateFrames.intervalId) {
+//             updateFrames.intervalId = setInterval(updateBackground, 100);
+//         }
+//     } else {
+//         clearInterval(updateFrames.intervalId);
+//         updateFrames.intervalId = null;
+//     }
+// }
 
 // function animateText() {
 //     if (indexLetter < textToolTip.length) {
