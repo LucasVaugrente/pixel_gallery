@@ -8,11 +8,11 @@
 
 <br/>
 
-# 🟢 Accessiblité
+# 🟢 Access
 
-* Le site est en ligne à cette adresse : **[https://lucasvaugrente.github.io/](https://lucasvaugrente.github.io//)**.
+* The website is online at the address : **[https://lucasvaugrente.github.io/](https://lucasvaugrente.github.io//)**.
 
 <br/>
 
-# 🙎‍♂️ Crédits
-* [Lucas Vaugrente](https://github.com/LucasVaugrente "Mon compte GitHub") : créateur du site.
+# 🙎‍♂️ Credits
+* [Lucas Vaugrente](https://github.com/LucasVaugrente "Mon compte GitHub") : Creator of the project.
