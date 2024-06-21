@@ -20,3 +20,53 @@
         transform: scale(1);
     }
 }
+
+.shooting-star {
+    position: absolute;
+    opacity: 0;
+    top:200px;
+    left:200px;
+    width: 4px;
+    height: 4px;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.1),0 0 0 8px rgba(255,255,255,0.1),0 0 20px rgba(255,255,255,0.1);
+    animation: animate 10s linear 1;
+}
+
+.shooting-star::before{
+    content:'';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg,#fff,transparent);
+}
+
+@keyframes animate
+{
+    0%
+    {
+        transform: rotate(200deg) translateX(0);
+        opacity: 0;
+    }
+    20%
+    {
+        opacity: 1;
+    }
+    60%{
+        opacity: 1;
+    }
+    100%
+    {
+        transform: rotate(200deg) translateX(-500px);
+        opacity: 0;
+    }
+}
+
+.shooting-star:nth-child(1){
+    top: 200px;
+    left: 200px;
+    animation-delay: 0s;
+    animation-duration: 1.5s;
+}

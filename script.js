@@ -5,16 +5,16 @@ const tooltip_rocket_text = document.querySelector('.tooltip-text');
 const listDrawingTooltip = document.querySelector('.listDrawingTooltip');
 const footer = document.querySelector('footer');
 const launchButton = document.querySelector('.launchRocket');
+const sky = document.querySelector('.sky');
 
 
 const numberSmoke = 10000;
 let generateSmokeZone = false;
 let generateSmokeInProgress = false;
-const starsNumber = 70;
+const starsNumber = 100;
 let scroll_count = 0;
 let previousScrollPercentage = getScrollPercentage();
 
-const textToolTip = "Where do you want to go ?";
 const drawings = document.querySelectorAll(".drawing");
 const allDrawingLinkWebsite = {};
 for (let i = 0; i < drawings.length -1; i++) {
@@ -27,6 +27,10 @@ for (let i = 0; i < drawings.length -1; i++) {
 let indexLetter = 0;
 let tooltipTimer;
 let rocketHovered = false;
+
+let selectedStar = null;
+let offsetX = 0;
+let offsetY = 0;
 
 const slow = 15000;
 const effect = easeInOutCuaic;
@@ -151,7 +155,7 @@ function generateStars() {
 
         star.addEventListener('mousedown', onMouseDown);
 
-        body.appendChild(star);
+        sky.appendChild(star);
     }
 
     let stars = document.querySelectorAll('.mini-star');
@@ -160,10 +164,6 @@ function generateStars() {
         star.style.animation = "twinkle 3s ease-in-out infinite";
     }
 }
-
-let selectedStar = null;
-let offsetX = 0;
-let offsetY = 0;
 
 function onMouseDown(e) {
     selectedStar = e.target;
@@ -209,55 +209,6 @@ function getScrollPercentage() {
     const scrollPercent = scrollTop / (docHeight - winHeight);
     return scrollPercent * 100;
 }
-
-/**
- * 
- * @summary Updates rocket frames
- * 
- */ 
-// function updateFrames(active) {
-//     if (active && scroll_count !== 100) {
-//         function updateBackground() {
-//             let index = Math.floor(Math.random() * rocketFrameImages.length);
-//             rocket.style.backgroundImage = `url('${rocketFrameImages[index]}')`;
-//         }
-//         if (!updateFrames.intervalId) {
-//             updateFrames.intervalId = setInterval(updateBackground, 100);
-//         }
-//     } else {
-//         clearInterval(updateFrames.intervalId);
-//         updateFrames.intervalId = null;
-//     }
-// }
-
-// function animateText() {
-//     if (indexLetter < textToolTip.length) {
-//         tooltip_rocket_text.textContent += textToolTip[indexLetter];
-//         indexLetter++;
-//         setTimeout(animateText, 50);
-//     } else {
-//         addLinksToTooltip();
-//     }
-// }
-
-// function addLinksToTooltip() {
-//     for (let key in allDrawingLinkWebsite) {
-//         if (allDrawingLinkWebsite.hasOwnProperty(key)) {
-//             let link = document.createElement('a');
-//             link.textContent = allDrawingLinkWebsite[key][0];
-//             link.classList.add(allDrawingLinkWebsite[key][1]);
-//             link.addEventListener('click', function(event) {
-//                 event.preventDefault();  // Empêche le comportement par défaut du lien
-//                 const drawing = document.querySelector(`${event.target.classList[0]}`);
-//                 if (drawing) {
-//                     drawing.scrollIntoView({ behavior: 'smooth' });
-//                 }
-//             });
-//             listDrawingTooltip.appendChild(link);
-//         }
-//     }
-//     tooltip_rocket.style.opacity = "1";
-// }
 
 /**
  * 

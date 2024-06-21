@@ -60,13 +60,15 @@ h1 {
 }
 
 h2 {
-    font-size: clamp(20px, 3vw, 120px);
+    font-size: clamp(20px, 2vw, 120px);
     text-align: center;
+    user-select: none;
 }
 
 h3 {
-    font-size: clamp(20px, 3vw, 100px);
+    font-size: clamp(20px, 2vw, 100px);
     text-align: center;
+    user-select: none;
 }
 
 p {
