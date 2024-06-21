@@ -3,17 +3,22 @@ const JSON_WEBRING = "https://raw.githubusercontent.com/gablaxy/webring/main/web
 const template = document.createElement("template");
 template.innerHTML = `
 <style>
-#webring-container{
-    margin-top: 10px;
+@font-face {
+    font-family: lele;
+    src: url("../fonts/stolen.ttf");
+}
+
+#webring-container {
     border: 1px solid #9162c7;
     border-radius: 5px;
     padding: 5px;
     display: inline-flex;
     background-color: #222326;
+    box-shadow: 0 0 10px #837c85;
 }
 
-#webring-title{
-    font-family: Title;
+#webring-title {
+    font-family: lele;
     color: #c296f5;
     margin-top: 0;
     margin-bottom: 3px;
@@ -22,18 +27,18 @@ template.innerHTML = `
     text-align: center;
 }
 
-#webring-inner a{
+#webring-inner a {
     color: #9162c7;
     text-decoration: none;
-    padding: 0 5px;
+    transition: all 0.2s ease-in-out;
 }
 
-#webring-inner a:hover{
+#webring-inner a:hover {
     color: #c296f5;
 }
 
-#webring-inner{
-    font-family: FreePixel;
+#webring-inner {
+    font-family: lele;
     color: #c296f5;
     padding: 0 5px;
 }
