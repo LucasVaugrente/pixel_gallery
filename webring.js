@@ -14,6 +14,7 @@ template.innerHTML = `
     padding: 5px;
     display: inline-flex;
     background-color: #222326;
+    z-index: 1;
     box-shadow: 0 0 10px #837c85;
 }
 
@@ -78,7 +79,7 @@ class Webring extends HTMLElement {
 
                 
                 const content = `
-                <h3 id="webring-title">grossomodo</h3>
+                <h3 id="webring-title">webring</h3>
                 <a href="${sites[previousSiteIndex].url}" rel="prev noreferrer external">&lt; avant</a>
                 /   
                <a rel="external noreferrer" href="${sites[matchedSiteIndex].url}">${sites[matchedSiteIndex].name}</a>
