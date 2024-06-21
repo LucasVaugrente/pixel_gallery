@@ -165,6 +165,44 @@ function generateStars() {
     }
 }
 
+const maxRightShootingStars = 500;
+const maxTopShootingStars = 1500;
+
+function generate1ShootingStar() {
+    const windowWidth = window.innerWidth;
+    const topPosition = Math.random() * document.documentElement.scrollHeight - maxTopShootingStars;
+    let leftPosition = Math.random() * 100;
+
+    const shootingStar = document.createElement('div');
+    shootingStar.classList.add('shooting-star');
+
+    if (windowWidth - (leftPosition / 100 * windowWidth) < maxRightShootingStars) {
+        while(windowWidth - (leftPosition / 100 * windowWidth) < maxRightShootingStars) {
+            leftPosition = Math.random() * 100;
+        }
+    }
+
+    shootingStar.style.left = leftPosition + 'vw';
+    shootingStar.style.top = topPosition + 'px';
+
+    sky.appendChild(shootingStar);
+
+    setTimeout(() => {
+        shootingStar.remove();
+    }, 6000);
+}
+
+function startGeneratingShootingStars() {
+    const delay = Math.random() * (10000 - 5000) + 5000;
+
+    setTimeout(() => {
+        generate1ShootingStar();
+        startGeneratingShootingStars(); 
+    }, delay);
+}
+
+startGeneratingShootingStars();
+
 function onMouseDown(e) {
     selectedStar = e.target;
     offsetX = e.clientX - selectedStar.getBoundingClientRect().left;
@@ -289,7 +327,7 @@ function generateSmoke() {
     }
 }
 
-function generateShootingStars() {
+function generate1ShootingStars() {
 }
 
 function slowScrollToTop() {
