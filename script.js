@@ -11,7 +11,6 @@ const sky = document.querySelector('.sky');
 const numberSmoke = 10000;
 let generateSmokeZone = false;
 let generateSmokeInProgress = false;
-const starsNumber = 100;
 let scroll_count = 0;
 let previousScrollPercentage = getScrollPercentage();
 
@@ -28,12 +27,18 @@ let indexLetter = 0;
 let tooltipTimer;
 let rocketHovered = false;
 
+const starsNumber = 100;
+const maxRightShootingStars = 500;
+const maxTopShootingStars = 1500;
 let selectedStar = null;
-let offsetX = 0;
-let offsetY = 0;
+let offsetXStar = 0;
+let offsetYStar = 0;
 
 const slow = 15000;
 const effect = easeInOutCuaic;
+let isScrollingAutomatically = false;
+let scrollTimeout;
+let ignoreScrollEvents = false;
 
 generateStars();
 
@@ -42,6 +47,13 @@ document.addEventListener("scroll", function () {
     const scrollDirection = scrollPercentage > previousScrollPercentage ? 'down' : 'up';
     const maxTop = window.innerHeight - footer.offsetHeight / 2;
     const newTop = (scrollPercentage / 100) * maxTop;
+
+    console.log(isScrollingAutomatically);
+
+    if (!ignoreScrollEvents && isScrollingAutomatically) {
+        isScrollingAutomatically = false;
+        clearTimeout(scrollTimeout);
+    }
 
     if (scrollPercentage >= 100) {
         rocket.style.filter = "none";
@@ -165,9 +177,6 @@ function generateStars() {
     }
 }
 
-const maxRightShootingStars = 500;
-const maxTopShootingStars = 1500;
-
 function generate1ShootingStar() {
     const windowWidth = window.innerWidth;
     const topPosition = Math.random() * document.documentElement.scrollHeight - maxTopShootingStars;
@@ -193,7 +202,7 @@ function generate1ShootingStar() {
 }
 
 function startGeneratingShootingStars() {
-    const delay = Math.random() * (10000 - 5000) + 5000;
+    const delay = Math.random() * (5000 - 1000) + 1000;
 
     setTimeout(() => {
         generate1ShootingStar();
@@ -205,8 +214,8 @@ startGeneratingShootingStars();
 
 function onMouseDown(e) {
     selectedStar = e.target;
-    offsetX = e.clientX - selectedStar.getBoundingClientRect().left;
-    offsetY = e.clientY - selectedStar.getBoundingClientRect().top;
+    offsetXStar = e.clientX - selectedStar.getBoundingClientRect().left;
+    offsetYStar = e.clientY - selectedStar.getBoundingClientRect().top;
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
@@ -214,8 +223,8 @@ function onMouseDown(e) {
 
 function onMouseMove(e) {
     if (selectedStar) {
-        selectedStar.style.left = e.clientX - offsetX + window.scrollX + 'px';
-        selectedStar.style.top = e.clientY - offsetY + window.scrollY + 'px';
+        selectedStar.style.left = e.clientX - offsetXStar + window.scrollX + 'px';
+        selectedStar.style.top = e.clientY - offsetYStar + window.scrollY + 'px';
     }
 }
 
@@ -334,16 +343,19 @@ function slowScrollToTop() {
     const e = document.documentElement;
     let floor = e.scrollHeight - e.scrollTop - e.clientHeight === 0;
     if (floor) {
-      scrollTo(0, slow);
+        isScrollingAutomatically = true;
+        ignoreScrollEvents = true;
+        scrollTo(0, 2000);  // Ajoute une durée pour le défilement (en millisecondes)
+        setTimeout(() => ignoreScrollEvents = false, 100);  // Ignore les événements de défilement pour 100ms
     }
 }
 
 function scrollTo(element, duration) {
     var e = document.documentElement;
     if (e.scrollTop === 0) {
-      var t = e.scrollTop;
-      ++e.scrollTop;
-      e = t + 1 === e.scrollTop-- ? e : document.body;
+        var t = e.scrollTop;
+        ++e.scrollTop;
+        e = t + 1 === e.scrollTop-- ? e : document.body;
     }
     scrollToC(e, e.scrollTop, element, duration);
 }
@@ -352,18 +364,21 @@ function scrollToC(element, from, to, duration) {
     if (duration <= 0) return;
     if (typeof from === "object") from = from.offsetTop;
     if (typeof to === "object") to = to.offsetTop;
-    scrollToX(element, from, to, 0, 1 / duration, 20, effect);
+    scrollToX(element, from, to, 0, 1 / duration, 20, easeInOutCuaic);
 }
 
 function scrollToX(element, xFrom, xTo, t01, speed, step, motion) {
     if (t01 < 0 || t01 > 1 || speed <= 0) {
         element.scrollTop = xTo;
+        isScrollingAutomatically = false;
         return;
     }
+    if (!isScrollingAutomatically) return;  // Annule le défilement si interrompu
+
     element.scrollTop = xFrom - (xFrom - xTo) * motion(t01);
     t01 += speed * step;
 
-    setTimeout(function() {
+    scrollTimeout = setTimeout(function() {
         scrollToX(element, xFrom, xTo, t01, speed, step, motion);
     }, step);
 }
