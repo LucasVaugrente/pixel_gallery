@@ -48,13 +48,6 @@ document.addEventListener("scroll", function () {
     const maxTop = window.innerHeight - footer.offsetHeight / 2;
     const newTop = (scrollPercentage / 100) * maxTop;
 
-    console.log(isScrollingAutomatically);
-
-    if (!ignoreScrollEvents && isScrollingAutomatically) {
-        isScrollingAutomatically = false;
-        clearTimeout(scrollTimeout);
-    }
-
     if (scrollPercentage >= 100) {
         rocket.style.filter = "none";
         rocket.classList.remove('animation');
@@ -345,7 +338,7 @@ function slowScrollToTop() {
     if (floor) {
         isScrollingAutomatically = true;
         ignoreScrollEvents = true;
-        scrollTo(0, 2000);  // Ajoute une durée pour le défilement (en millisecondes)
+        scrollTo(0, slow);  // Ajoute une durée pour le défilement (en millisecondes)
         setTimeout(() => ignoreScrollEvents = false, 100);  // Ignore les événements de défilement pour 100ms
     }
 }
@@ -370,10 +363,8 @@ function scrollToC(element, from, to, duration) {
 function scrollToX(element, xFrom, xTo, t01, speed, step, motion) {
     if (t01 < 0 || t01 > 1 || speed <= 0) {
         element.scrollTop = xTo;
-        isScrollingAutomatically = false;
         return;
     }
-    if (!isScrollingAutomatically) return;  // Annule le défilement si interrompu
 
     element.scrollTop = xFrom - (xFrom - xTo) * motion(t01);
     t01 += speed * step;
