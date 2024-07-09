@@ -14,10 +14,16 @@
     transition: transform 0.8s ease-in-out;
 }
 
-.svg_rocket.animation {
+.svg_rocket.onspace {
     background: url('../img/rocket/rocket_animation.png') 0px 0px;
     background-size: 1200px 200px;
     animation: rocketFire 0.8s steps(10) infinite, rocketMove 2s ease-in-out infinite;
+}
+
+.svg_rocket.landing {
+    background: url('../img/rocket/rocket_animation.png') 0px 0px;
+    background-size: 1200px 200px;
+    animation: rocketFire 0.8s steps(10) infinite;
 }
 
 #tooltip_rocket {
@@ -48,7 +54,7 @@
     border-left: 15px solid rgb(12, 12, 12);
     border-radius: 8px;
     right: -13px;
-    top: 45px;
+    top: 85px;
 }
 
 .tooltip-text {
@@ -66,13 +72,14 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+    gap: 5px;
     width: 100%;
 }
 
 .listDrawingTooltip a {
     color: white;
     text-decoration: none;
-    padding: 5px;
+    padding: 7px;
     cursor: pointer;
     border-radius: 5px;
     transition: all 0.2s ease-in-out;
@@ -80,6 +87,60 @@
 
 .listDrawingTooltip a:hover {
     background-color: rgba(185, 185, 185, 0.342);
+}
+
+#landingRocket {
+    position: relative;
+    border-radius: 5px;
+    border: none;
+    overflow: hidden;
+    padding: 7px;
+    background-color: #d63030;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 16px;
+}
+
+#landingRocket:active {
+    transform: scale(0.9);
+}
+
+#landingRocket:disabled {
+    background-color: #b1222298;
+}
+
+#landingRocket:disabled:hover {
+    background-color: #b1222298;
+}
+
+#landingRocket:disabled:active {
+    transform: none;
+}
+
+#landingRocket:hover {
+    background-color: #b12222;
+}
+
+.windLine {
+    position: absolute;
+    bottom: 0;
+    width: 2px;
+    animation: wind 2s ease-out;
+    background-color: white;
+}
+
+.windLine.animated {
+    animation: wind 2s ease-out;
+}
+
+@keyframes wind {
+    0% {transform: translateY(0);}
+
+    100% {
+        transform:  translateY(-100px);
+    }
 }
 
 .launchRocket {

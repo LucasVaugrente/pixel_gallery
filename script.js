@@ -1,10 +1,12 @@
 const body = document.querySelector('body');
+const header = document.querySelector('header');
 const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket');
 const tooltip_rocket_text = document.querySelector('.tooltip-text');
 const listDrawingTooltip = document.querySelector('.listDrawingTooltip');
 const footer = document.querySelector('footer');
 const launchButton = document.querySelector('.launchRocket');
+const landingButton = document.querySelector('#landingRocket');
 const sky = document.querySelector('.sky');
 
 
@@ -16,10 +18,10 @@ let previousScrollPercentage = getScrollPercentage();
 
 const drawings = document.querySelectorAll(".drawing");
 const allDrawingLinkWebsite = {};
-for (let i = 0; i < drawings.length -1; i++) {
+for (let i = 0; i < drawings.length - 1; i++) {
     allDrawingLinkWebsite[i] = [
         drawings[i].innerText,
-        `#drawing${i+1}`
+        `#drawing${i + 1}`
     ];
 }
 
@@ -50,23 +52,26 @@ document.addEventListener("scroll", function () {
 
     if (scrollPercentage >= 100) {
         rocket.style.filter = "none";
-        rocket.classList.remove('animation');
-        rocket.classList.add('land');
+        rocket.classList.remove('landing');
+        rocket.classList.remove('onspace');
+        landingButton.disabled = false;
         generateSmokeInProgress = false;
         generateSmokeZone = true;
         generateSmoke();
     } else {
         rocket.style.filter = "drop-shadow(0 40px 15px rgb(255, 240, 25))";
-        rocket.classList.add('animation');
-        rocket.classList.remove('land');
     }
 
     if (!generateSmokeInProgress && scrollPercentage > 98 && scrollPercentage < 100) {
+        rocket.classList.add('landing');
+        rocket.classList.remove('onspace');
         generateSmokeInProgress = true;
         generateSmokeZone = false;
         generateSmoke();
-    } 
-    if(scrollPercentage < 98) {
+    }
+    if (scrollPercentage < 98) {
+        rocket.classList.add('onspace');
+        rocket.classList.remove('landing');
         generateSmokeInProgress = false;
         generateSmokeZone = true;
         generateSmoke();
@@ -81,7 +86,7 @@ document.addEventListener("scroll", function () {
     }
 
     rocket.style.top = newTop + 'px';
-    tooltip_rocket.style.top = newTop + 'px';
+    tooltip_rocket.style.top = newTop - 40 + 'px';
 
     scroll_count = scrollPercentage;
     previousScrollPercentage = scrollPercentage;
@@ -119,7 +124,16 @@ launchButton.addEventListener('click', () => {
     slowScrollToTop();
 });
 
-if(detectMobile()) {
+landingButton.addEventListener('click', () => {
+    if(getScrollPercentage() !== 100) {
+        landingButton.disabled = true;
+        document.documentElement.classList.add('smooth-scroll');
+        animateLandButton();
+        slowScrollToBottom();
+    }
+});
+
+if (detectMobile()) {
     const titlesDrawing = document.querySelectorAll('.drawing h3');
     titlesDrawing.forEach(function (titleDrawing, currentIndex) {
         titleDrawing.style.opacity = '1';
@@ -129,18 +143,6 @@ if(detectMobile()) {
 /* ######################################################################################################### */
 /* ##############################################  FONCTIONS  ############################################## */
 /* ######################################################################################################### */
-
-/**
- * 
- * @summary Preload all frames of the rocket at the beginning
- *
- */
-function preloadImages(urls) {
-    urls.forEach(url => {
-        const img = new Image();
-        img.src = url;
-    });
-}
 
 /**
  * 
@@ -179,7 +181,7 @@ function generate1ShootingStar() {
     shootingStar.classList.add('shooting-star');
 
     if (windowWidth - (leftPosition / 100 * windowWidth) < maxRightShootingStars) {
-        while(windowWidth - (leftPosition / 100 * windowWidth) < maxRightShootingStars) {
+        while (windowWidth - (leftPosition / 100 * windowWidth) < maxRightShootingStars) {
             leftPosition = Math.random() * 100;
         }
     }
@@ -199,7 +201,7 @@ function startGeneratingShootingStars() {
 
     setTimeout(() => {
         generate1ShootingStar();
-        startGeneratingShootingStars(); 
+        startGeneratingShootingStars();
     }, delay);
 }
 
@@ -250,6 +252,26 @@ function getScrollPercentage() {
     return scrollPercent * 100;
 }
 
+function animateLandButton() {
+    for (let index = 0; index < 20; index++) {
+        const wind_line = document.createElement("span");
+        const left = Math.random() * (300 - 2) + 10;
+        const height = Math.random() * (20 - 10) + 10;
+        const bottom = Math.random() * 50 - 50;
+        
+        wind_line.style.height = `${height}px`;
+        wind_line.style.bottom = `${bottom}px`;
+        wind_line.style.left = `${left}px`;
+
+        wind_line.classList.add("windLine");
+        wind_line.classList.add("animated");
+        landingButton.appendChild(wind_line);
+        setTimeout(() => {
+            landingButton.removeChild(wind_line);
+        }, 2000);
+    }
+}
+
 /**
  * 
  * @summary Retourne le pourcentage de défilement
@@ -267,7 +289,7 @@ function animatePixel(pixelSmoke, rightMax, goToRight) {
         }, 1000);
     }, 1000);
     if (Math.random() < 0.7) {
-        setTimeout(function() {
+        setTimeout(function () {
             if (rightMax > 250) {
                 pixelSmoke.style.bottom = Math.floor(Math.random() * 71) + 200 + "px";
             }
@@ -277,8 +299,8 @@ function animatePixel(pixelSmoke, rightMax, goToRight) {
         pixelSmoke.parentNode.removeChild(pixelSmoke);
         return;
     }
-    
-    setTimeout(function() {
+
+    setTimeout(function () {
         pixelSmoke.parentNode.removeChild(pixelSmoke);
     }, delay);
 }
@@ -324,22 +346,26 @@ function generateSmoke() {
             setTimeout(generatePixelSmoke, 10);
         }
     }
-    if(!generateSmokeZone) {
+    if (!generateSmokeZone) {
         generatePixelSmoke();
     }
 }
 
-function generate1ShootingStars() {
+function slowScrollToBottom() {
+    const footer = document.querySelector("footer");
+    let floor = footer.offsetTop - 270;
+    ignoreScrollEvents = true;
+    scrollTo(floor, slow);
+    setTimeout(() => ignoreScrollEvents = false, 100);
 }
 
 function slowScrollToTop() {
     const e = document.documentElement;
     let floor = e.scrollHeight - e.scrollTop - e.clientHeight === 0;
     if (floor) {
-        isScrollingAutomatically = true;
         ignoreScrollEvents = true;
-        scrollTo(0, slow);  // Ajoute une durée pour le défilement (en millisecondes)
-        setTimeout(() => ignoreScrollEvents = false, 100);  // Ignore les événements de défilement pour 100ms
+        scrollTo(0, slow);
+        setTimeout(() => ignoreScrollEvents = false, 100);
     }
 }
 
@@ -357,7 +383,7 @@ function scrollToC(element, from, to, duration) {
     if (duration <= 0) return;
     if (typeof from === "object") from = from.offsetTop;
     if (typeof to === "object") to = to.offsetTop;
-    scrollToX(element, from, to, 0, 1 / duration, 20, easeInOutCuaic);
+    scrollToX(element, from, to, 0, 1 / duration, 20, effect);
 }
 
 function scrollToX(element, xFrom, xTo, t01, speed, step, motion) {
@@ -386,7 +412,7 @@ function easeInOutCuaic(t) {
  * 
  * @summary Détecte si l'utilisateur est sur un appareil mobile
  * 
- */ 
+ */
 function detectMobile() {
     const toMatch = [
         /Android/i,
@@ -397,7 +423,7 @@ function detectMobile() {
         /BlackBerry/i,
         /Windows Phone/i
     ];
-    
+
     return toMatch.some((toMatchItem) => {
         return navigator.userAgent.match(toMatchItem);
     });
