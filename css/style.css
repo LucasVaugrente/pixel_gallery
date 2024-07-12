@@ -82,7 +82,6 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 50px;
-    position: relative;
     z-index: 1;
     margin: 0 10% 130px 10%;
 }

@@ -16,6 +16,7 @@ template.innerHTML = `
     background-color: #222326;
     z-index: 1;
     box-shadow: 0 0 10px #837c85;
+    user-select: none;
 }
 
 #webring-title {

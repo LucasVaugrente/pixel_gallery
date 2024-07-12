@@ -31,44 +31,44 @@
     box-shadow: none;
 }
 
-.drawing1 {
+main .drawing1 {
     background-image: url("../img/projects/sunrise.png");
 }
 
-.drawing2 {
+main .drawing2 {
     background-image: url("../img/projects/mood_ghibli.png");
 }
 
-.drawing3 {
+main .drawing3 {
     background-image: url("../img/projects/stan_portal.png");
 }
 
-.drawing4 {
+main .drawing4 {
     background-image: url("../img/projects/montsaintmichel.png");
 }
 
-.drawing5 {
+main .drawing5 {
     background-image: url("../img/projects/spirited_away.png");
 }
  
-.drawing6 {
+main .drawing6 {
     background-image: url("../img/projects/week-end.png");
 }
 
-.drawing7 {
+main .drawing7 {
     background-image: url("../img/projects/outer_wilds.png");
 }
 
-.drawing8 {
+main .drawing8 {
     background-image: url("../img/projects/bike_ride.png");
 }
 
-.drawing:hover {
+main .drawing:hover {
     transform: scale(105%);
     box-shadow: 0 0 20px #9c9c9c;
 }
 
-.drawing:active {
+main .drawing:active {
     transform: scale(100%);
 }
 

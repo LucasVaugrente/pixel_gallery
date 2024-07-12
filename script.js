@@ -3,7 +3,7 @@ const header = document.querySelector('header');
 const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket');
 const tooltip_rocket_text = document.querySelector('.tooltip-text');
-const listDrawingTooltip = document.querySelector('.listDrawingTooltip');
+const listDrawingTooltip = document.querySelectorAll('.listDrawingTooltip a');
 const footer = document.querySelector('footer');
 const launchButton = document.querySelector('.launchRocket');
 const landingButton = document.querySelector('#landingRocket');
@@ -35,12 +35,6 @@ const maxTopShootingStars = 1500;
 let selectedStar = null;
 let offsetXStar = 0;
 let offsetYStar = 0;
-
-const slow = 15000;
-const effect = easeInOutCuaic;
-let isScrollingAutomatically = false;
-let scrollTimeout;
-let ignoreScrollEvents = false;
 
 generateStars();
 
@@ -112,6 +106,19 @@ tooltip_rocket.addEventListener('mouseleave', () => {
     tooltip_rocket.style.opacity = "0";
     tooltip_rocket.style.pointerEvents = "none";
 });
+
+const slow = 15000;
+const effect = easeInOutCuaic;
+let isScrollingAutomatically = false;
+let scrollTimeout;
+let ignoreScrollEvents = false;
+
+listDrawingTooltip.forEach(link => {
+    link.addEventListener('click', event => {
+        const idDrawing = document.querySelector("." + event.target.className);
+        slowScrollTo(idDrawing.getBoundingClientRect().top);
+    })
+  })
 
 launchButton.addEventListener('click', () => {
     const titleWelcome = document.querySelector('header h1');
@@ -351,9 +358,15 @@ function generateSmoke() {
     }
 }
 
+function slowScrollTo(positionTop) {
+    console.log(positionTop);
+    ignoreScrollEvents = true;
+    scrollTo(positionTop, slow);
+    setTimeout(() => ignoreScrollEvents = false, 100);
+}
+
 function slowScrollToBottom() {
-    const footer = document.querySelector("footer");
-    let floor = footer.offsetTop - 270;
+    const floor = footer.offsetTop - 270;
     ignoreScrollEvents = true;
     scrollTo(floor, slow);
     setTimeout(() => ignoreScrollEvents = false, 100);
