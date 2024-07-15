@@ -31,39 +31,39 @@
     box-shadow: none;
 }
 
-main .drawing1 {
+#drawing1 {
     background-image: url("../img/projects/sunrise.png");
 }
 
-main .drawing2 {
+#drawing2 {
     background-image: url("../img/projects/mood_ghibli.png");
 }
 
-main .drawing3 {
+#drawing3 {
     background-image: url("../img/projects/stan_portal.png");
 }
 
-main .drawing4 {
+#drawing4 {
     background-image: url("../img/projects/montsaintmichel.png");
 }
 
-main .drawing5 {
+#drawing5 {
     background-image: url("../img/projects/spirited_away.png");
 }
  
-main .drawing6 {
+#drawing6 {
     background-image: url("../img/projects/week-end.png");
 }
 
-main .drawing7 {
+#drawing7 {
     background-image: url("../img/projects/outer_wilds.png");
 }
 
-main .drawing8 {
+#drawing8 {
     background-image: url("../img/projects/bike_ride.png");
 }
 
-main .drawing9 {
+#drawing9 {
     background-image: url("../img/projects/ride.png");
     background-position: 0 -800px;
     background-repeat: no-repeat;
@@ -78,11 +78,11 @@ main .drawing:active {
     transform: scale(100%);
 }
 
-.gauche {
+.left {
     align-self: flex-start;
 }
 
-.droite {
+.right {
     align-self: flex-end;
 }
 
@@ -129,7 +129,7 @@ main .drawing:active {
         width: 100%;
     }
 
-    main .drawing9 {
+    #drawing9 {
         background-position: bottom;
     }
 }
