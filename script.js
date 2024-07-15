@@ -107,18 +107,20 @@ tooltip_rocket.addEventListener('mouseleave', () => {
     tooltip_rocket.style.pointerEvents = "none";
 });
 
-const slow = 15000;
-const effect = easeInOutCuaic;
+let slow;
+let effect;
 let isScrollingAutomatically = false;
 let scrollTimeout;
 let ignoreScrollEvents = false;
 
 listDrawingTooltip.forEach(link => {
     link.addEventListener('click', event => {
-        const idDrawing = document.querySelector("." + event.target.className);
-        slowScrollTo(idDrawing.getBoundingClientRect().top);
+        effect = linearTween;
+        slow = 1000;
+        const idDrawing = document.querySelector("#" + event.target.className);
+        slowScrollTo(idDrawing.offsetTop - 100);
     })
-  })
+})
 
 launchButton.addEventListener('click', () => {
     const titleWelcome = document.querySelector('header h1');
@@ -126,15 +128,19 @@ launchButton.addEventListener('click', () => {
     titleWelcome.innerHTML = "Thank you for visiting my page 🤗";
     subtitleWelcome.innerHTML = "";
     document.documentElement.classList.add('smooth-scroll');
+    slow = 15000;
+    effect = easeInOutCuaic;
     
     generateSmoke();
     slowScrollToTop();
 });
 
 landingButton.addEventListener('click', () => {
-    if(getScrollPercentage() !== 100) {
+    if (getScrollPercentage() !== 100) {
         landingButton.disabled = true;
         document.documentElement.classList.add('smooth-scroll');
+        slow = 12000;
+        effect = easeInOutCuaic;
         animateLandButton();
         slowScrollToBottom();
     }
@@ -265,7 +271,7 @@ function animateLandButton() {
         const left = Math.random() * (300 - 2) + 10;
         const height = Math.random() * (20 - 10) + 10;
         const bottom = Math.random() * 50 - 50;
-        
+
         wind_line.style.height = `${height}px`;
         wind_line.style.bottom = `${bottom}px`;
         wind_line.style.left = `${left}px`;
@@ -288,9 +294,9 @@ function animateLandButton() {
 function animatePixel(pixelSmoke, rightMax, goToRight) {
     let delay = 4000;
     pixelSmoke.style.right = `${rightMax}px`;
-    pixelSmoke.style.backgroundColor = "rgba(114, 114, 114, 0.637)";
+    pixelSmoke.style.backgroundColor = "rgba(207, 207, 207, 0.774)";
     setTimeout(() => {
-        pixelSmoke.style.backgroundColor = "rgba(190, 190, 190, 0.658)";
+        pixelSmoke.style.backgroundColor = "rgba(240, 240, 240, 0.774)";
         setTimeout(() => {
             pixelSmoke.style.backgroundColor = "transparent";
         }, 1000);
@@ -359,7 +365,6 @@ function generateSmoke() {
 }
 
 function slowScrollTo(positionTop) {
-    console.log(positionTop);
     ignoreScrollEvents = true;
     scrollTo(positionTop, slow);
     setTimeout(() => ignoreScrollEvents = false, 100);
@@ -408,9 +413,37 @@ function scrollToX(element, xFrom, xTo, t01, speed, step, motion) {
     element.scrollTop = xFrom - (xFrom - xTo) * motion(t01);
     t01 += speed * step;
 
-    scrollTimeout = setTimeout(function() {
+    scrollTimeout = setTimeout(function () {
         scrollToX(element, xFrom, xTo, t01, speed, step, motion);
     }, step);
+}
+
+function linearTween(t) {
+    return t;
+}
+
+function easeInQuad(t) {
+    return t * t;
+}
+
+function easeOutQuad(t) {
+    return -t * (t - 2);
+}
+
+function easeInOutQuad(t) {
+    t /= 0.5;
+    if (t < 1) return t * t / 2;
+    t--;
+    return (t * (t - 2) - 1) / 2;
+}
+
+function easeInCuaic(t) {
+    return t * t * t;
+}
+
+function easeOutCuaic(t) {
+    t--;
+    return t * t * t + 1;
 }
 
 function easeInOutCuaic(t) {
@@ -420,12 +453,82 @@ function easeInOutCuaic(t) {
     return (t * t * t + 2) / 2;
 }
 
+function easeInQuart(t) {
+    return t * t * t * t;
+}
+
+function easeOutQuart(t) {
+    t--;
+    return -(t * t * t * t - 1);
+}
+
+function easeInOutQuart(t) {
+    t /= 0.5;
+    if (t < 1) return 0.5 * t * t * t * t;
+    t -= 2;
+    return -(t * t * t * t - 2) / 2;
+}
+
+function easeInQuint(t) {
+    return t * t * t * t * t;
+}
+
+function easeOutQuint(t) {
+    t--;
+    return t * t * t * t * t + 1;
+}
+
+function easeInOutQuint(t) {
+    t /= 0.5;
+    if (t < 1) return t * t * t * t * t / 2;
+    t -= 2;
+    return (t * t * t * t * t + 2) / 2;
+}
+
+function easeInSine(t) {
+    return -Math.cos(t / (Math.PI / 2)) + 1;
+}
+
+function easeOutSine(t) {
+    return Math.sin(t / (Math.PI / 2));
+}
+
+function easeInOutSine(t) {
+    return -(Math.cos(Math.PI * t) - 1) / 2;
+}
+
+function easeInExpo(t) {
+    return Math.pow(2, 10 * (t - 1));
+}
+
+function easeOutExpo(t) {
+    return -Math.pow(2, -10 * t) + 1;
+}
+
+function easeInOutExpo(t) {
+    t /= 0.5;
+    if (t < 1) return Math.pow(2, 10 * (t - 1)) / 2;
+    t--;
+    return (-Math.pow(2, -10 * t) + 2) / 2;
+}
+
+function easeInCirc(t) {
+    return -Math.sqrt(1 - t * t) - 1;
+}
+
+function easeOutCirc(t) {
+    t--;
+    return Math.sqrt(1 - t * t);
+}
+
+function easeInOutCirc(t) {
+    t /= 0.5;
+    if (t < 1) return -(Math.sqrt(1 - t * t) - 1) / 2;
+    t -= 2;
+    return (Math.sqrt(1 - t * t) + 1) / 2;
+}
+
 /* ################ DETECT ON MOBILE ################ */
-/**
- * 
- * @summary Détecte si l'utilisateur est sur un appareil mobile
- * 
- */
 function detectMobile() {
     const toMatch = [
         /Android/i,

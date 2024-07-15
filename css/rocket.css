@@ -52,9 +52,9 @@
     position: absolute;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-left: 15px solid rgb(12, 12, 12);
+    border-left: 15px solid rgb(0 0 0 / 47%);
     border-radius: 8px;
-    right: -13px;
+    right: -15px;
     top: 85px;
 }
 
