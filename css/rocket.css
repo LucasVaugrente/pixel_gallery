@@ -42,6 +42,7 @@
     height: 240px;
     height: max-content;
     transition: opacity 0.2s ease-in-out;
+    user-select: none;
 }
 
 #tooltip_rocket:before {
@@ -102,6 +103,7 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     font-size: 16px;
+    user-select: none;
 }
 
 #landingRocket:active {
@@ -163,6 +165,7 @@
     box-shadow: 0 10px 0 black;
     transition: opacity 0.2s ease-in-out !important;
     animation: hideLaunchButton 0.4s ease-out forwards;
+    user-select: none;
 }
 
 .launchRocket.show {

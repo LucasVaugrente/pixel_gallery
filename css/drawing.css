@@ -69,6 +69,12 @@
     background-repeat: no-repeat;
 }
 
+#drawing10 {
+    background-image: url("../img/projects/alone.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
 main .drawing:hover {
     transform: scale(105%);
     box-shadow: 0 0 20px #9c9c9c;

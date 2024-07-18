@@ -8,7 +8,7 @@ const footer = document.querySelector('footer');
 const launchButton = document.querySelector('.launchRocket');
 const landingButton = document.querySelector('#landingRocket');
 const sky = document.querySelector('.sky');
-
+const drawingInProgress = document.querySelector(".inProgress");
 
 const numberSmoke = 10000;
 let generateSmokeZone = false;
@@ -144,6 +144,16 @@ landingButton.addEventListener('click', () => {
         animateLandButton();
         slowScrollToBottom();
     }
+});
+
+drawingInProgress.addEventListener('mouseenter', () => {
+    const title = drawingInProgress.querySelector("h2");
+    title.innerHTML = "🤫";
+});
+
+drawingInProgress.addEventListener('mouseleave', () => {
+    const title = drawingInProgress.querySelector("h2");
+    title.innerHTML = "Drawing in progress...";
 });
 
 if (detectMobile()) {
