@@ -1,5 +1,6 @@
 const body = document.querySelector('body');
 const header = document.querySelector('header');
+const welcomeText = document.querySelectorAll('.welcome_text h1');
 const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket');
 const tooltip_rocket_text = document.querySelector('.tooltip-text');
@@ -9,6 +10,11 @@ const launchButton = document.querySelector('.launchRocket');
 const landingButton = document.querySelector('#landingRocket');
 const sky = document.querySelector('.sky');
 const drawingInProgress = document.querySelector(".inProgress");
+const blackholeBlock = document.querySelector('.blackholeBlock');
+const blackhole = document.querySelector('.blackhole');
+const attractionRadius = 300;
+const attractionSpeed = 1;
+
 
 const numberSmoke = 10000;
 let generateSmokeZone = false;
@@ -176,7 +182,7 @@ function generateStars() {
     for (let i = 0; i < starsNumber; i++) {
         const star = document.createElement('div');
         star.classList.add('mini-star');
-        star.style.left = Math.random() * 98 + 'vw';
+        star.style.left = Math.random() * window.innerWidth + 'px';
         star.style.top = Math.random() * document.documentElement.scrollHeight + 'px';
 
         const widthANDheight = Math.random() * 5 + 1;
@@ -188,47 +194,47 @@ function generateStars() {
         sky.appendChild(star);
     }
 
-    let stars = document.querySelectorAll('.mini-star');
+    const stars = document.querySelectorAll('.mini-star');
     for (let index = 0; index < 20; index++) {
-        let star = stars[Math.floor(Math.random() * stars.length)];
+        const star = stars[Math.floor(Math.random() * stars.length)];
         star.style.animation = "twinkle 3s ease-in-out infinite";
     }
 }
 
-function generate1ShootingStar() {
-    const windowWidth = window.innerWidth;
-    const topPosition = Math.random() * document.documentElement.scrollHeight - maxTopShootingStars;
-    let leftPosition = Math.random() * 100;
+// function generate1ShootingStar() {
+//     const windowWidth = window.innerWidth;
+//     const topPosition = Math.random() * document.documentElement.scrollHeight - maxTopShootingStars;
+//     let leftPosition = Math.random() * 100;
 
-    const shootingStar = document.createElement('div');
-    shootingStar.classList.add('shooting-star');
+//     const shootingStar = document.createElement('div');
+//     shootingStar.classList.add('shooting-star');
 
-    if (windowWidth - (leftPosition / 100 * windowWidth) < maxRightShootingStars) {
-        while (windowWidth - (leftPosition / 100 * windowWidth) < maxRightShootingStars) {
-            leftPosition = Math.random() * 100;
-        }
-    }
+//     if (windowWidth - (leftPosition / 100 * windowWidth) < maxRightShootingStars) {
+//         while (windowWidth - (leftPosition / 100 * windowWidth) < maxRightShootingStars) {
+//             leftPosition = Math.random() * 100;
+//         }
+//     }
 
-    shootingStar.style.left = leftPosition + 'vw';
-    shootingStar.style.top = topPosition + 'px';
+//     shootingStar.style.left = leftPosition + 'vw';
+//     shootingStar.style.top = topPosition + 'px';
 
-    sky.appendChild(shootingStar);
+//     sky.appendChild(shootingStar);
 
-    setTimeout(() => {
-        shootingStar.remove();
-    }, 6000);
-}
+//     setTimeout(() => {
+//         shootingStar.remove();
+//     }, 6000);
+// }
 
-function startGeneratingShootingStars() {
-    const delay = Math.random() * (5000 - 1000) + 1000;
+// function startGeneratingShootingStars() {
+//     const delay = Math.random() * (5000 - 1000) + 1000;
 
-    setTimeout(() => {
-        generate1ShootingStar();
-        startGeneratingShootingStars();
-    }, delay);
-}
+//     setTimeout(() => {
+//         generate1ShootingStar();
+//         startGeneratingShootingStars();
+//     }, delay);
+// }
 
-startGeneratingShootingStars();
+// startGeneratingShootingStars();
 
 function onMouseDown(e) {
     selectedStar = e.target;
@@ -373,6 +379,76 @@ function generateSmoke() {
         generatePixelSmoke();
     }
 }
+
+function updateStars() {
+    const blackholeRect = blackhole.getBoundingClientRect();
+    const blackholeCenter = {
+        x: blackholeRect.left + blackholeRect.width / 2,
+        y: blackholeRect.top + blackholeRect.height / 2
+    };
+
+    const stars = document.querySelectorAll('.mini-star');
+
+    stars.forEach(star => {
+        const starRect = star.getBoundingClientRect();
+        const starCenter = {
+            x: starRect.left + starRect.width / 2,
+            y: starRect.top + starRect.height / 2
+        };
+
+        const distanceX = blackholeCenter.x - starCenter.x;
+        const distanceY = blackholeCenter.y - starCenter.y;
+        const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+
+        if (distance < attractionRadius) {
+            const moveX = (distanceX / distance) * attractionSpeed;
+            const moveY = (distanceY / distance) * attractionSpeed;
+
+
+            const newLeft = parseFloat(star.style.left) + moveX;
+            const newTop = parseFloat(star.style.top) + moveY;
+
+            star.style.left = newLeft + 'px';
+            star.style.top = newTop + 'px';
+
+            if (distance < 20) {
+                star.remove();
+            }
+        }
+    });
+
+    welcomeText.forEach(word => {
+        const wordRect = word.getBoundingClientRect();
+        const wordCenter = {
+            x: wordRect.left + wordRect.width / 2,
+            y: wordRect.top + wordRect.height / 2
+        };
+
+        const distanceX = blackholeCenter.x - wordCenter.x;
+        const distanceY = blackholeCenter.y - wordCenter.y;
+        const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+
+        if (distance < attractionRadius) {
+            const moveX = (distanceX / distance) * attractionSpeed;
+            const moveY = (distanceY / distance) * attractionSpeed;
+
+
+            const newLeft = parseFloat(word.style.left) + moveX;
+            const newTop = parseFloat(word.style.top) + moveY;
+
+            word.style.left = newLeft + 'px';
+            word.style.top = newTop + 'px';
+
+            if (distance < 20) {
+                word.remove();
+            }
+        }
+    });
+
+    requestAnimationFrame(updateStars);
+}
+
+updateStars();
 
 function slowScrollTo(positionTop) {
     ignoreScrollEvents = true;
