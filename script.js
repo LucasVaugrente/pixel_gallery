@@ -417,33 +417,33 @@ function updateStars() {
         }
     });
 
-    welcomeText.forEach(word => {
-        const wordRect = word.getBoundingClientRect();
-        const wordCenter = {
-            x: wordRect.left + wordRect.width / 2,
-            y: wordRect.top + wordRect.height / 2
-        };
+    // welcomeText.forEach(word => {
+    //     const wordRect = word.getBoundingClientRect();
+    //     const wordCenter = {
+    //         x: wordRect.left + wordRect.width / 2,
+    //         y: wordRect.top + wordRect.height / 2
+    //     };
 
-        const distanceX = blackholeCenter.x - wordCenter.x;
-        const distanceY = blackholeCenter.y - wordCenter.y;
-        const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+    //     const distanceX = blackholeCenter.x - wordCenter.x;
+    //     const distanceY = blackholeCenter.y - wordCenter.y;
+    //     const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
 
-        if (distance < attractionRadius) {
-            const moveX = (distanceX / distance) * attractionSpeed;
-            const moveY = (distanceY / distance) * attractionSpeed;
+    //     if (distance < attractionRadius) {
+    //         const moveX = (distanceX / distance) * attractionSpeed;
+    //         const moveY = (distanceY / distance) * attractionSpeed;
 
 
-            const newLeft = parseFloat(word.style.left) + moveX;
-            const newTop = parseFloat(word.style.top) + moveY;
+    //         const newLeft = parseFloat(word.style.left) + moveX;
+    //         const newTop = parseFloat(word.style.top) + moveY;
 
-            word.style.left = newLeft + 'px';
-            word.style.top = newTop + 'px';
+    //         word.style.left = newLeft + 'px';
+    //         word.style.top = newTop + 'px';
 
-            if (distance < 20) {
-                word.remove();
-            }
-        }
-    });
+    //         if (distance < 20) {
+    //             word.remove();
+    //         }
+    //     }
+    // });
 
     requestAnimationFrame(updateStars);
 }
