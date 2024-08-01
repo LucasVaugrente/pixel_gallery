@@ -4,7 +4,7 @@ const welcomeText = document.querySelectorAll('.welcome_text h1');
 const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket');
 const tooltip_rocket_text = document.querySelector('.tooltip-text');
-const listDrawingTooltip = document.querySelectorAll('.listDrawingTooltip a');
+const listDrawingTooltip = document.querySelectorAll('.listDrawingTooltip');
 const footer = document.querySelector('footer');
 const launchButton = document.querySelector('.launchRocket');
 const landingButton = document.querySelector('#landingRocket');
@@ -29,6 +29,10 @@ for (let i = 0; i < drawings.length - 1; i++) {
         drawings[i].innerText,
         `#drawing${i + 1}`
     ];
+    const link = document.createElement("a");
+    link.innerHTML = allDrawingLinkWebsite[i][0];
+    link.classList.add(allDrawingLinkWebsite[i][1].substring(1));
+    listDrawingTooltip[0].appendChild(link);
 }
 
 let indexLetter = 0;
@@ -119,7 +123,9 @@ let isScrollingAutomatically = false;
 let scrollTimeout;
 let ignoreScrollEvents = false;
 
-listDrawingTooltip.forEach(link => {
+const listDrawingTooltipLink = document.querySelectorAll('.listDrawingTooltip a');
+
+listDrawingTooltipLink.forEach(link => {
     link.addEventListener('click', event => {
         effect = linearTween;
         slow = 1000;
