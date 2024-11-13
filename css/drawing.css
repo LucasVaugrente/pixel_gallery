@@ -81,6 +81,36 @@
     background-repeat: no-repeat;
 }
 
+#drawing12 {
+    background-image: url("../img/projects/cat.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+#drawing13 {
+    background-image: url("../img/projects/jetfuel.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+#drawing14 {
+    background-image: url("../img/projects/littlenightmare.png");
+    background-position: 0 -500px;
+    background-repeat: no-repeat;
+}
+
+#drawing15 {
+    background-image: url("../img/projects/getlucky.png");
+    background-position: 0 -300px;
+    background-repeat: no-repeat;
+}
+
+#drawing16 {
+    background-image: url("../img/projects/solarsystemOW.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
 main .drawing:hover {
     transform: scale(105%);
     box-shadow: 0 0 20px #9c9c9c;
