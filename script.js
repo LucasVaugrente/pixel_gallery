@@ -22,11 +22,12 @@ let generateSmokeInProgress = false;
 let scroll_count = 0;
 let previousScrollPercentage = getScrollPercentage();
 
-const drawings = document.querySelectorAll(".drawing");
+const drawings = document.querySelectorAll(".column_images img");
+
 const allDrawingLinkWebsite = {};
-for (let i = 0; i < drawings.length - 1; i++) {
+for (let i = 0; i < drawings.length; i++) {
     allDrawingLinkWebsite[i] = [
-        drawings[i].innerText,
+        drawings[i].alt,
         `#drawing${i + 1}`
     ];
     const link = document.createElement("a");

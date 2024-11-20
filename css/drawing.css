@@ -1,14 +1,13 @@
-.drawing {
-    position: relative;
-    width: 700px;
-    height: 40vh;
-    background-color: #464c57;
+.column_images img {
+    width: 100%;
     border-radius: 10px;
-    transition: all 0.2s ease-in-out;
+    margin-bottom: 20px;
     cursor: pointer;
-    background-position: center;
-    background-size: cover;
-    z-index: 2;
+    transition: all 0.2s ease-in-out;
+}
+
+.column_images img:last-child {
+    margin-bottom: 0;
 }
 
 .inProgress {
@@ -17,161 +16,44 @@
     align-items: center;
     background: none;
     border: solid 2px white;
+    border-radius: 10px;
+    padding: 100px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
-.drawing:hover .p1 {
-    animation: windowHover 0.7s ease-in-out 1;
-}
-
-.drawing:hover .p2 {
-    animation: windowHover 0.8s ease-in-out 1;
-}
-
+.column_images img:hover,
 .inProgress:hover {
-    box-shadow: none;
+    transform: scale(102%);
+    box-shadow: 0 0 20px #cc8585;
 }
 
-#drawing1 {
-    background-image: url("../img/projects/sunrise.png");
-}
-
-#drawing2 {
-    background-image: url("../img/projects/mood_ghibli.png");
-}
-
-#drawing3 {
-    background-image: url("../img/projects/stan_portal.png");
-}
-
-#drawing4 {
-    background-image: url("../img/projects/montsaintmichel.png");
-}
-
-#drawing5 {
-    background-image: url("../img/projects/spirited_away.png");
-}
- 
-#drawing6 {
-    background-image: url("../img/projects/week-end.png");
-}
-
-#drawing7 {
-    background-image: url("../img/projects/outer_wilds.png");
-}
-
-#drawing8 {
-    background-image: url("../img/projects/bike_ride.png");
-}
-
-#drawing9 {
-    background-image: url("../img/projects/ride.png");
-    background-position: 0 -800px;
-    background-repeat: no-repeat;
-}
-
-#drawing10 {
-    background-image: url("../img/projects/alone.png");
-    background-position: 0 0;
-    background-repeat: no-repeat;
-}
-
-#drawing11 {
-    background-image: url("../img/projects/unknow_dream.png");
-    background-position: 0 -900px;
-    background-repeat: no-repeat;
-}
-
-#drawing12 {
-    background-image: url("../img/projects/cat.png");
-    background-position: 0 0;
-    background-repeat: no-repeat;
-}
-
-#drawing13 {
-    background-image: url("../img/projects/jetfuel.png");
-    background-position: 0 0;
-    background-repeat: no-repeat;
-}
-
-#drawing14 {
-    background-image: url("../img/projects/littlenightmare.png");
-    background-position: 0 -500px;
-    background-repeat: no-repeat;
-}
-
-#drawing15 {
-    background-image: url("../img/projects/getlucky.png");
-    background-position: 0 -300px;
-    background-repeat: no-repeat;
-}
-
-#drawing16 {
-    background-image: url("../img/projects/solarsystemOW.png");
-    background-position: 0 0;
-    background-repeat: no-repeat;
-}
-
-main .drawing:hover {
-    transform: scale(105%);
-    box-shadow: 0 0 20px #9c9c9c;
-}
-
-main .drawing:active {
+.column_images img:active {
     transform: scale(100%);
 }
 
-.left {
-    align-self: flex-start;
+figure {
+    position: relative;
 }
 
-.right {
-    align-self: flex-end;
-}
-
-.drawing h3 {
-    background: linear-gradient(rgba(0, 0, 0, 0.637), #00000097, #00000067);
-    box-shadow: 0 5px 50px black;
+figcaption {
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.747);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.795);
     width: 100%;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-    padding: 15px 0;
+    height: 50px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-}
-
-.drawing:hover h3 {
+    transition: all 0.2s ease-in-out;
     opacity: 1;
 }
 
-@keyframes windowHover {
-    0% {
-        transform: translateX(0);
-        fill: white;
-    }
-
-    100% {
-        transform: translate(150%);
-        fill: white;
-    }
-}
-
-@media screen and (max-width: 1150px) {
-    .drawing {
-        width: 90%;
-        align-self: auto;
-    }
-
-    .drawing h3 {
-        opacity: 1;
-        width: 100%;
-    }
-
-    #drawing9 {
-        background-position: bottom;
-    }
+.column_images img:hover + figcaption {
+    opacity: 0;
+    transition: all 0.1s ease-in-out;
 }

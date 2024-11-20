@@ -78,12 +78,30 @@ p {
 }
 
 main {
+    margin-right: 150px;
+    z-index: 2;
+}
+
+.container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 50px;
+    text-align: center;
+    margin: 40px 20px 0 20px;
+}
+  
+.container .box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+  
+.container .box .column_images {
+    flex: 1 1 calc(50% - 20px);
     z-index: 1;
-    margin: 0 10% 130px 10%;
 }
 
 .footer_left_image {
@@ -152,9 +170,13 @@ main {
     }
 }
 
-@media screen and (max-width: 1150px) {
-    main {
-        margin: 0 90px 0 0;
+@media only screen and (max-width: 800px) {
+    .container .box {
+        flex-direction: column;
+    }
+
+    .container .box .column_images {
+        flex: 1 1 100%;
     }
 }
 
