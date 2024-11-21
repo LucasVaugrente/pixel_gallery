@@ -136,8 +136,8 @@ listDrawingTooltipLink.forEach(link => {
 })
 
 launchButton.addEventListener('click', () => {
-    const titleWelcome = document.querySelector('header h1');
-    const subtitleWelcome = document.querySelector('header p');
+    const titleWelcome = document.querySelector('.welcome_text');
+    const subtitleWelcome = document.querySelector('#welcome p');
     titleWelcome.innerHTML = "Thank you for visiting my page 🤗";
     subtitleWelcome.innerHTML = "";
     document.documentElement.classList.add('smooth-scroll');
