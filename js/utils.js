@@ -1,9 +1,14 @@
 const footer = document.querySelector('footer');
+const floor_gap = 215;
 
-export let effect, slow;
 let isScrollingAutomatically = false;
 let scrollTimeout;
 let ignoreScrollEvents = false;
+
+export let settings = {
+    slow: 1000,
+    effect: linearTween,
+};
 
 /**
  *
@@ -30,14 +35,14 @@ function getScrollPercentage(scrollPercent) {
 
 function slowScrollTo(positionTop) {
     ignoreScrollEvents = true;
-    scrollTo(positionTop, slow);
+    scrollTo(positionTop, settings.slow);
     setTimeout(() => ignoreScrollEvents = false, 100);
 }
 
 function slowScrollToBottom() {
-    const floor = footer.offsetTop - 270;
+    const floor = footer.offsetTop - floor_gap;
     ignoreScrollEvents = true;
-    scrollTo(floor, slow);
+    scrollTo(floor, settings.slow);
     setTimeout(() => ignoreScrollEvents = false, 100);
 }
 
@@ -65,7 +70,7 @@ function scrollToC(element, from, to, duration) {
     if (duration <= 0) return;
     if (typeof from === "object") from = from.offsetTop;
     if (typeof to === "object") to = to.offsetTop;
-    scrollToX(element, from, to, 0, 1 / duration, 20, effect);
+    scrollToX(element, from, to, 0, 1 / duration, 20, settings.effect);
 }
 
 function scrollToX(element, xFrom, xTo, t01, speed, step, motion) {
@@ -208,4 +213,4 @@ function detectMobile() {
     });
 }
 
-export {getScrollPercentage, detectMobile, slowScrollTo, slowScrollToTop, slowScrollToBottom, linearTween, easeInOutCuaic};
+export {getScrollPercentage, slowScrollTo, slowScrollToBottom, slowScrollToTop, scrollTo, scrollToC, scrollToX, linearTween, easeInOutCuaic, detectMobile};

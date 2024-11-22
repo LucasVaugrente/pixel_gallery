@@ -1,4 +1,4 @@
-import {getScrollPercentage, slowScrollTo, slowScrollToTop, slowScrollToBottom, effect, slow, linearTween, easeInOutCuaic} from "./utils.js";
+import {getScrollPercentage, slowScrollTo, slowScrollToBottom, slowScrollToTop, linearTween, easeInOutCuaic, settings} from "./utils.js";
 
 const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket');
@@ -15,9 +15,7 @@ let previousScrollPercentage = getScrollPercentage();
 
 let tooltipTimer;
 
-const listDrawingTooltipLink = document.querySelectorAll('.listDrawingTooltip a');
 const drawings = document.querySelectorAll(".column_images img");
-
 const allDrawingLinkWebsite = {};
 for (let i = 0; i < drawings.length; i++) {
     allDrawingLinkWebsite[i] = [
@@ -29,6 +27,8 @@ for (let i = 0; i < drawings.length; i++) {
     link.classList.add(allDrawingLinkWebsite[i][1].substring(1));
     listDrawingTooltip[0].appendChild(link);
 }
+
+const listDrawingTooltipLink = document.querySelectorAll('.listDrawingTooltip a');
 
 document.addEventListener("scroll", function () {
     const scrollPercentage = getScrollPercentage();
@@ -101,8 +101,8 @@ tooltip_rocket.addEventListener('mouseleave', () => {
 
 listDrawingTooltipLink.forEach(link => {
     link.addEventListener('click', event => {
-        effect = linearTween;
-        slow = 1000;
+        settings.slow = 1000;
+        settings.effect = linearTween;
         const idDrawing = document.querySelector("#" + event.target.className);
         slowScrollTo(idDrawing.offsetTop - 100);
     })
@@ -114,9 +114,8 @@ launchButton.addEventListener('click', () => {
     titleWelcome.innerHTML = "Thank you for visiting my page 🤗";
     subtitleWelcome.innerHTML = "";
     document.documentElement.classList.add('smooth-scroll');
-    slow = 15000;
-    effect = easeInOutCuaic;
-
+    settings.slow = 15000;
+    settings.effect = easeInOutCuaic;
     generateSmoke();
     slowScrollToTop();
 });
@@ -125,8 +124,8 @@ landingButton.addEventListener('click', () => {
     if (getScrollPercentage() !== 100) {
         landingButton.disabled = true;
         document.documentElement.classList.add('smooth-scroll');
-        slow = 12000;
-        effect = easeInOutCuaic;
+        settings.slow = 12000;
+        settings.effect = easeInOutCuaic;
         animateLandButton();
         slowScrollToBottom();
     }
