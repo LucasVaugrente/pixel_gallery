@@ -20,7 +20,7 @@ template.innerHTML = `
 }
 
 #webring-title {
-    font-family: lele;
+    font-family: lele, sans-serif;
     color: #c296f5;
     margin-top: 0;
     margin-bottom: 3px;
@@ -40,7 +40,7 @@ template.innerHTML = `
 }
 
 #webring-inner {
-    font-family: lele;
+    font-family: lele, sans-serif;
     color: #c296f5;
     padding: 0 5px;
 }

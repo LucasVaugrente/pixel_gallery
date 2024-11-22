@@ -1,7 +1,6 @@
 const footer = document.querySelector('footer');
 const floor_gap = 215;
 
-let isScrollingAutomatically = false;
 let scrollTimeout;
 let ignoreScrollEvents = false;
 
@@ -16,7 +15,7 @@ export let settings = {
  * @returns {number} Scroll percentage
  *
  */
-function getScrollPercentage(scrollPercent) {
+function getScrollPercentage() {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
     const docHeight = Math.max(
@@ -29,7 +28,7 @@ function getScrollPercentage(scrollPercent) {
     );
 
     const winHeight = window.innerHeight;
-    scrollPercent = scrollTop / (docHeight - winHeight);
+    let scrollPercent = scrollTop / (docHeight - winHeight);
     return scrollPercent * 100;
 }
 
@@ -51,15 +50,15 @@ function slowScrollToTop() {
     let floor = e.scrollHeight - e.scrollTop - e.clientHeight === 0;
     if (floor) {
         ignoreScrollEvents = true;
-        scrollTo(0, slow);
+        scrollTo(0, settings.slow);
         setTimeout(() => ignoreScrollEvents = false, 100);
     }
 }
 
 function scrollTo(element, duration) {
-    var e = document.documentElement;
+    let e = document.documentElement;
     if (e.scrollTop === 0) {
-        var t = e.scrollTop;
+        let t = e.scrollTop;
         ++e.scrollTop;
         e = t + 1 === e.scrollTop-- ? e : document.body;
     }

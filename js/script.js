@@ -18,7 +18,7 @@ drawingInProgress.addEventListener('mouseleave', () => {
 
 if (detectMobile()) {
     const titlesDrawing = document.querySelectorAll('.drawing h3');
-    titlesDrawing.forEach(function (titleDrawing, currentIndex) {
+    titlesDrawing.forEach(function (titleDrawing) {
         titleDrawing.style.opacity = '1';
     }, "myThisArg");
 }
