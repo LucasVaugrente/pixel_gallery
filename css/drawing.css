@@ -42,7 +42,7 @@ figcaption {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
+    font-size: clamp(20px, 1.5vw, 100px);
     background-color: rgba(0, 0, 0, 0.747);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.795);
     width: 100%;
@@ -51,9 +51,17 @@ figcaption {
     border-top-right-radius: 10px;
     transition: all 0.2s ease-in-out;
     opacity: 1;
+    text-align: center;
+    user-select: none;
 }
 
 .column_images img:hover + figcaption {
     opacity: 0;
     transition: all 0.1s ease-in-out;
+}
+
+@media screen and (max-width: 500px) {
+    .inProgress {
+        padding: 20px 0;
+    }
 }

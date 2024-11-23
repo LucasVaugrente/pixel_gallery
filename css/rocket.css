@@ -39,7 +39,6 @@
     z-index: 3;
     opacity: 0;
     width: 250px;
-    height: 240px;
     height: max-content;
     transition: opacity 0.2s ease-in-out;
     user-select: none;

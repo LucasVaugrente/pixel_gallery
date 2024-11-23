@@ -65,12 +65,6 @@ h2 {
     user-select: none;
 }
 
-h3 {
-    font-size: clamp(20px, 2vw, 100px);
-    text-align: center;
-    user-select: none;
-}
-
 p {
     font-size: 20px;
     text-align: center;
@@ -78,7 +72,7 @@ p {
 }
 
 main {
-    margin-right: 150px;
+    margin: 0 150px 0 50px;
     z-index: 2;
 }
 
@@ -88,7 +82,7 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 40px;
+    margin: 0 10%;
 }
   
 .container .box {
@@ -124,8 +118,7 @@ main {
 }
 
 .credits {
-    text-align: center;
-    font-family: pixelart;
+    font-family: pixelart, sans-serif;
     color: white;
     text-align: center;
     display: block;
@@ -166,7 +159,7 @@ main {
 
 @media screen and (max-width: 980px) {
     #welcome p  {
-        margin: 0px 25%;
+        margin: 0 25%;
         line-height: 1.5;
     }
 }
@@ -184,5 +177,19 @@ main {
 @media screen and (max-width: 770px) {
     .footer_left_image {
         display: none;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    main {
+        margin: 0 150px 0 40px;
+    }
+
+    .container {
+        margin: 0;
+    }
+
+    .container .box {
+        flex-wrap: unset;
     }
 }
