@@ -22,3 +22,31 @@ if (detectMobile()) {
         titleDrawing.style.opacity = '1';
     }, "myThisArg");
 }
+
+const modal = document.getElementById("imageViewer");
+const modalImg = document.getElementById("fullImage");
+const captionText = document.getElementById("caption");
+
+const figures = document.querySelectorAll(".column_images figure img");
+
+figures.forEach((img) => {
+    img.addEventListener("click", (e) => {
+        modal.style.display = "block";
+        modalImg.src = e.target.src;
+        captionText.innerText = e.target.alt;
+        modalImg.classList.remove("zoomed"); // Assurer un état de départ sans zoom
+    });
+});
+
+const close = document.querySelector(".modal .close");
+close.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+modalImg.addEventListener("click", () => {
+    if (modalImg.classList.contains("zoomed")) {
+        modalImg.classList.remove("zoomed"); // Sortir du zoom
+    } else {
+        modalImg.classList.add("zoomed"); // Appliquer le zoom
+    }
+});
