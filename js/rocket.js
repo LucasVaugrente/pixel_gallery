@@ -15,7 +15,7 @@ let previousScrollPercentage = getScrollPercentage();
 
 let tooltipTimer;
 
-const drawings = document.querySelectorAll(".column_images img");
+const drawings = document.querySelectorAll(".figure img");
 const allDrawingLinkWebsite = {};
 for (let i = 0; i < drawings.length; i++) {
     allDrawingLinkWebsite[i] = [

@@ -1,12 +1,144 @@
-.column_images img {
-    width: 100%;
+.container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.container > div {
+    width: 350px;
+    height: 450px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#drawing1 {
+    background-image: url("../img/projects/sunrise.png");
+}
+
+#drawing2 {
+    background-image: url("../img/projects/spirited_away.png");
+}
+
+#drawing3 {
+    background-image: url("../img/projects/montsaintmichel.png");
+}
+
+#drawing4 {
+    background-image: url("../img/projects/stan_portal.png");
+}
+
+#drawing5 {
+    background-image: url("../img/projects/outer_wilds.png");
+}
+
+#drawing6 {
+    background-image: url("../img/projects/week-end.png");
+}
+
+#drawing7 {
+    background-image: url("../img/projects/bike_ride.png");
+}
+
+#drawing8 {
+    background-image: url("../img/projects/ride.png");
+}
+
+#drawing9 {
+    background-image: url("../img/projects/alone.png");
+}
+
+#drawing10 {
+    background-image: url("../img/projects/cat.png");
+}
+
+#drawing11 {
+    background-image: url("../img/projects/unknow_dream.png");
+}
+
+#drawing12 {
+    background-image: url("../img/projects/jetfuel.png");
+}
+
+#drawing13 {
+    background-image: url("../img/projects/littlenightmare.png");
+}
+
+#drawing14 {
+    background-image: url("../img/projects/getlucky.png");
+}
+
+#drawing15 {
+    background-image: url("../img/projects/solarsystemOW.png");
+}
+
+#drawing16 {
+    background-image: url("../img/projects/working.png");
+}
+
+#drawing17 {
+    background-image: url("../img/projects/night.png");
+}
+
+#drawing18 {
+    background-image: url("../img/projects/lalaland.png");
+}
+
+#drawing19 {
+    background-image: url("../img/projects/Hope.gif");
+}
+
+#drawing20 {
+    background-image: url("../img/projects/peaceful.gif");
+}
+
+#drawing21 {
+    background-image: url("../img/projects/bottle.gif");
+}
+
+#drawing22 {
+    background-image: url("../img/projects/where.gif");
+}
+
+#drawing23 {
+    background-image: url("../img/projects/space_red.png");
+}
+
+#drawing24 {
+    background-image: url("../img/projects/blackhole.png");
+}
+
+#drawing25 {
+    background-image: url("../img/projects/flow.png");
+}
+
+#drawing26 {
+    background-image: url("../img/projects/door.png");
+}
+
+#drawing27 {
+    background-image: url("../img/projects/some_clouds.png");
+}
+
+#drawing28 {
+    background-image: url("../img/projects/incident.png");
+}
+
+.container img {
+    width: 350px;
+    height: 450px;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
 
-.column_images img:last-child {
+.container img:last-child {
     margin-bottom: 0;
 }
 
@@ -22,21 +154,21 @@
     transition: all 0.2s ease-in-out;
 }
 
-.column_images img:hover,
+.container img:hover,
 .inProgress:hover {
     transform: scale(102%);
     box-shadow: 0 0 20px #cc8585;
 }
 
-.column_images img:active {
+.container img:active {
     transform: scale(100%);
 }
 
-figure {
+.container div {
     position: relative;
 }
 
-figcaption {
+.container span {
     position: absolute;
     top: 0;
     display: flex;
@@ -45,7 +177,7 @@ figcaption {
     font-size: clamp(20px, 1.5vw, 100px);
     background-color: rgba(0, 0, 0, 0.747);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.795);
-    width: 100%;
+    width: 350px;
     height: 50px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -55,7 +187,7 @@ figcaption {
     user-select: none;
 }
 
-.column_images img:hover + figcaption {
+.container img:hover+span {
     opacity: 0;
     transition: all 0.1s ease-in-out;
 }

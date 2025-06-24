@@ -76,28 +76,6 @@ main {
     z-index: 2;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0 10%;
-}
-  
-.container .box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
-    gap: 20px;
-}
-  
-.container .box .column_images {
-    flex: 1 1 calc(50% - 20px);
-    z-index: 1;
-}
-
 .footer_left_image {
     position: absolute;
     bottom: 0;
@@ -167,10 +145,6 @@ main {
 @media only screen and (max-width: 800px) {
     .container .box {
         flex-direction: column;
-    }
-
-    .container .box .column_images {
-        flex: 1 1 100%;
     }
 }
 

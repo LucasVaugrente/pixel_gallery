@@ -4,18 +4,6 @@ import {detectMobile} from "./utils.js";
 generateStars();
 updateStars();
 
-const drawingInProgress = document.querySelector(".inProgress");
-
-drawingInProgress.addEventListener('mouseenter', () => {
-    const title = drawingInProgress.querySelector("h2");
-    title.innerHTML = "🤫";
-});
-
-drawingInProgress.addEventListener('mouseleave', () => {
-    const title = drawingInProgress.querySelector("h2");
-    title.innerHTML = "Drawing in progress...";
-});
-
 if (detectMobile()) {
     const titlesDrawing = document.querySelectorAll('.drawing h3');
     titlesDrawing.forEach(function (titleDrawing) {
@@ -27,14 +15,15 @@ const modal = document.getElementById("imageViewer");
 const modalImg = document.getElementById("fullImage");
 const captionText = document.getElementById("caption");
 
-const figures = document.querySelectorAll(".column_images figure img");
+const figures = document.querySelectorAll(".container div");
 
 figures.forEach((img) => {
     img.addEventListener("click", (e) => {
+        const imagePath = window.getComputedStyle(e.target).background.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");        
         modal.style.display = "block";
-        modalImg.src = e.target.src;
-        captionText.innerText = e.target.alt;
-        modalImg.classList.remove("zoomed"); // Assurer un état de départ sans zoom
+        modalImg.src = imagePath;
+        captionText.innerText = e.target.innerText;
+        modalImg.classList.remove("zoomed");
     });
 });
 
@@ -45,8 +34,8 @@ close.addEventListener("click", () => {
 
 modalImg.addEventListener("click", () => {
     if (modalImg.classList.contains("zoomed")) {
-        modalImg.classList.remove("zoomed"); // Sortir du zoom
+        modalImg.classList.remove("zoomed");
     } else {
-        modalImg.classList.add("zoomed"); // Appliquer le zoom
+        modalImg.classList.add("zoomed");
     }
 });
