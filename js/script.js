@@ -1,5 +1,5 @@
-import {generateStars, updateStars} from "./stars.js";
-import {detectMobile} from "./utils.js";
+import { generateStars, updateStars } from "./stars.js";
+import { detectMobile } from "./utils.js";
 
 generateStars();
 updateStars();
@@ -19,17 +19,18 @@ const figures = document.querySelectorAll(".container div");
 
 figures.forEach((img) => {
     img.addEventListener("click", (e) => {
-        const imagePath = window.getComputedStyle(e.target).background.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");        
-        modal.style.display = "block";
+        const imagePath = window.getComputedStyle(e.target).background.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
+        modal.classList.add("show");
         modalImg.src = imagePath;
         captionText.innerText = e.target.innerText;
-        modalImg.classList.remove("zoomed");
+        document.body.classList.add('no-scroll');
     });
 });
 
 const close = document.querySelector(".modal .close");
 close.addEventListener("click", () => {
-    modal.style.display = "none";
+    modal.classList.remove("show");
+    document.body.classList.remove('no-scroll');
 });
 
 modalImg.addEventListener("click", () => {
