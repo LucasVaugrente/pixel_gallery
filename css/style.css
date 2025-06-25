@@ -72,7 +72,7 @@ p {
 }
 
 main {
-    margin: 0 150px 0 50px;
+    margin: 0 150px 100px 50px;
     position: relative;
     z-index: 2;
 }
@@ -96,13 +96,23 @@ main {
     text-align: center;
 }
 
+.all_credits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
 .credits {
     font-family: pixelart, sans-serif;
     color: white;
     text-align: center;
     display: block;
-    margin-top: 40px;
+    margin-top: 100px;
     user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .credits a {
