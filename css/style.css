@@ -73,6 +73,7 @@ p {
 
 main {
     margin: 0 150px 0 50px;
+    position: relative;
     z-index: 2;
 }
 
