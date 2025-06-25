@@ -1,14 +1,15 @@
 .svg_rocket {
     cursor: pointer;
     position: fixed;
-    filter: drop-shadow(0 40px 15px rgb(255, 240, 25));  
-    top: 10px;  
+    filter: drop-shadow(0 40px 15px rgb(255, 240, 25));
+    top: 10px;
     right: 0;
     background: url("../img/rocket/rocket.png");
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
-    width: 120px;
-    height: 200px;
+    width: 113px;
+    height: 125px;
     z-index: 2;
     margin: 1em;
     transition: transform 0.8s ease-in-out;
@@ -16,14 +17,21 @@
 
 .svg_rocket.onspace {
     background: url('../img/rocket/rocket_animation.png') 0px 0px;
-    background-size: 1200px 200px;
-    animation: rocketFire 0.8s steps(10) infinite, rocketMove 2s ease-in-out infinite;
+    background-size: 1100px 200px;
+    width: 75px;
+    height: 200px;
+    right: 19px;
+    animation: rocketFire 1s steps(15) infinite, rocketMove 2s ease-in-out infinite;
+    /* 14 : le nombre de frames de la fusée */
 }
 
 .svg_rocket.landing {
     background: url('../img/rocket/rocket_animation.png') 0px 0px;
-    background-size: 1200px 200px;
-    animation: rocketFire 0.8s steps(10) infinite;
+    background-size: 1100px 200px;
+    width: 75px;
+    height: 200px;
+    right: 19px;
+    animation: rocketFire 1s steps(15) infinite, rocketMove 2s ease-in-out infinite;
 }
 
 #tooltip_rocket {
@@ -143,10 +151,12 @@
 }
 
 @keyframes wind {
-    0% {transform: translateY(0);}
+    0% {
+        transform: translateY(0);
+    }
 
     100% {
-        transform:  translateY(-100px);
+        transform: translateY(-100px);
     }
 }
 
@@ -200,34 +210,53 @@
 
 @keyframes rocketFire {
     from {
-      background-position: 0 0;
+        background-position: 0 0;
     }
+
     to {
-      background-position: -1200px 0;
+        background-position: -1100px 0;
     }
-  }
+}
 
 @keyframes showLaunchButton {
-    0% {transform: scale(0);}
+    0% {
+        transform: scale(0);
+    }
 
-    80% {transform: scale(1.1);}
+    80% {
+        transform: scale(1.1);
+    }
 
-    100% {transform: scale(1);}
+    100% {
+        transform: scale(1);
+    }
 }
 
 @keyframes hideLaunchButton {
-    0% {transform: scale(1);}
+    0% {
+        transform: scale(1);
+    }
 
-    80% {transform: scale(1.1);}
+    80% {
+        transform: scale(1.1);
+    }
 
-    100% {transform: scale(0);}
+    100% {
+        transform: scale(0);
+    }
 }
 
 
 @keyframes rocketMove {
-    0% {transform: translateY(5px);}
+    0% {
+        transform: translateY(5px);
+    }
 
-    50% {transform: translateY(-5px);}
+    50% {
+        transform: translateY(-5px);
+    }
 
-    100% {transform: translateY(5px);}
+    100% {
+        transform: translateY(5px);
+    }
 }
