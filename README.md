@@ -10,7 +10,7 @@
 
 # 🟢 Access
 
-* The website is online at the address : **[https://lucasvaugrente.github.io/](https://lucasvaugrente.github.io//)**.
+* The website is online at the address : **[https://lucasvaugrente.github.io/pixel_gallery/](https://lucasvaugrente.github.io/pixel_gallery/)**.
 
 <br/>
 
