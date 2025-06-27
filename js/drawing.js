@@ -1,4 +1,4 @@
-const link_website = "https://lucasvaugrente.github.io/pixel_gallery/";
+const link_website = "http://127.0.0.1:5500/";
 
 const container = document.querySelector('.container');
 
@@ -25,8 +25,6 @@ fetch(link_website + 'data/drawings.json')
 
             figures.forEach((img) => {
                 img.addEventListener("click", (e) => {
-                    console.log(img);
-
                     const imagePath = window.getComputedStyle(e.target).background.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
                     modal.classList.add("show");
                     modalImg.src = imagePath;
