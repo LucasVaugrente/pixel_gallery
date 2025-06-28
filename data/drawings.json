@@ -38,12 +38,6 @@
             "resolution": "100x230px"
         },
         {
-            "class": "stan_portal",
-            "title": "StanPortal",
-            "image": "img/projects/stan_portal.png",
-            "resolution": "500x350px"
-        },
-        {
             "class": "outer_wilds",
             "title": "Outer Wilds",
             "image": "img/projects/outer_wilds.png",
