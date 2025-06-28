@@ -77,6 +77,11 @@ main {
     z-index: 2;
 }
 
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
 .footer_left_image {
     position: absolute;
     bottom: 0;

@@ -69,7 +69,7 @@
     font-size: 20px;
     background-color: rgba(0, 0, 0, 0.747);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.795);
-    width: 350px;
+    width: 100%;
     height: 50px;
     border-radius: 10px 10px 0 0;
     transition: all 0.2s ease-in-out;
@@ -85,9 +85,8 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.747);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.795);
-    width: 310px;
+    width: 100%;
     height: 50px;
-    padding: 0 20px;
     border-radius: 0 0 10px 10px;
     transition: all 0.2s ease-in-out;
     opacity: 0;
@@ -96,49 +95,66 @@
 .container .infos p {
     font-size: 15px;
     user-select: none;
+    margin: 0 20px;
 }
 
-.container > div:hover .infos {
+.container>div:hover .infos {
     opacity: 1;
 }
 
 .modal {
-    display: none;
     position: fixed;
-    z-index: 1000;
-    padding-top: 60px;
+    z-index: 100;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    background-color: rgb(0, 0, 0);
+    z-index: -1;
 }
 
 .modal.show {
-    display: block;
+    opacity: 1;
+    z-index: 100;
 }
 
-.modal.show html {
-    overflow: hidden;
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 50px 0 50px;
+    gap: 50px;
+    height: 100%;
 }
 
 .modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    border-radius: 10px;
+    max-height: 70%;
+    max-width: 70%;
+    border-radius: 20px;
+    transition: transform 0.3s;
+}
+
+.modal-content.zoomed {
+    transform: scale(2);
+    cursor: zoom-out;
+    z-index: 200;
 }
 
 #caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+#caption h3 {
+    font-size: 50px;
 }
 
 .close {
@@ -150,23 +166,36 @@
     align-items: center;
     cursor: pointer;
     padding: 15px;
-    background-color: #503c62;
+    background-color: black;
+    border: 5px solid white;
     border-radius: 50px;
     transition: 0.3s;
 }
 
-.close:hover,
-.close:focus {
-    background-color: #7d4da7;
+.close:hover {
+    background-color: rgb(109, 49, 49);
+    transform: scale(120%);
 }
 
-.modal-content {
-    max-height: 90%;
-    max-width: 90%;
-    object-fit: contain;
-    transition: transform 0.3s ease;
+.close:active {
+    transition: 0.1s;
+    background-color: rgb(167, 45, 45);
+    transform: scale(100%);
 }
 
-.no-scroll {
-    overflow: hidden;
+@media screen and (max-width: 600px) {
+    #caption h3 {
+        font-size: 30px;
+    }
+
+    #caption p {
+        font-size: 15px;
+    }
+}
+
+
+@media screen and (max-width: 540px) {
+    .container {
+        width: 90%;
+    }
 }
