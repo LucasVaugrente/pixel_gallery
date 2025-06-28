@@ -48,7 +48,7 @@ svg {
     width: 100%;
 }
 
-h1, h2, h3, p, div {
+h1, h2, h3, p, div, button {
     font-family: lele, sans-serif;
     color: white;
 }

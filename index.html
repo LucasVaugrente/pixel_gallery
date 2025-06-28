@@ -45,6 +45,15 @@
     </div>
 
     <main>
+        <div class="filters">
+            <p>Filter by type</p>
+            <button class="filter-button selected" data-filter="all">All</button>
+            <button class="filter-button" data-filter="gif" data-group="format">Animation</button>
+            <button class="filter-button" data-filter="png" data-group="format">Image</button>
+            <button class="filter-button" data-filter="portrait" data-group="shape">Portrait</button>
+            <button class="filter-button" data-filter="landscape" data-group="shape">Landscape</button>
+            <button class="filter-button" data-filter="square" data-group="shape">Square</button>
+        </div>
         <div class="container"></div>
         <div id="imageViewer" class="modal">
             <div class="modal-body">

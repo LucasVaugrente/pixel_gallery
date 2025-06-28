@@ -16,6 +16,8 @@ fetch(link_website + 'data/drawings.json')
 
             div.id = 'drawing' + (index + 1);
             div.classList.add(data.drawings[index].class);
+            div.classList.add(data.drawings[index].type);
+            div.classList.add(data.drawings[index].format);
             div.classList.add('drawing');
             div.style.backgroundImage = `url(${link_website + data.drawings[index].image})`;
 
@@ -41,11 +43,12 @@ fetch(link_website + 'data/drawings.json')
 
         figures.forEach((img) => {
             img.addEventListener("click", (e) => {
-                const imagePath = window.getComputedStyle(e.target).background.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
-                modal.classList.add("show");
+                const imagePath = img.style.backgroundImage.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
                 modalImg.src = imagePath;
 
-                const classDrawing = e.target.classList[0];
+                modal.classList.add("show");
+
+                const classDrawing = img.classList[0];
                 const drawingData = jsonData.drawings.find(drawing => drawing.class === classDrawing);
 
                 const title = drawingData.title;
@@ -118,6 +121,64 @@ fetch(link_website + 'data/drawings.json')
             modalImg.style.transformOrigin = "center center";
         });
 
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const drawings = document.querySelectorAll('.drawing');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+
+                if (filter === 'all') {
+                    filterButtons.forEach(btn => btn.classList.remove('selected'));
+                    button.classList.add('selected');
+                    drawings.forEach(drawing => drawing.style.display = 'block');
+                    return;
+                }
+
+                button.classList.toggle('selected');
+
+                document.querySelector('[data-filter="all"]').classList.remove('selected');
+
+                const activeGroups = {};
+                const activeFilters = [];
+
+                filterButtons.forEach(btn => {
+                    if (btn.classList.contains('selected')) {
+                        const g = btn.getAttribute('data-group');
+                        const f = btn.getAttribute('data-filter');
+                        if (!activeGroups[g]) activeGroups[g] = [];
+                        activeGroups[g].push(f);
+                        activeFilters.push(f)
+                    }
+                });
+
+                if (activeFilters.length === 5 || Object.keys(activeGroups).length === 0) {
+                    document.querySelector('[data-filter="all"]').classList.add('selected');
+                    filterButtons.forEach(btn => {
+                        if (btn !== document.querySelector('[data-filter="all"]')) {
+                            btn.classList.remove('selected');
+                        }
+                    });
+                    drawings.forEach(drawing => drawing.style.display = 'block');
+                    return;
+                }
+
+                drawings.forEach(drawing => {
+                    let visible = true;
+                    for (const group in activeGroups) {
+                        const filters = activeGroups[group];
+                        const hasOne = filters.some(f => drawing.classList.contains(f));
+                        if (!hasOne) {
+                            visible = false;
+                            break;
+                        }
+                    }
+                    drawing.style.display = visible ? 'block' : 'none';
+                });
+            });
+        });
+
+
         if (detectMobile()) {
             const infosDrawings = document.querySelectorAll('.infos');
             console.log(infosDrawings);
@@ -128,4 +189,3 @@ fetch(link_website + 'data/drawings.json')
         }
     })
     .catch(error => console.error(error));
-

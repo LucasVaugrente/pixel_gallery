@@ -102,6 +102,34 @@
     opacity: 1;
 }
 
+.filters {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.filter-button {
+    padding: 10px 20px;
+    background-color: #f0f0f000;
+    border: solid 2px white;
+    color: white;
+    font-size: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.filter-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-button.selected {
+    background-color: rgba(255, 255, 255, 0.82);
+    color: black;
+}
+
 .modal {
     position: fixed;
     z-index: 100;
