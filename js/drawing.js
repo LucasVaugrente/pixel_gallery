@@ -189,3 +189,17 @@ fetch(link_website + 'data/drawings.json')
         }
     })
     .catch(error => console.error(error));
+
+const filtersSelectReponsive = document.getElementById('filtersSelectReponsive');
+const filters = document.querySelector('.filters');
+
+filtersSelectReponsive.addEventListener('click', () => {
+    filters.classList.toggle('show');
+    filtersSelectReponsive.classList.toggle('open');
+
+    if (filters.classList.contains('show')) {
+        filtersSelectReponsive.textContent = 'Filters ▲';
+    } else {
+        filtersSelectReponsive.textContent = 'Filters ▼';
+    }
+});

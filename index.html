@@ -31,28 +31,30 @@
         <div class="welcome_text">
             Welcome
         </div>
-        <p>This is my pixel art gallery, I draw in my spare time when I have inspiration.</p>
+        <p>This is my pixel art gallery, I draw in my spare time when I have
+            inspiration.</p>
         <webring-iutechno style="display: flex; justify-content: center;" site="lululedj"></webring-iutechno>
     </header>
 
     <div class="svg_rocket animation onspace"></div>
     <div id="tooltip_rocket">
         <div class="tip">
-            <span class="tooltip-text">Where do you want to go ?</span>
             <button id="landingRocket">Landing</button>
-            <ul class="listDrawingTooltip"></ul>
         </div>
     </div>
 
     <main>
+        <button id="filtersSelectReponsive">Filters ▼</button>
         <div class="filters">
             <p>Filter by type</p>
+
             <button class="filter-button selected" data-filter="all">All</button>
             <button class="filter-button" data-filter="gif" data-group="format">Animation</button>
             <button class="filter-button" data-filter="png" data-group="format">Image</button>
             <button class="filter-button" data-filter="portrait" data-group="shape">Portrait</button>
             <button class="filter-button" data-filter="landscape" data-group="shape">Landscape</button>
             <button class="filter-button" data-filter="square" data-group="shape">Square</button>
+
         </div>
         <div class="container"></div>
         <div id="imageViewer" class="modal">
@@ -64,9 +66,8 @@
         </div>
     </main>
 
-
     <footer>
-        <img class="footer_left_image" src="img/footer_left.png" alt="">
+        <img class="footer_left_image" src="img/footer_left.png" alt>
         <div class="smokeRocket"></div>
         <button class="launchRocket">Launch</button>
         <div class="all_credits">

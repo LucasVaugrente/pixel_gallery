@@ -10,7 +10,6 @@ const landingButton = document.querySelector('#landingRocket');
 const numberSmoke = 10000;
 let generateSmokeZone = false;
 let generateSmokeInProgress = false;
-let scroll_count = 0;
 let previousScrollPercentage = getScrollPercentage();
 
 let tooltipTimer;
@@ -72,9 +71,8 @@ document.addEventListener("scroll", function () {
     }
 
     rocket.style.top = newTop + 'px';
-    tooltip_rocket.style.top = newTop - 40 + 'px';
+    tooltip_rocket.style.top = newTop + 'px';
 
-    scroll_count = scrollPercentage;
     previousScrollPercentage = scrollPercentage;
 });
 
@@ -99,15 +97,6 @@ tooltip_rocket.addEventListener('mouseleave', () => {
     tooltip_rocket.style.pointerEvents = "none";
 });
 
-listDrawingTooltipLink.forEach(link => {
-    link.addEventListener('click', event => {
-        settings.slow = 1000;
-        settings.effect = linearTween;
-        const idDrawing = document.querySelector("#" + event.target.className);
-        slowScrollTo(idDrawing.offsetTop - 100);
-    })
-})
-
 launchButton.addEventListener('click', () => {
     const titleWelcome = document.querySelector('.welcome_text');
     const subtitleWelcome = document.querySelector('#welcome p');
@@ -126,30 +115,9 @@ landingButton.addEventListener('click', () => {
         document.documentElement.classList.add('smooth-scroll');
         settings.slow = 12000;
         settings.effect = easeInOutCuaic;
-        animateLandButton();
         slowScrollToBottom();
     }
 });
-
-function animateLandButton() {
-    for (let index = 0; index < 20; index++) {
-        const wind_line = document.createElement("span");
-        const left = Math.random() * (300 - 2) + 10;
-        const height = Math.random() * (20 - 10) + 10;
-        const bottom = Math.random() * 50 - 50;
-
-        wind_line.style.height = `${height}px`;
-        wind_line.style.bottom = `${bottom}px`;
-        wind_line.style.left = `${left}px`;
-
-        wind_line.classList.add("windLine");
-        wind_line.classList.add("animated");
-        landingButton.appendChild(wind_line);
-        setTimeout(() => {
-            landingButton.removeChild(wind_line);
-        }, 2000);
-    }
-}
 
 /**
  *

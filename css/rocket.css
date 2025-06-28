@@ -9,7 +9,7 @@
     background-repeat: no-repeat;
     background-position: center;
     width: 113px;
-    height: 125px;
+    height: 194px;
     z-index: 2;
     margin: 1em;
     transition: transform 0.8s ease-in-out;
@@ -26,9 +26,9 @@
 }
 
 .svg_rocket.landing {
-    background: url('../img/rocket/rocket_animation.png') 0px 0px;
+    background: url('../img/rocket/rocket_animation_small.png') 0px 0px;
     background-size: 1100px 200px;
-    width: 75px;
+    width: 74px;
     height: 200px;
     right: 19px;
     animation: rocketFire 1s steps(15) infinite, rocketMove 2s ease-in-out infinite;
@@ -38,16 +38,16 @@
     position: fixed;
     margin: 20px;
     padding: 15px;
-    top: 0;
+    top: 40px;
     right: 100px;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: rgba(255, 255, 255, 0.777);
     box-shadow: 0 0 10px #545454;
     color: white;
     z-index: 3;
     opacity: 0;
-    width: 250px;
-    height: max-content;
+    width: 150px;
+    height: 52px;
     transition: opacity 0.2s ease-in-out;
     user-select: none;
 }
@@ -60,17 +60,10 @@
     position: absolute;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-left: 15px solid rgb(0 0 0 / 47%);
+    border-left: 15px solid rgba(255, 255, 255, 0.777);
     border-radius: 8px;
-    right: -15px;
-    top: 85px;
-}
-
-.tooltip-text {
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 18px;
+    right: -14px;
+    top: 25px;
 }
 
 .tip {
@@ -80,62 +73,37 @@
     gap: 10px;
 }
 
-.listDrawingTooltip {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 100%;
-    height: 200px;
-    overflow-y: auto;
-}
-
-.listDrawingTooltip a {
-    color: white;
-    text-decoration: none;
-    padding: 7px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: all 0.2s ease-in-out;
-}
-
-.listDrawingTooltip a:hover {
-    background-color: rgba(185, 185, 185, 0.342);
-}
-
 #landingRocket {
     position: relative;
-    border-radius: 5px;
-    border: none;
-    overflow: hidden;
-    width: 100%;
-    padding: 7px;
-    background-color: #d63030;
+    font-family: pixelart;
+    font-size: 20px;
+    background-color: #ad2929;
     color: white;
-    font-weight: bold;
+    text-decoration: none;
+    border: solid 2px rgb(3, 15, 37);
+    padding: 10px 9px 7px 10px;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transform-style: preserve-3d;
+    z-index: 3;
+    box-shadow: 0 10px 0 black;
+    transition: opacity 0.2s ease-in-out !important;
     user-select: none;
 }
 
 #landingRocket:active {
-    transform: scale(0.9);
-}
-
-#landingRocket:disabled {
-    background-color: #b1222298;
-}
-
-#landingRocket:disabled:hover {
-    background-color: #b1222298;
-}
-
-#landingRocket:disabled:active {
-    transform: none;
+    background: rgb(3, 15, 37);
+    box-shadow: 0 0 0 black;
+    transform: translate(0em, 10px) !important;
 }
 
 #landingRocket:hover {
-    background-color: #b12222;
+    background-color: #952f2f;
+}
+
+#landingRocket:hover:active {
+    background: rgb(3, 15, 37);
 }
 
 .windLine {
