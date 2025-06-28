@@ -2,7 +2,7 @@ import { generateStars, updateStars } from "./stars.js";
 import { detectMobile } from "./utils.js";
 
 generateStars();
-updateStars();
+// updateStars();
 
 if (detectMobile()) {
     const titlesDrawing = document.querySelectorAll('.drawing h3');

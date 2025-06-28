@@ -13,7 +13,18 @@ fetch(link_website + 'data/drawings.json')
             div.classList.add(data.drawings[index].class);
             div.classList.add('drawing');
             div.style.backgroundImage = `url(${link_website + data.drawings[index].image})`;
-            div.innerHTML = `<span>${data.drawings[index].title}</span><p>${data.drawings[index].resolution}</p>`;
+
+            const title = data.drawings[index].title;
+            const resolution = data.drawings[index].resolution;
+            let frames = data.drawings[index].frames !== undefined ? `${data.drawings[index].frames} frames` : "";
+
+            div.innerHTML = `
+                                <span>${title}</span>
+                                <div class="infos">
+                                    <p>${resolution}</p>
+                                    <p>${frames}</p>
+                                </div>
+                            `;
 
             container.appendChild(div);
 

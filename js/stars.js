@@ -117,7 +117,6 @@ function updateStars() {
             const moveX = (distanceX / distance) * attractionSpeed;
             const moveY = (distanceY / distance) * attractionSpeed;
 
-
             const newLeft = parseFloat(star.style.left) + moveX;
             const newTop = parseFloat(star.style.top) + moveY;
 

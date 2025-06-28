@@ -77,25 +77,28 @@
     user-select: none;
 }
 
-.container div p {
+.container .infos {
     position: absolute;
     bottom: 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    font-size: 15px;
     background-color: rgba(0, 0, 0, 0.747);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.795);
-    width: 350px;
+    width: 310px;
     height: 50px;
     padding: 0 20px;
     border-radius: 0 0 10px 10px;
     transition: all 0.2s ease-in-out;
     opacity: 0;
+}
+
+.container .infos p {
+    font-size: 15px;
     user-select: none;
 }
 
-.container div:hover p {
+.container > div:hover .infos {
     opacity: 1;
 }
 
