@@ -132,7 +132,7 @@
 
 .modal {
     position: fixed;
-    z-index: 100;
+    display: none;
     left: 0;
     top: 0;
     width: 100%;
@@ -144,6 +144,7 @@
 
 .modal.show {
     opacity: 1;
+    display: block;
     z-index: 100;
 }
 
