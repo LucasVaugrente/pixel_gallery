@@ -7,7 +7,8 @@
             "resolution": "200x120px",
             "frames": 261,
             "type": "gif",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Pixilart"
         },
         {
             "class": "mood_ghibli",
@@ -15,7 +16,8 @@
             "image": "img/projects/mood_ghibli.png",
             "resolution": "350x200px",
             "type": "png",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Pixilart"
         },
         {
             "class": "stan_portal",
@@ -23,7 +25,8 @@
             "image": "img/projects/stan_portal.png",
             "resolution": "500x350px",
             "type": "png",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Pixilart"
         },
         {
             "class": "mont_saint_michel",
@@ -31,7 +34,8 @@
             "image": "img/projects/mont_saint_michel.png",
             "resolution": "150x130px",
             "type": "png",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Pixilart"
         },
         {
             "class": "spirited_away",
@@ -39,7 +43,8 @@
             "image": "img/projects/spirited_away.png",
             "resolution": "300x200px",
             "type": "png",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Pixilart"
         },
         {
             "class": "weekend",
@@ -47,7 +52,8 @@
             "image": "img/projects/weekend.png",
             "resolution": "100x230px",
             "type": "png",
-            "format": "portrait"
+            "format": "portrait",
+            "software": "Pixilart"
         },
         {
             "class": "outer_wilds",
@@ -55,7 +61,8 @@
             "image": "img/projects/outer_wilds.png",
             "resolution": "300x200px",
             "type": "png",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Pixilart"
         },
         {
             "class": "bike_ride",
@@ -63,7 +70,8 @@
             "image": "img/projects/bike_ride.png",
             "resolution": "150x100px",
             "type": "png",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Pixilart"
         },
         {
             "class": "ride",
@@ -71,7 +79,8 @@
             "image": "img/projects/ride.png",
             "resolution": "120x220px",
             "type": "png",
-            "format": "portrait"
+            "format": "portrait",
+            "software": "Pixilart"
         },
         {
             "class": "alone",
@@ -79,7 +88,8 @@
             "image": "img/projects/alone.png",
             "resolution": "150x350px",
             "type": "png",
-            "format": "portrait"
+            "format": "portrait",
+            "software": "Pixilart"
         },
         {
             "class": "unknown_dream",
@@ -87,7 +97,8 @@
             "image": "img/projects/unknown_dream.png",
             "resolution": "101x200px",
             "type": "png",
-            "format": "portrait"
+            "format": "portrait",
+            "software": "Pixilart"
         },
         {
             "class": "cat",
@@ -95,7 +106,8 @@
             "image": "img/projects/cat.png",
             "resolution": "212x212px",
             "type": "png",
-            "format": "square"
+            "format": "square",
+            "software": "Pixilart"
         },
         {
             "class": "jet_fuel",
@@ -103,7 +115,8 @@
             "image": "img/projects/jet_fuel.png",
             "resolution": "200x150px",
             "type": "png",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Pixilart"
         },
         {
             "class": "little_nightmare",
@@ -111,7 +124,8 @@
             "image": "img/projects/little_nightmare.png",
             "resolution": "110x200px",
             "type": "png",
-            "format": "portrait"
+            "format": "portrait",
+            "software": "Pixilart"
         },
         {
             "class": "get_lucky",
@@ -119,7 +133,8 @@
             "image": "img/projects/get_lucky.png",
             "resolution": "200x200px",
             "type": "png",
-            "format": "square"
+            "format": "square",
+            "software": "Pixilart"
         },
         {
             "class": "outer_wilds_system.png",
@@ -127,7 +142,8 @@
             "image": "img/projects/outer_wilds_system.png",
             "resolution": "450x200px",
             "type": "png",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Pixilart"
         },
         {
             "class": "working",
@@ -135,7 +151,8 @@
             "image": "img/projects/working.png",
             "resolution": "500x300px",
             "type": "png",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Pixilart"
         },
         {
             "class": "echoes_of_stillness",
@@ -143,7 +160,8 @@
             "image": "img/projects/echoes_of_stillness.png",
             "resolution": "150x170px",
             "type": "png",
-            "format": "square"
+            "format": "square",
+            "software": "Aseprite"
         },
         {
             "class": "lalaland",
@@ -151,7 +169,8 @@
             "image": "img/projects/lalaland.png",
             "resolution": "480x211px",
             "type": "png",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Aseprite"
         },
         {
             "class": "hope",
@@ -160,7 +179,8 @@
             "resolution": "150x150px",
             "frames": 18,
             "type": "gif",
-            "format": "square"
+            "format": "square",
+            "software": "Aseprite"
         },
         {
             "class": "whispers_of_the_smoke",
@@ -169,7 +189,8 @@
             "resolution": "150x150px",
             "frames": 16,
             "type": "gif",
-            "format": "square"
+            "format": "square",
+            "software": "Aseprite"
         },
         {
             "class": "bottle",
@@ -178,7 +199,8 @@
             "resolution": "50x117px",
             "frames": 12,
             "type": "gif",
-            "format": "portrait"
+            "format": "portrait",
+            "software": "Aseprite"
         },
         {
             "class": "where",
@@ -187,7 +209,8 @@
             "resolution": "100x100px",
             "frames": 24,
             "type": "gif",
-            "format": "square"
+            "format": "square",
+            "software": "Aseprite"
         },
         {
             "class": "red_cosmos",
@@ -195,7 +218,8 @@
             "image": "img/projects/red_cosmos.png",
             "resolution": "100x190px",
             "type": "png",
-            "format": "portrait"
+            "format": "portrait",
+            "software": "Aseprite"
         },
         {
             "class": "purple_blackhole",
@@ -203,7 +227,8 @@
             "image": "img/projects/purple_blackhole.png",
             "resolution": "200x200px",
             "type": "png",
-            "format": "square"
+            "format": "square",
+            "software": "Aseprite"
         },
         {
             "class": "door",
@@ -211,7 +236,8 @@
             "image": "img/projects/door.png",
             "resolution": "200x200px",
             "type": "png",
-            "format": "square"
+            "format": "square",
+            "software": "Aseprite"
         },
         {
             "class": "flow",
@@ -219,7 +245,8 @@
             "image": "img/projects/flow.png",
             "resolution": "200x200px",
             "type": "png",
-            "format": "square"
+            "format": "square",
+            "software": "Aseprite"
         },
         {
             "class": "some_clouds",
@@ -227,7 +254,8 @@
             "image": "img/projects/some_clouds.png",
             "resolution": "203x140px",
             "type": "png",
-            "format": "landscape"
+            "format": "landscape",
+            "software": "Aseprite"
         },
         {
             "class": "accident",
@@ -235,7 +263,8 @@
             "image": "img/projects/accident.png",
             "resolution": "200x300px",
             "type": "png",
-            "format": "portrait"
+            "format": "portrait",
+            "software": "Aseprite"
         }        
     ]
 }

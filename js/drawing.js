@@ -53,11 +53,13 @@ fetch(link_website + 'data/drawings.json')
 
                 const title = drawingData.title;
                 const resolution = drawingData.resolution;
+                const software = drawingData.software;
                 let frames = drawingData.frames !== undefined ? `<p>${drawingData.frames} frames</p>` : "";
 
                 captionText.innerHTML = `
                                 <h3>Title : ${title}</h3>
                                 <p>Resolution : ${resolution}</p>
+                                <p>Software : ${software}</p>
                                 ${frames}
                             `;
                 document.body.classList.add('no-scroll');
