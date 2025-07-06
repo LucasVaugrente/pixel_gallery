@@ -265,6 +265,14 @@
             "type": "png",
             "format": "portrait",
             "software": "Aseprite"
-        }        
+        },
+        {
+            "class": "mariogalaxy",
+            "title": "Mario Galaxy",
+            "image": "img/projects/mariogalaxy.png",
+            "resolution": "128x258px",
+            "type": "png",
+            "format": "portrait"
+        }       
     ]
 }
