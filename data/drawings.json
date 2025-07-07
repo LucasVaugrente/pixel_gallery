@@ -272,7 +272,17 @@
             "image": "img/projects/mariogalaxy.png",
             "resolution": "128x258px",
             "type": "png",
-            "format": "portrait"
-        }       
+            "format": "portrait",
+            "software": "Aseprite"
+        },
+        {
+            "class": "Where_the_wind_rests",
+            "title": "Where the Wind Rests",
+            "image": "img/projects/Where_the_wind_rests.gif",
+            "resolution": "270x250px",
+            "type": "gif",
+            "format": "square",
+            "software": "Aseprite"
+        }     
     ]
 }
