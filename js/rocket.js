@@ -1,4 +1,4 @@
-import { getScrollPercentage, slowScrollTo, slowScrollToBottom, slowScrollToTop, linearTween, easeInOutCuaic, settings } from "./utils.js";
+import { getScrollPercentage, slowScrollToBottom, slowScrollToTop, easeInOutCuaic, settings } from "./utils.js";
 
 const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket');
@@ -7,6 +7,8 @@ const footer = document.querySelector('footer');
 const launchButton = document.querySelector('.launchRocket');
 const landingButton = document.querySelector('#landingRocket');
 
+const isPhone = window.innerWidth < 580;
+
 const numberSmoke = 10000;
 let generateSmokeZone = false;
 let generateSmokeInProgress = false;
@@ -14,7 +16,7 @@ let previousScrollPercentage = getScrollPercentage();
 
 let tooltipTimer;
 
-if (window.innerWidth < 580) {
+if (isPhone) {
     rocket.style.display = "none";
     tooltip_rocket.style.display = "none";
 }
@@ -32,54 +34,54 @@ for (let i = 0; i < drawings.length; i++) {
     listDrawingTooltip[0].appendChild(link);
 }
 
-const listDrawingTooltipLink = document.querySelectorAll('.listDrawingTooltip a');
+if (!isPhone) {
+    document.addEventListener("scroll", function () {
+        const scrollPercentage = getScrollPercentage();
+        const scrollDirection = scrollPercentage > previousScrollPercentage ? 'down' : 'up';
+        const maxTop = window.innerHeight - footer.offsetHeight / 2;
+        const newTop = (scrollPercentage / 100) * maxTop;
 
-document.addEventListener("scroll", function () {
-    const scrollPercentage = getScrollPercentage();
-    const scrollDirection = scrollPercentage > previousScrollPercentage ? 'down' : 'up';
-    const maxTop = window.innerHeight - footer.offsetHeight / 2;
-    const newTop = (scrollPercentage / 100) * maxTop;
+        if (scrollPercentage >= 100) {
+            rocket.style.filter = "none";
+            rocket.classList.remove('landing');
+            rocket.classList.remove('onspace');
+            landingButton.disabled = false;
+            generateSmokeInProgress = false;
+            generateSmokeZone = true;
+            generateSmoke();
+        } else {
+            rocket.style.filter = "drop-shadow(0 40px 15px rgb(255, 240, 25))";
+        }
 
-    if (scrollPercentage >= 100) {
-        rocket.style.filter = "none";
-        rocket.classList.remove('landing');
-        rocket.classList.remove('onspace');
-        landingButton.disabled = false;
-        generateSmokeInProgress = false;
-        generateSmokeZone = true;
-        generateSmoke();
-    } else {
-        rocket.style.filter = "drop-shadow(0 40px 15px rgb(255, 240, 25))";
-    }
+        if (!generateSmokeInProgress && scrollPercentage > 98 && scrollPercentage < 100) {
+            rocket.classList.add('landing');
+            rocket.classList.remove('onspace');
+            generateSmokeInProgress = true;
+            generateSmokeZone = false;
+            generateSmoke();
+        }
+        if (scrollPercentage < 98) {
+            rocket.classList.add('onspace');
+            rocket.classList.remove('landing');
+            generateSmokeInProgress = false;
+            generateSmokeZone = true;
+            generateSmoke();
+        }
 
-    if (!generateSmokeInProgress && scrollPercentage > 98 && scrollPercentage < 100) {
-        rocket.classList.add('landing');
-        rocket.classList.remove('onspace');
-        generateSmokeInProgress = true;
-        generateSmokeZone = false;
-        generateSmoke();
-    }
-    if (scrollPercentage < 98) {
-        rocket.classList.add('onspace');
-        rocket.classList.remove('landing');
-        generateSmokeInProgress = false;
-        generateSmokeZone = true;
-        generateSmoke();
-    }
+        if (scrollPercentage > 99 && scrollDirection === 'down') {
+            launchButton.classList.add("show");
+        }
 
-    if (scrollPercentage > 99 && scrollDirection === 'down') {
-        launchButton.classList.add("show");
-    }
+        if (scrollPercentage < 99.95 && scrollDirection === 'up') {
+            launchButton.classList.remove("show");
+        }
 
-    if (scrollPercentage < 99.95 && scrollDirection === 'up') {
-        launchButton.classList.remove("show");
-    }
+        rocket.style.top = newTop + 'px';
+        tooltip_rocket.style.top = newTop + 'px';
 
-    rocket.style.top = newTop + 'px';
-    tooltip_rocket.style.top = newTop + 'px';
-
-    previousScrollPercentage = scrollPercentage;
-});
+        previousScrollPercentage = scrollPercentage;
+    });
+}
 
 rocket.addEventListener('mouseenter', () => {
     tooltip_rocket.style.pointerEvents = "all";

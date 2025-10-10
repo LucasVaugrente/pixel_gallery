@@ -3,7 +3,7 @@
   position: absolute;
   will-change: opacity, transform;
   cursor: pointer;
-  z-index: 10;
+  z-index: 1;
 }
 
 @keyframes twinkle {

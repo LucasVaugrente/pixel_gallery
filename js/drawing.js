@@ -183,8 +183,6 @@ fetch(link_website + 'data/drawings.json')
 
         if (detectMobile()) {
             const infosDrawings = document.querySelectorAll('.infos');
-            console.log(infosDrawings);
-
             infosDrawings.forEach(function (infoDrawing) {
                 infoDrawing.style.opacity = '1';
             }, "myThisArg");
@@ -192,8 +190,11 @@ fetch(link_website + 'data/drawings.json')
     })
     .catch(error => console.error(error));
 
+const isPhone = window.innerWidth < 580;
+
 const filtersSelectReponsive = document.getElementById('filtersSelectReponsive');
 const filters = document.querySelector('.filters');
+const container_button_filters_resp = document.querySelector('.container_button_filters_resp');
 
 filtersSelectReponsive.addEventListener('click', () => {
     filters.classList.toggle('show');
@@ -208,9 +209,20 @@ filtersSelectReponsive.addEventListener('click', () => {
 
 window.addEventListener('scroll', () => {
     const filtersPosition = filters.getBoundingClientRect();
-    if (filtersPosition.top <= 0) {
-        filters.classList.add('ontop');
+    const filtersSelectPosition = container_button_filters_resp.getBoundingClientRect();
+
+    if (isPhone) {
+        if (filtersSelectPosition.top <= 0) {
+            container_button_filters_resp.classList.add('ontop');
+        } else {
+            container_button_filters_resp.classList.remove('ontop');
+        }
     } else {
-        filters.classList.remove('ontop');
+        if (filtersPosition.top <= 0) {
+            filters.classList.add('ontop');
+        } else {
+            filters.classList.remove('ontop');
+        }
     }
+
 });

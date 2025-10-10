@@ -85,10 +85,8 @@
 
 .filters {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  margin-left: 50px;
   gap: 20px;
   z-index: 3;
   transition: all 0.1s ease-in-out;
@@ -96,15 +94,15 @@
   top: 0;
 }
 
-.filters.ontop {
-  background-color: #1b1434d9;
-  padding: 15px 20px 15px 50px;
-  margin-left: 0;
-  width: 100%;
+.filters p {
+  margin-left: 50px;
 }
 
-.filters.show {
-  display: flex;
+.filters.ontop {
+  background-color: #1b1434d9;
+  padding: 20px 0;
+  margin-left: 0;
+  width: 100%;
 }
 
 .filter-button {
@@ -131,6 +129,24 @@
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+}
+
+.container_button_filters_resp {
+  position: sticky;
+  top: 0;
+  margin-left: 40px;
+  z-index: 3;
+}
+
+.container_button_filters_resp.ontop {
+  background-color: #1b1434d9;
+  margin-left: 0;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.container_button_filters_resp.ontop #filtersSelectReponsive {
+  margin-left: 35px;
 }
 
 .filter-button:hover,
@@ -226,6 +242,58 @@
   transform: scale(100%);
 }
 
+@media screen and (max-width: 940px) {
+  #filtersSelectReponsive {
+    display: flex;
+  }
+
+  .filters {
+    position: fixed;
+    top: 79px;
+    left: 0;
+    width: 200px;
+
+    overflow: hidden;
+    max-height: 0;
+    --pad-block: 0;
+    padding: var(--pad-block) 20px;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.74);
+
+    transition: max-height 0.45s ease, padding 0.45s ease,
+      border-color 0.45s ease;
+    z-index: 3;
+  }
+
+  .filters.show {
+    max-height: 500px;
+    --pad-block: 20px;
+    border-color: white;
+    top: 83px;
+  }
+
+  .filters p,
+  .filters .filter-button {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s;
+    width: 100%;
+    border-radius: 10px;
+    margin: 0;
+  }
+
+  .filters.show p,
+  .filters.show .filter-button {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #filtersSelectReponsive {
+    display: flex;
+  }
+}
+
 @media screen and (max-width: 600px) {
   #caption h3 {
     font-size: 30px;
@@ -246,31 +314,5 @@
 
   .container > div {
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 540px) {
-  #filtersSelectReponsive {
-    display: flex;
-  }
-
-  .filters {
-    display: none;
-    background-color: rgba(0, 0, 0, 0.529);
-    border-radius: 20px;
-    border: solid 2px white;
-    padding: 20px;
-    flex-direction: column;
-    width: 200px;
-    gap: 10px;
-  }
-
-  .filters p {
-    margin-bottom: 10px;
-  }
-
-  .filters button {
-    width: 100%;
-    border-radius: 10px;
   }
 }
