@@ -205,3 +205,12 @@ filtersSelectReponsive.addEventListener('click', () => {
         filtersSelectReponsive.textContent = 'Filters ▼';
     }
 });
+
+window.addEventListener('scroll', () => {
+    const filtersPosition = filters.getBoundingClientRect();
+    if (filtersPosition.top <= 0) {
+        filters.classList.add('ontop');
+    } else {
+        filters.classList.remove('ontop');
+    }
+});

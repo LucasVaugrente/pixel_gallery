@@ -50,9 +50,9 @@ window.addEventListener("load", () => {
 
     const onImageLoad = () => {
         loadedCount++;
-        if (loadedCount === imageUrls.length) {
-            document.getElementById("loader").style.display = "none";
-        }
+        // if (loadedCount === imageUrls.length) {
+        //     document.getElementById("loader").style.display = "none";
+        // }
     };
 
     imageUrls.forEach((url) => {

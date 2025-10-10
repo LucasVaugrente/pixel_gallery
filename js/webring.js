@@ -73,12 +73,12 @@ class Webring extends HTMLElement {
 
                 // stocke les index des sites avant et après dans le json
                 let previousSiteIndex = matchedSiteIndex - 1;
-                if(previousSiteIndex < 0)previousSiteIndex = sites.length - 1;
-                
-                let nextSiteIndex = matchedSiteIndex + 1;
-                if(nextSiteIndex >= sites.length)nextSiteIndex = 0;
+                if (previousSiteIndex < 0) previousSiteIndex = sites.length - 1;
 
-                
+                let nextSiteIndex = matchedSiteIndex + 1;
+                if (nextSiteIndex >= sites.length) nextSiteIndex = 0;
+
+
                 const content = `
                 <h3 id="webring-title">webring</h3>
                 <a href="${sites[previousSiteIndex].url}" rel="prev noreferrer external">&lt; avant</a>
@@ -98,7 +98,7 @@ class Webring extends HTMLElement {
                 <h3 id="webring-title">grossomodo</h3>
                 <p>T'es pas dans le gang bozo</p>
                 `;
-                
+
                 this.shadowRoot
                     .querySelector("#webring-inner")
                     .insertAdjacentHTML("afterbegin", content);

@@ -212,4 +212,4 @@ function detectMobile() {
     });
 }
 
-export {getScrollPercentage, slowScrollTo, slowScrollToBottom, slowScrollToTop, scrollTo, scrollToC, scrollToX, linearTween, easeInOutCuaic, detectMobile};
+export { getScrollPercentage, slowScrollTo, slowScrollToBottom, slowScrollToTop, scrollTo, scrollToC, scrollToX, linearTween, easeInOutCuaic, detectMobile };

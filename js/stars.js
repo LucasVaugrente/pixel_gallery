@@ -16,11 +16,20 @@ const attractionSpeed = 1;
  *
  */
 function generateStars() {
+
+    var body = document.body,
+        html = document.documentElement;
+
+    var height = Math.max(body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight, html.offsetHeight);
+
+    console.log(document.documentElement.scrollHeight);
+
     for (let i = 0; i < starsNumber; i++) {
         const star = document.createElement('div');
         star.classList.add('mini-star');
         star.style.left = Math.random() * window.innerWidth + 'px';
-        star.style.top = Math.random() * document.documentElement.scrollHeight + 'px';
+        star.style.top = Math.random() * (document.documentElement.scrollHeight) + 'px';
 
         const widthANDheight = Math.random() * 5 + 1;
         star.style.width = widthANDheight + 'px';
@@ -160,4 +169,4 @@ function updateStars() {
     requestAnimationFrame(updateStars);
 }
 
-export {generateStars, updateStars};
+export { generateStars, updateStars };

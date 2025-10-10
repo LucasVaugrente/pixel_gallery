@@ -1,4 +1,4 @@
-import {getScrollPercentage, slowScrollTo, slowScrollToBottom, slowScrollToTop, linearTween, easeInOutCuaic, settings} from "./utils.js";
+import { getScrollPercentage, slowScrollTo, slowScrollToBottom, slowScrollToTop, linearTween, easeInOutCuaic, settings } from "./utils.js";
 
 const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket');
@@ -13,6 +13,11 @@ let generateSmokeInProgress = false;
 let previousScrollPercentage = getScrollPercentage();
 
 let tooltipTimer;
+
+if (window.innerWidth < 580) {
+    rocket.style.display = "none";
+    tooltip_rocket.style.display = "none";
+}
 
 const drawings = document.querySelectorAll(".figure img");
 const allDrawingLinkWebsite = {};
