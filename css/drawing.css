@@ -257,7 +257,6 @@
     max-height: 0;
     --pad-block: 0;
     padding: var(--pad-block) 20px;
-    border: 2px solid transparent;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.74);
 
@@ -267,6 +266,7 @@
   }
 
   .filters.show {
+    border: 2px solid transparent;
     max-height: 500px;
     --pad-block: 20px;
     border-color: white;
