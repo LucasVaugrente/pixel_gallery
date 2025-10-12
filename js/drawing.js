@@ -42,28 +42,30 @@ fetch(link_website + 'data/drawings.json')
         const figures = document.querySelectorAll(".container > div");
 
         figures.forEach((img) => {
-            img.addEventListener("click", (e) => {
-                const imagePath = img.style.backgroundImage.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
-                modalImg.src = imagePath;
+            if (!detectMobile()) {
+                img.addEventListener("click", (e) => {
+                    const imagePath = img.style.backgroundImage.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
+                    modalImg.src = imagePath;
 
-                modal.classList.add("show");
+                    modal.classList.add("show");
 
-                const classDrawing = img.classList[0];
-                const drawingData = jsonData.drawings.find(drawing => drawing.class === classDrawing);
+                    const classDrawing = img.classList[0];
+                    const drawingData = jsonData.drawings.find(drawing => drawing.class === classDrawing);
 
-                const title = drawingData.title;
-                const resolution = drawingData.resolution;
-                const software = drawingData.software;
-                let frames = drawingData.frames !== undefined ? `<p>${drawingData.frames} frames</p>` : "";
+                    const title = drawingData.title;
+                    const resolution = drawingData.resolution;
+                    const software = drawingData.software;
+                    let frames = drawingData.frames !== undefined ? `<p>${drawingData.frames} frames</p>` : "";
 
-                captionText.innerHTML = `
+                    captionText.innerHTML = `
                                 <h3>Title : ${title}</h3>
                                 <p>Resolution : ${resolution}</p>
                                 <p>Software : ${software}</p>
                                 ${frames}
                             `;
-                document.body.classList.add('no-scroll');
-            });
+                    document.body.classList.add('no-scroll');
+                });
+            }
         });
 
         const close = document.querySelector(".modal .close");
@@ -207,22 +209,47 @@ filtersSelectReponsive.addEventListener('click', () => {
     }
 });
 
-window.addEventListener('scroll', () => {
-    const filtersPosition = filters.getBoundingClientRect();
-    const filtersSelectPosition = container_button_filters_resp.getBoundingClientRect();
+let mobileSentinel = null;
+let desktopSentinel = null;
 
-    if (isPhone) {
-        if (filtersSelectPosition.top <= 0) {
-            container_button_filters_resp.classList.add('ontop');
-        } else {
-            container_button_filters_resp.classList.remove('ontop');
-        }
-    } else {
-        if (filtersPosition.top <= 0) {
-            filters.classList.add('ontop');
-        } else {
-            filters.classList.remove('ontop');
-        }
-    }
+function createSentinelBefore(targetEl, className) {
+    const s = document.createElement('div');
+    s.className = className;
+    s.style.position = 'relative';
+    s.style.width = '100%';
+    s.style.height = '1px';
+    s.style.pointerEvents = 'none';
+    targetEl.parentNode.insertBefore(s, targetEl);
+    return s;
+}
 
-});
+if (isPhone) {
+    mobileSentinel = createSentinelBefore(container_button_filters_resp, 'sticky-sentinel-mobile');
+
+    const ioMobile = new IntersectionObserver(
+        (entries) => {
+            const e = entries[0];
+            const stuck = e.intersectionRatio === 0;
+            container_button_filters_resp.classList.toggle('ontop', stuck);
+        },
+        {
+            root: null,
+            threshold: [0, 1],
+        }
+    );
+
+    ioMobile.observe(mobileSentinel);
+} else {
+    desktopSentinel = createSentinelBefore(filters, 'sticky-sentinel-desktop');
+
+    const ioDesktop = new IntersectionObserver(
+        (entries) => {
+            const e = entries[0];
+            const stuck = e.intersectionRatio === 0;
+            filters.classList.toggle('ontop', stuck);
+        },
+        { root: null, threshold: [0, 1] }
+    );
+
+    ioDesktop.observe(desktopSentinel);
+}
