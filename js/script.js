@@ -1,8 +1,3 @@
-import { generateStars, updateStars } from "./stars.js";
-
-generateStars();
-// updateStars();
-
 window.addEventListener("load", () => {
 
     const imageUrls = [
@@ -44,7 +39,6 @@ window.addEventListener("load", () => {
         "img/projects/working.png",
         "img/projects/mariogalaxy.png",
     ];
-
 
     let loadedCount = 0;
 

@@ -31,6 +31,16 @@ body {
   );
 }
 
+#starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -83,7 +93,6 @@ h2 {
 p {
   font-size: 20px;
   text-align: center;
-  user-select: none;
 }
 
 main {

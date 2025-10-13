@@ -1,163 +1,78 @@
-const sky = document.querySelector('.sky');
-const blackhole = document.querySelector('.blackhole');
+(() => {
+    const c = document.getElementById('starfield');
+    const ctx = c.getContext('2d', { alpha: true });
 
-const starsNumber = 100;
-const maxRightShootingStars = 500;
-const maxTopShootingStars = 1500;
-let selectedStar = null;
-let offsetXStar = 0;
-let offsetYStar = 0;
-const attractionRadius = 300;
-const attractionSpeed = 1;
+    const colors = ['#ffffff', '#ffe9c4', '#d4fbff'];
 
-/**
- *
- * @summary Generate stars on the background
- *
- */
-function generateStars() {
-    for (let i = 0; i < starsNumber; i++) {
-        const star = document.createElement('div');
-        star.classList.add('mini-star');
-        star.style.left = Math.random() * window.innerWidth + 'px';
-        star.style.top = Math.random() * (document.documentElement.scrollHeight) + 'px';
 
-        const widthANDheight = Math.random() * 5 + 1;
-        star.style.width = widthANDheight + 'px';
-        star.style.height = widthANDheight + 'px';
+    const DENSITY = 0.0005;
+    const SIZE_MIN = 1, SIZE_MAX = 3;
+    const TWINKLE = 0.8;
 
-        star.addEventListener('mousedown', onMouseDown);
+    const sizeStars = Math.random() * (3 - 1) + 1;
 
-        sky.appendChild(star);
+    const PARALLAX = 0.15;
+    const LERP = 0.12;
+
+    let stars = [], W = 0, H = 0, DPR = 1;
+
+    let scrollTargetY = 0;
+    let scrollSmoothedY = 0;
+
+    function resetSize() {
+        W = window.innerWidth;
+        H = window.innerHeight;
+
+        DPR = Math.max(1, Math.min(3, window.devicePixelRatio || 1));
+        c.width = Math.round(W * DPR);
+        c.height = Math.round(H * DPR);
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+        const n = Math.round(W * H * DENSITY);
+        stars = Array.from({ length: n }, () => ({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            s: Math.floor(Math.random() * (SIZE_MAX - SIZE_MIN) + SIZE_MIN),
+            p: Math.random() * Math.PI * 2,
+            a: 0.6 + Math.random() * 0.4
+        }));
     }
 
-    const stars = document.querySelectorAll('.mini-star');
-    for (let index = 0; index < 20; index++) {
-        const star = stars[Math.floor(Math.random() * stars.length)];
-        star.style.animation = "twinkle 3s ease-in-out infinite";
-    }
-}
+    function lerp(a, b, t) { return a + (b - a) * t; }
 
-function generate1ShootingStar() {
-    const windowWidth = window.innerWidth;
-    const topPosition = Math.random() * document.documentElement.scrollHeight - maxTopShootingStars;
-    let leftPosition = Math.random() * 100;
+    function draw(t) {
+        scrollSmoothedY = lerp(scrollSmoothedY, scrollTargetY, LERP);
 
-    const shootingStar = document.createElement('div');
-    shootingStar.classList.add('shooting-star');
+        let yOff = -scrollSmoothedY * PARALLAX;
+        yOff = ((yOff % H) + H) % H;
 
-    if (windowWidth - (leftPosition / 100 * windowWidth) < maxRightShootingStars) {
-        while (windowWidth - (leftPosition / 100 * windowWidth) < maxRightShootingStars) {
-            leftPosition = Math.random() * 100;
+        ctx.clearRect(0, 0, W, H);
+
+        for (const st of stars) {
+            const tw = (Math.cos(st.p + t * 0.001 * TWINKLE) + 1) / 2;
+            const alpha = Math.min(1, Math.max(0.2, 0.4 * tw + 0.6 * st.a));
+            ctx.globalAlpha = alpha;
+            ctx.fillStyle = colors[st.s % colors.length];
+
+            let y = st.y + yOff;
+            if (y >= H) y -= H;
+            if (y < 0) y += H;
+
+            ctx.fillRect((st.x | 0), (y | 0), sizeStars, sizeStars);
+
+            if (y < sizeStars) ctx.fillRect((st.x | 0), ((y + H) | 0), sizeStars, sizeStars);
+            else if (y > H - sizeStars) ctx.fillRect((st.x | 0), ((y - H) | 0), sizeStars, sizeStars);
         }
+
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(draw);
     }
 
-    shootingStar.style.left = leftPosition + 'vw';
-    shootingStar.style.top = topPosition + 'px';
+    window.addEventListener('scroll', () => {
+        scrollTargetY = window.scrollY || window.pageYOffset || 0;
+    }, { passive: true });
 
-    sky.appendChild(shootingStar);
-
-    setTimeout(() => {
-        shootingStar.remove();
-    }, 6000);
-}
-
-function startGeneratingShootingStars() {
-    const delay = Math.random() * (5000 - 1000) + 1000;
-
-    setTimeout(() => {
-        generate1ShootingStar();
-        startGeneratingShootingStars();
-    }, delay);
-}
-
-function onMouseDown(e) {
-    selectedStar = e.target;
-    offsetXStar = e.clientX - selectedStar.getBoundingClientRect().left;
-    offsetYStar = e.clientY - selectedStar.getBoundingClientRect().top;
-
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
-}
-
-function onMouseMove(e) {
-    if (selectedStar) {
-        selectedStar.style.left = e.clientX - offsetXStar + window.scrollX + 'px';
-        selectedStar.style.top = e.clientY - offsetYStar + window.scrollY + 'px';
-    }
-}
-
-function onMouseUp() {
-    document.removeEventListener('mousemove', onMouseMove);
-    document.removeEventListener('mouseup', onMouseUp);
-    selectedStar = null;
-}
-
-function updateStars() {
-    const blackholeRect = blackhole.getBoundingClientRect();
-    const blackholeCenter = {
-        x: blackholeRect.left + blackholeRect.width / 2,
-        y: blackholeRect.top + blackholeRect.height / 2
-    };
-
-    const stars = document.querySelectorAll('.mini-star');
-
-    stars.forEach(star => {
-        const starRect = star.getBoundingClientRect();
-        const starCenter = {
-            x: starRect.left + starRect.width / 2,
-            y: starRect.top + starRect.height / 2
-        };
-
-        const distanceX = blackholeCenter.x - starCenter.x;
-        const distanceY = blackholeCenter.y - starCenter.y;
-        const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
-
-        if (distance < attractionRadius) {
-            const moveX = (distanceX / distance) * attractionSpeed;
-            const moveY = (distanceY / distance) * attractionSpeed;
-
-            const newLeft = parseFloat(star.style.left) + moveX;
-            const newTop = parseFloat(star.style.top) + moveY;
-
-            star.style.left = newLeft + 'px';
-            star.style.top = newTop + 'px';
-
-            if (distance < 20) {
-                star.remove();
-            }
-        }
-    });
-
-    // welcomeText.forEach(word => {
-    //     const wordRect = word.getBoundingClientRect();
-    //     const wordCenter = {
-    //         x: wordRect.left + wordRect.width / 2,
-    //         y: wordRect.top + wordRect.height / 2
-    //     };
-
-    //     const distanceX = blackholeCenter.x - wordCenter.x;
-    //     const distanceY = blackholeCenter.y - wordCenter.y;
-    //     const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
-
-    //     if (distance < attractionRadius) {
-    //         const moveX = (distanceX / distance) * attractionSpeed;
-    //         const moveY = (distanceY / distance) * attractionSpeed;
-
-
-    //         const newLeft = parseFloat(word.style.left) + moveX;
-    //         const newTop = parseFloat(word.style.top) + moveY;
-
-    //         word.style.left = newLeft + 'px';
-    //         word.style.top = newTop + 'px';
-
-    //         if (distance < 20) {
-    //             word.remove();
-    //         }
-    //     }
-    // });
-
-    requestAnimationFrame(updateStars);
-}
-
-export { generateStars, updateStars };
+    resetSize();
+    window.addEventListener('resize', resetSize, { passive: true });
+    requestAnimationFrame(draw);
+})();
