@@ -1,288 +1,297 @@
 {
-    "drawings": [
-        {
-            "class": "sunrise",
-            "title": "Sunrise",
-            "image": "img/projects/sunrise.gif",
-            "resolution": "200x120px",
-            "frames": 261,
-            "type": "gif",
-            "format": "landscape",
-            "software": "Pixilart"
-        },
-        {
-            "class": "mood_ghibli",
-            "title": "Mood Ghibli",
-            "image": "img/projects/mood_ghibli.png",
-            "resolution": "350x200px",
-            "type": "png",
-            "format": "landscape",
-            "software": "Pixilart"
-        },
-        {
-            "class": "stan_portal",
-            "title": "Stan Portal",
-            "image": "img/projects/stan_portal.png",
-            "resolution": "500x350px",
-            "type": "png",
-            "format": "landscape",
-            "software": "Pixilart"
-        },
-        {
-            "class": "mont_saint_michel",
-            "title": "Mont Saint Michel",
-            "image": "img/projects/mont_saint_michel.png",
-            "resolution": "150x130px",
-            "type": "png",
-            "format": "landscape",
-            "software": "Pixilart"
-        },
-        {
-            "class": "spirited_away",
-            "title": "Spirited Away",
-            "image": "img/projects/spirited_away.png",
-            "resolution": "300x200px",
-            "type": "png",
-            "format": "landscape",
-            "software": "Pixilart"
-        },
-        {
-            "class": "weekend",
-            "title": "Week-end",
-            "image": "img/projects/weekend.png",
-            "resolution": "100x230px",
-            "type": "png",
-            "format": "portrait",
-            "software": "Pixilart"
-        },
-        {
-            "class": "outer_wilds",
-            "title": "Outer Wilds",
-            "image": "img/projects/outer_wilds.png",
-            "resolution": "300x200px",
-            "type": "png",
-            "format": "landscape",
-            "software": "Pixilart"
-        },
-        {
-            "class": "bike_ride",
-            "title": "Bike Ride",
-            "image": "img/projects/bike_ride.png",
-            "resolution": "150x100px",
-            "type": "png",
-            "format": "landscape",
-            "software": "Pixilart"
-        },
-        {
-            "class": "ride",
-            "title": "Ride",
-            "image": "img/projects/ride.png",
-            "resolution": "120x220px",
-            "type": "png",
-            "format": "portrait",
-            "software": "Pixilart"
-        },
-        {
-            "class": "alone",
-            "title": "Alone",
-            "image": "img/projects/alone.png",
-            "resolution": "150x350px",
-            "type": "png",
-            "format": "portrait",
-            "software": "Pixilart"
-        },
-        {
-            "class": "unknown_dream",
-            "title": "Unknown Dream",
-            "image": "img/projects/unknown_dream.png",
-            "resolution": "101x200px",
-            "type": "png",
-            "format": "portrait",
-            "software": "Pixilart"
-        },
-        {
-            "class": "cat",
-            "title": "Cat",
-            "image": "img/projects/cat.png",
-            "resolution": "212x212px",
-            "type": "png",
-            "format": "square",
-            "software": "Pixilart"
-        },
-        {
-            "class": "jet_fuel",
-            "title": "Jet Fuel",
-            "image": "img/projects/jet_fuel.png",
-            "resolution": "200x150px",
-            "type": "png",
-            "format": "landscape",
-            "software": "Pixilart"
-        },
-        {
-            "class": "little_nightmare",
-            "title": "Little Nightmare",
-            "image": "img/projects/little_nightmare.png",
-            "resolution": "110x200px",
-            "type": "png",
-            "format": "portrait",
-            "software": "Pixilart"
-        },
-        {
-            "class": "get_lucky",
-            "title": "Get Lucky",
-            "image": "img/projects/get_lucky.png",
-            "resolution": "200x200px",
-            "type": "png",
-            "format": "square",
-            "software": "Pixilart"
-        },
-        {
-            "class": "outer_wilds_system.png",
-            "title": "Outer Wilds System",
-            "image": "img/projects/outer_wilds_system.png",
-            "resolution": "450x200px",
-            "type": "png",
-            "format": "landscape",
-            "software": "Pixilart"
-        },
-        {
-            "class": "working",
-            "title": "Working",
-            "image": "img/projects/working.png",
-            "resolution": "500x300px",
-            "type": "png",
-            "format": "landscape",
-            "software": "Pixilart"
-        },
-        {
-            "class": "echoes_of_stillness",
-            "title": "Echoes of Stillness",
-            "image": "img/projects/echoes_of_stillness.png",
-            "resolution": "150x170px",
-            "type": "png",
-            "format": "square",
-            "software": "Aseprite"
-        },
-        {
-            "class": "lalaland",
-            "title": "La La Land",
-            "image": "img/projects/lalaland.png",
-            "resolution": "480x211px",
-            "type": "png",
-            "format": "landscape",
-            "software": "Aseprite"
-        },
-        {
-            "class": "hope",
-            "title": "Hope",
-            "image": "img/projects/hope.gif",
-            "resolution": "150x150px",
-            "frames": 18,
-            "type": "gif",
-            "format": "square",
-            "software": "Aseprite"
-        },
-        {
-            "class": "whispers_of_the_smoke",
-            "title": "Whispers of the Smoke",
-            "image": "img/projects/whispers_of_the_smoke.gif",
-            "resolution": "150x150px",
-            "frames": 16,
-            "type": "gif",
-            "format": "square",
-            "software": "Aseprite"
-        },
-        {
-            "class": "bottle",
-            "title": "Cosmos in a bottle",
-            "image": "img/projects/bottle.gif",
-            "resolution": "50x117px",
-            "frames": 12,
-            "type": "gif",
-            "format": "portrait",
-            "software": "Aseprite"
-        },
-        {
-            "class": "where",
-            "title": "Where ?",
-            "image": "img/projects/where.gif",
-            "resolution": "100x100px",
-            "frames": 24,
-            "type": "gif",
-            "format": "square",
-            "software": "Aseprite"
-        },
-        {
-            "class": "red_cosmos",
-            "title": "Red Cosmos",
-            "image": "img/projects/red_cosmos.png",
-            "resolution": "100x190px",
-            "type": "png",
-            "format": "portrait",
-            "software": "Aseprite"
-        },
-        {
-            "class": "purple_blackhole",
-            "title": "Purple Blackhole",
-            "image": "img/projects/purple_blackhole.png",
-            "resolution": "200x200px",
-            "type": "png",
-            "format": "square",
-            "software": "Aseprite"
-        },
-        {
-            "class": "door",
-            "title": "Door",
-            "image": "img/projects/door.png",
-            "resolution": "200x200px",
-            "type": "png",
-            "format": "square",
-            "software": "Aseprite"
-        },
-        {
-            "class": "flow",
-            "title": "Flow",
-            "image": "img/projects/flow.png",
-            "resolution": "200x200px",
-            "type": "png",
-            "format": "square",
-            "software": "Aseprite"
-        },
-        {
-            "class": "some_clouds",
-            "title": "Some Clouds",
-            "image": "img/projects/some_clouds.png",
-            "resolution": "203x140px",
-            "type": "png",
-            "format": "landscape",
-            "software": "Aseprite"
-        },
-        {
-            "class": "accident",
-            "title": "Accident",
-            "image": "img/projects/accident.png",
-            "resolution": "200x300px",
-            "type": "png",
-            "format": "portrait",
-            "software": "Aseprite"
-        },
-        {
-            "class": "mariogalaxy",
-            "title": "Mario Galaxy",
-            "image": "img/projects/mariogalaxy.png",
-            "resolution": "128x258px",
-            "type": "png",
-            "format": "portrait",
-            "software": "Aseprite"
-        },
-        {
-            "class": "Where_the_wind_rests",
-            "title": "Where the Wind Rests",
-            "image": "img/projects/Where_the_wind_rests.gif",
-            "resolution": "270x250px",
-            "type": "gif",
-            "format": "square",
-            "software": "Aseprite"
-        }     
-    ]
+  "drawings": [
+    {
+      "class": "sunrise",
+      "title": "Sunrise",
+      "image": "img/projects/sunrise.gif",
+      "resolution": "200x120px",
+      "frames": 261,
+      "type": "gif",
+      "format": "landscape",
+      "software": "Pixilart"
+    },
+    {
+      "class": "mood_ghibli",
+      "title": "Mood Ghibli",
+      "image": "img/projects/mood_ghibli.png",
+      "resolution": "350x200px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Pixilart"
+    },
+    {
+      "class": "stan_portal",
+      "title": "Stan Portal",
+      "image": "img/projects/stan_portal.png",
+      "resolution": "500x350px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Pixilart"
+    },
+    {
+      "class": "mont_saint_michel",
+      "title": "Mont Saint Michel",
+      "image": "img/projects/mont_saint_michel.png",
+      "resolution": "150x130px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Pixilart"
+    },
+    {
+      "class": "spirited_away",
+      "title": "Spirited Away",
+      "image": "img/projects/spirited_away.png",
+      "resolution": "300x200px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Pixilart"
+    },
+    {
+      "class": "weekend",
+      "title": "Week-end",
+      "image": "img/projects/weekend.png",
+      "resolution": "100x230px",
+      "type": "png",
+      "format": "portrait",
+      "software": "Pixilart"
+    },
+    {
+      "class": "outer_wilds",
+      "title": "Outer Wilds",
+      "image": "img/projects/outer_wilds.png",
+      "resolution": "300x200px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Pixilart"
+    },
+    {
+      "class": "bike_ride",
+      "title": "Bike Ride",
+      "image": "img/projects/bike_ride.png",
+      "resolution": "150x100px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Pixilart"
+    },
+    {
+      "class": "ride",
+      "title": "Ride",
+      "image": "img/projects/ride.png",
+      "resolution": "120x220px",
+      "type": "png",
+      "format": "portrait",
+      "software": "Pixilart"
+    },
+    {
+      "class": "alone",
+      "title": "Alone",
+      "image": "img/projects/alone.png",
+      "resolution": "150x350px",
+      "type": "png",
+      "format": "portrait",
+      "software": "Pixilart"
+    },
+    {
+      "class": "unknown_dream",
+      "title": "Unknown Dream",
+      "image": "img/projects/unknown_dream.png",
+      "resolution": "101x200px",
+      "type": "png",
+      "format": "portrait",
+      "software": "Pixilart"
+    },
+    {
+      "class": "cat",
+      "title": "Cat",
+      "image": "img/projects/cat.png",
+      "resolution": "212x212px",
+      "type": "png",
+      "format": "square",
+      "software": "Pixilart"
+    },
+    {
+      "class": "jet_fuel",
+      "title": "Jet Fuel",
+      "image": "img/projects/jet_fuel.png",
+      "resolution": "200x150px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Pixilart"
+    },
+    {
+      "class": "little_nightmare",
+      "title": "Little Nightmare",
+      "image": "img/projects/little_nightmare.png",
+      "resolution": "110x200px",
+      "type": "png",
+      "format": "portrait",
+      "software": "Pixilart"
+    },
+    {
+      "class": "get_lucky",
+      "title": "Get Lucky",
+      "image": "img/projects/get_lucky.png",
+      "resolution": "200x200px",
+      "type": "png",
+      "format": "square",
+      "software": "Pixilart"
+    },
+    {
+      "class": "outer_wilds_system.png",
+      "title": "Outer Wilds System",
+      "image": "img/projects/outer_wilds_system.png",
+      "resolution": "450x200px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Pixilart"
+    },
+    {
+      "class": "working",
+      "title": "Working",
+      "image": "img/projects/working.png",
+      "resolution": "500x300px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Pixilart"
+    },
+    {
+      "class": "echoes_of_stillness",
+      "title": "Echoes of Stillness",
+      "image": "img/projects/echoes_of_stillness.png",
+      "resolution": "150x170px",
+      "type": "png",
+      "format": "square",
+      "software": "Aseprite"
+    },
+    {
+      "class": "lalaland",
+      "title": "La La Land",
+      "image": "img/projects/lalaland.png",
+      "resolution": "480x211px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Aseprite"
+    },
+    {
+      "class": "hope",
+      "title": "Hope",
+      "image": "img/projects/hope.gif",
+      "resolution": "150x150px",
+      "frames": 18,
+      "type": "gif",
+      "format": "square",
+      "software": "Aseprite"
+    },
+    {
+      "class": "whispers_of_the_smoke",
+      "title": "Whispers of the Smoke",
+      "image": "img/projects/whispers_of_the_smoke.gif",
+      "resolution": "150x150px",
+      "frames": 16,
+      "type": "gif",
+      "format": "square",
+      "software": "Aseprite"
+    },
+    {
+      "class": "bottle",
+      "title": "Cosmos in a bottle",
+      "image": "img/projects/bottle.gif",
+      "resolution": "50x117px",
+      "frames": 12,
+      "type": "gif",
+      "format": "portrait",
+      "software": "Aseprite"
+    },
+    {
+      "class": "where",
+      "title": "Where ?",
+      "image": "img/projects/where.gif",
+      "resolution": "100x100px",
+      "frames": 24,
+      "type": "gif",
+      "format": "square",
+      "software": "Aseprite"
+    },
+    {
+      "class": "red_cosmos",
+      "title": "Red Cosmos",
+      "image": "img/projects/red_cosmos.png",
+      "resolution": "100x190px",
+      "type": "png",
+      "format": "portrait",
+      "software": "Aseprite"
+    },
+    {
+      "class": "purple_blackhole",
+      "title": "Purple Blackhole",
+      "image": "img/projects/purple_blackhole.png",
+      "resolution": "200x200px",
+      "type": "png",
+      "format": "square",
+      "software": "Aseprite"
+    },
+    {
+      "class": "door",
+      "title": "Door",
+      "image": "img/projects/door.png",
+      "resolution": "200x200px",
+      "type": "png",
+      "format": "square",
+      "software": "Aseprite"
+    },
+    {
+      "class": "flow",
+      "title": "Flow",
+      "image": "img/projects/flow.png",
+      "resolution": "200x200px",
+      "type": "png",
+      "format": "square",
+      "software": "Aseprite"
+    },
+    {
+      "class": "some_clouds",
+      "title": "Some Clouds",
+      "image": "img/projects/some_clouds.png",
+      "resolution": "203x140px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Aseprite"
+    },
+    {
+      "class": "accident",
+      "title": "Accident",
+      "image": "img/projects/accident.png",
+      "resolution": "200x300px",
+      "type": "png",
+      "format": "portrait",
+      "software": "Aseprite"
+    },
+    {
+      "class": "mariogalaxy",
+      "title": "Mario Galaxy",
+      "image": "img/projects/mariogalaxy.png",
+      "resolution": "128x258px",
+      "type": "png",
+      "format": "portrait",
+      "software": "Aseprite"
+    },
+    {
+      "class": "Where_the_wind_rests",
+      "title": "Where the Wind Rests",
+      "image": "img/projects/Where_the_wind_rests.gif",
+      "resolution": "270x250px",
+      "type": "gif",
+      "format": "square",
+      "software": "Aseprite"
+    },
+    {
+      "class": "celeste",
+      "title": "The Summit",
+      "image": "img/projects/celeste.png",
+      "resolution": "200x200px",
+      "type": "png",
+      "format": "square",
+      "software": "Aseprite"
+    }
+  ]
 }
