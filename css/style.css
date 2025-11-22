@@ -150,6 +150,11 @@ main {
     animation: none;
 }
 
+.logo_github {
+    width: 20px;
+    height: 20px;
+}
+
 @keyframes color-change {
     0% {
         color: rgb(204, 38, 38);
