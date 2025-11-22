@@ -73,7 +73,7 @@ fetch(link_website + 'data/drawings.json')
             document.body.classList.remove('no-scroll');
         });
 
-        // add zoom effect on the image when the user clique dessus
+        // Ajout un effet de zoom sur l'image quand l'utilisateur clique dessus
         modalImg.addEventListener("click", () => {
             modalImg.classList.toggle("zoomed");
             modalImg.style.transform = modalImg.classList.contains("zoomed") ? "scale(2)" : "scale(1)";
@@ -97,7 +97,7 @@ fetch(link_website + 'data/drawings.json')
             modalImg.style.transformOrigin = `${percentX}% ${percentY}%`;
         });
 
-        let zoomScale = 2; // valeur initiale (doit correspondre à celle dans .zoomed)
+        let zoomScale = 2; // valeur initiale (doit correspondre à celle dans .²)
         const minScale = 1;
         const maxScale = 5;
         const zoomStep = 0.1;
@@ -105,9 +105,8 @@ fetch(link_website + 'data/drawings.json')
         modalImg.addEventListener("wheel", (e) => {
             if (!modalImg.classList.contains("zoomed")) return;
 
-            e.preventDefault(); // empêche le scroll de la page
+            e.preventDefault();
 
-            // deltaY > 0 = scroll vers le bas → dézoome
             if (e.deltaY > 0) {
                 zoomScale = Math.max(minScale, zoomScale - zoomStep);
             } else {
@@ -116,7 +115,6 @@ fetch(link_website + 'data/drawings.json')
 
             modalImg.style.transform = `scale(${zoomScale})`;
         });
-
 
         // reset zoom et transform-origin si on ferme la modal
         close.addEventListener("click", () => {
