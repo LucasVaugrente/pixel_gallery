@@ -8,7 +8,8 @@
       "frames": 261,
       "type": "gif",
       "format": "landscape",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 54
     },
     {
       "class": "mood_ghibli",
@@ -17,7 +18,8 @@
       "resolution": "350x200px",
       "type": "png",
       "format": "landscape",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 185
     },
     {
       "class": "stan_portal",
@@ -26,7 +28,8 @@
       "resolution": "500x350px",
       "type": "png",
       "format": "landscape",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 237
     },
     {
       "class": "mont_saint_michel",
@@ -35,7 +38,8 @@
       "resolution": "150x130px",
       "type": "png",
       "format": "landscape",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 1007
     },
     {
       "class": "spirited_away",
@@ -44,7 +48,8 @@
       "resolution": "300x200px",
       "type": "png",
       "format": "landscape",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 69
     },
     {
       "class": "weekend",
@@ -53,7 +58,8 @@
       "resolution": "100x230px",
       "type": "png",
       "format": "portrait",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 26
     },
     {
       "class": "outer_wilds",
@@ -62,7 +68,8 @@
       "resolution": "300x200px",
       "type": "png",
       "format": "landscape",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 177
     },
     {
       "class": "bike_ride",
@@ -71,7 +78,8 @@
       "resolution": "150x100px",
       "type": "png",
       "format": "landscape",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 46
     },
     {
       "class": "ride",
@@ -80,7 +88,8 @@
       "resolution": "120x220px",
       "type": "png",
       "format": "portrait",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 49
     },
     {
       "class": "alone",
@@ -89,7 +98,8 @@
       "resolution": "150x350px",
       "type": "png",
       "format": "portrait",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 107
     },
     {
       "class": "unknown_dream",
@@ -98,7 +108,8 @@
       "resolution": "101x200px",
       "type": "png",
       "format": "portrait",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 66
     },
     {
       "class": "cat",
@@ -107,7 +118,8 @@
       "resolution": "212x212px",
       "type": "png",
       "format": "square",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 20
     },
     {
       "class": "jet_fuel",
@@ -116,7 +128,8 @@
       "resolution": "200x150px",
       "type": "png",
       "format": "landscape",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 100
     },
     {
       "class": "little_nightmare",
@@ -125,7 +138,8 @@
       "resolution": "110x200px",
       "type": "png",
       "format": "portrait",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 168
     },
     {
       "class": "get_lucky",
@@ -134,7 +148,8 @@
       "resolution": "200x200px",
       "type": "png",
       "format": "square",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 84
     },
     {
       "class": "outer_wilds_system.png",
@@ -143,7 +158,8 @@
       "resolution": "450x200px",
       "type": "png",
       "format": "landscape",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 141
     },
     {
       "class": "working",
@@ -152,7 +168,8 @@
       "resolution": "500x300px",
       "type": "png",
       "format": "landscape",
-      "software": "Pixilart"
+      "software": "Pixilart",
+      "colors": 217
     },
     {
       "class": "echoes_of_stillness",
@@ -161,7 +178,8 @@
       "resolution": "150x170px",
       "type": "png",
       "format": "square",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 160
     },
     {
       "class": "lalaland",
@@ -170,7 +188,8 @@
       "resolution": "480x211px",
       "type": "png",
       "format": "landscape",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 164
     },
     {
       "class": "hope",
@@ -180,7 +199,8 @@
       "frames": 18,
       "type": "gif",
       "format": "square",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 234
     },
     {
       "class": "whispers_of_the_smoke",
@@ -190,7 +210,8 @@
       "frames": 16,
       "type": "gif",
       "format": "square",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 112
     },
     {
       "class": "bottle",
@@ -200,7 +221,8 @@
       "frames": 12,
       "type": "gif",
       "format": "portrait",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 132
     },
     {
       "class": "where",
@@ -210,7 +232,8 @@
       "frames": 24,
       "type": "gif",
       "format": "square",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 205
     },
     {
       "class": "red_cosmos",
@@ -219,7 +242,8 @@
       "resolution": "100x190px",
       "type": "png",
       "format": "portrait",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 106
     },
     {
       "class": "purple_blackhole",
@@ -228,7 +252,8 @@
       "resolution": "200x200px",
       "type": "png",
       "format": "square",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 427
     },
     {
       "class": "door",
@@ -237,7 +262,8 @@
       "resolution": "200x200px",
       "type": "png",
       "format": "square",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 310
     },
     {
       "class": "flow",
@@ -246,7 +272,8 @@
       "resolution": "200x200px",
       "type": "png",
       "format": "square",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 255
     },
     {
       "class": "some_clouds",
@@ -255,7 +282,8 @@
       "resolution": "203x140px",
       "type": "png",
       "format": "landscape",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 21
     },
     {
       "class": "accident",
@@ -264,7 +292,8 @@
       "resolution": "200x300px",
       "type": "png",
       "format": "portrait",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 190
     },
     {
       "class": "mariogalaxy",
@@ -273,7 +302,8 @@
       "resolution": "128x258px",
       "type": "png",
       "format": "portrait",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 319
     },
     {
       "class": "Where_the_wind_rests",
@@ -282,7 +312,8 @@
       "resolution": "270x250px",
       "type": "gif",
       "format": "square",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 300
     },
     {
       "class": "celeste",
@@ -291,7 +322,8 @@
       "resolution": "200x200px",
       "type": "png",
       "format": "square",
-      "software": "Aseprite"
+      "software": "Aseprite",
+      "colors": 305
     }
   ]
 }
