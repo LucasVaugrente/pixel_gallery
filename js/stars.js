@@ -1,6 +1,6 @@
 (() => {
     const c = document.getElementById('starfield');
-    const ctx = c.getContext('2d', { alpha: true });
+    const ctx = c.getContext('2d', {alpha: true});
 
     const colors = ['#ffffff', '#ffe9c4', '#d4fbff'];
 
@@ -29,7 +29,7 @@
         ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
 
         const n = Math.round(W * H * DENSITY);
-        stars = Array.from({ length: n }, () => ({
+        stars = Array.from({length: n}, () => ({
             x: Math.random() * W,
             y: Math.random() * H,
             s: Math.floor(Math.random() * (SIZE_MAX - SIZE_MIN) + SIZE_MIN),
@@ -38,7 +38,9 @@
         }));
     }
 
-    function lerp(a, b, t) { return a + (b - a) * t; }
+    function lerp(a, b, t) {
+        return a + (b - a) * t;
+    }
 
     function draw(t) {
         scrollSmoothedY = lerp(scrollSmoothedY, scrollTargetY, LERP);
@@ -50,8 +52,7 @@
 
         for (const st of stars) {
             const tw = (Math.cos(st.p + t * 0.001 * TWINKLE) + 1) / 2;
-            const alpha = Math.min(1, Math.max(0.2, 0.4 * tw + 0.6 * st.a));
-            ctx.globalAlpha = alpha;
+            ctx.globalAlpha = Math.min(1, Math.max(0.2, 0.4 * tw + 0.6 * st.a));
             ctx.fillStyle = colors[st.s % colors.length];
 
             let y = st.y + yOff;
@@ -69,10 +70,10 @@
     }
 
     window.addEventListener('scroll', () => {
-        scrollTargetY = window.scrollY || window.pageYOffset || 0;
-    }, { passive: true });
+        scrollTargetY = window.scrollY || 0;
+    }, {passive: true});
 
     resetSize();
-    window.addEventListener('resize', resetSize, { passive: true });
+    window.addEventListener('resize', resetSize, {passive: true});
     requestAnimationFrame(draw);
 })();

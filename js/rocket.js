@@ -1,4 +1,4 @@
-import { getScrollPercentage, slowScrollToBottom, slowScrollToTop, easeInOutCuaic, settings } from "./utils.js";
+import {getScrollPercentage, slowScrollToBottom, slowScrollToTop, easeInOutCuaic, settings} from "./utils.js";
 
 const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket');
@@ -151,7 +151,7 @@ function animatePixel(pixelSmoke, rightMax, goToRight) {
     }
     if ((goToRight && rightMax > window.innerWidth - 5) || pixelSmoke.getBoundingClientRect().bottom > window.innerHeight) {
         pixelSmoke.parentNode.removeChild(pixelSmoke);
-        return;
+        return 0;
     }
 
     setTimeout(function () {
@@ -200,6 +200,7 @@ function generateSmoke() {
             setTimeout(generatePixelSmoke, 10);
         }
     }
+
     if (!generateSmokeZone) {
         generatePixelSmoke();
     }

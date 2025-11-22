@@ -1,219 +1,205 @@
 .mini-star {
-  background-color: white;
-  position: absolute;
-  will-change: opacity, transform;
-  cursor: pointer;
-  z-index: 1;
+    background-color: white;
+    position: absolute;
+    will-change: opacity, transform;
+    cursor: pointer;
+    z-index: 1;
 }
 
 @keyframes twinkle {
-  0% {
-    opacity: 0.3;
-  }
+    0% {
+        opacity: 0.3;
+    }
 
-  50% {
-    opacity: 1;
-    transform: scale(1.4);
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1),
-      0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 0.1);
-  }
+    50% {
+        opacity: 1;
+        transform: scale(1.4);
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 0.1);
+    }
 
-  100% {
-    opacity: 0.3;
-    transform: scale(1);
-    box-shadow: none;
-  }
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+        box-shadow: none;
+    }
 }
 
 .shooting-star {
-  position: absolute;
-  opacity: 0;
-  width: 4px;
-  height: 4px;
-  background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1),
-    0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 0.1);
-  animation: animate 1.5s linear 1;
+    position: absolute;
+    opacity: 0;
+    width: 4px;
+    height: 4px;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 0.1);
+    animation: animate 1.5s linear 1;
 }
 
 .shooting-star::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 1px;
-  background: linear-gradient(90deg, #fff, transparent);
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg, #fff, transparent);
 }
 
 .blackholeBlock {
-  position: absolute;
-  top: 107px;
-  left: 107px;
-  width: 80px;
-  height: 80px;
-  z-index: 2;
+    position: absolute;
+    top: 107px;
+    left: 107px;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
 }
 
 .blackhole {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 45px;
-  height: 45px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 50px;
-  filter: drop-shadow(0 0 15px rgb(255, 184, 125));
-  z-index: 2;
-  cursor: pointer;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 45px;
+    height: 45px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50px;
+    filter: drop-shadow(0 0 15px rgb(255, 184, 125));
+    z-index: 2;
+    cursor: pointer;
 }
 
 .contour1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  border: 10px solid #ffffff;
-  filter: blur(2px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 10px solid #ffffff;
+    filter: blur(2px);
 }
 
 .arc1 {
-  position: absolute;
-  top: 7px;
-  left: -45px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50px;
-  border: 8px solid #ffffff;
-  border-bottom: none;
-  border-top: none;
-  transform: rotate(36deg);
-  padding: 10px;
-  border-bottom-color: transparent;
-  border-top-color: transparent;
-  border-left-color: transparent;
-  filter: blur(2px);
+    position: absolute;
+    top: 7px;
+    left: -45px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    transform: rotate(36deg);
+    padding: 10px;
+    border: 8px none transparent;
+    border-right: solid #ffffff;
+    border-left-style: solid;
+    filter: blur(2px);
 }
 
 .arc2 {
-  position: absolute;
-  top: -21px;
-  left: 50px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50px;
-  border: 8px solid #ffffff;
-  border-bottom: none;
-  border-top: none;
-  transform: rotate(-75deg);
-  padding: 10px;
-  border-bottom-color: transparent;
-  border-top-color: transparent;
-  border-right-color: transparent;
-  filter: blur(2px);
+    position: absolute;
+    top: -21px;
+    left: 50px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    transform: rotate(-75deg);
+    padding: 10px;
+    border: 8px none transparent;
+    border-right-style: solid;
+    border-left: solid #ffffff;
+    filter: blur(2px);
 }
 
 .arc3 {
-  position: absolute;
-  top: 34px;
-  left: 54px;
-  width: 20px;
-  height: 20px;
-  border-radius: 19px;
-  border: 8px solid #ffffff;
-  border-bottom: none;
-  border-top: none;
-  transform: rotate(43deg);
-  padding: 15px;
-  border-bottom-color: transparent;
-  border-top-color: transparent;
-  border-right-color: transparent;
-  filter: blur(2px);
+    position: absolute;
+    top: 34px;
+    left: 54px;
+    width: 20px;
+    height: 20px;
+    border-radius: 19px;
+    transform: rotate(43deg);
+    padding: 15px;
+    border: 8px none transparent;
+    border-right-style: solid;
+    border-left: solid #ffffff;
+    filter: blur(2px);
 }
 
 .arc4 {
-  position: absolute;
-  top: 56px;
-  left: -28px;
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
-  border: 8px solid #ffffff;
-  border-bottom: none;
-  border-top: none;
-  transform: rotate(106deg);
-  padding: 15px;
-  border-bottom-color: transparent;
-  border-top-color: transparent;
-  border-right-color: transparent;
-  filter: blur(2px);
+    position: absolute;
+    top: 56px;
+    left: -28px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    transform: rotate(106deg);
+    padding: 15px;
+    border: 8px none transparent;
+    border-right-style: solid;
+    border-left: solid #ffffff;
+    filter: blur(2px);
 }
 
 .blackhole::before {
-  content: "";
-  width: 100px;
-  height: 16px;
-  position: absolute;
-  top: 12px;
-  left: -35px;
-  transform: rotate(-17deg);
-  border: 10px solid #fab885;
-  border-radius: 50%;
-  border-top: transparent;
-  animation: rotateBlackhole 2s infinite;
-  z-index: 2;
-  filter: blur(5px);
+    content: "";
+    width: 100px;
+    height: 16px;
+    position: absolute;
+    top: 12px;
+    left: -35px;
+    transform: rotate(-17deg);
+    border: 10px solid #fab885;
+    border-radius: 50%;
+    border-top: transparent;
+    animation: rotateBlackhole 2s infinite;
+    z-index: 2;
+    filter: blur(5px);
 }
 
 .blackhole::after {
-  content: "";
-  width: 108px;
-  height: 18px;
-  position: absolute;
-  top: 14px;
-  left: -33px;
-  transform: rotate(-17deg);
-  border: 4px solid white;
-  border-radius: 50%;
-  border-top: transparent;
-  animation: rotateBlackhole 2s infinite;
-  z-index: 2;
-  filter: blur(2px);
+    content: "";
+    width: 108px;
+    height: 18px;
+    position: absolute;
+    top: 14px;
+    left: -33px;
+    transform: rotate(-17deg);
+    border: 4px solid white;
+    border-radius: 50%;
+    border-top: transparent;
+    animation: rotateBlackhole 2s infinite;
+    z-index: 2;
+    filter: blur(2px);
 }
 
 @keyframes rotateBlackhole {
-  0% {
-    transform: rotate(-17deg);
-  }
-  50% {
-    transform: rotate(-15deg);
-  }
-  100% {
-    transform: rotate(-17deg);
-  }
+    0% {
+        transform: rotate(-17deg);
+    }
+    50% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(-17deg);
+    }
 }
 
 @keyframes animate {
-  0% {
-    transform: rotate(200deg) translateX(0);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(200deg) translateX(-500px);
-    opacity: 0;
-  }
+    0% {
+        transform: rotate(200deg) translateX(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(200deg) translateX(-500px);
+        opacity: 0;
+    }
 }
 
 @media screen and (max-width: 800px) {
-  .blackholeBlock {
-    display: none;
-  }
+    .blackholeBlock {
+        display: none;
+    }
 }

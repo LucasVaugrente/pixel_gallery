@@ -1,231 +1,218 @@
 .svg_rocket {
-  cursor: pointer;
-  position: fixed;
-  filter: drop-shadow(0 40px 15px rgb(255, 240, 25));
-  top: 10px;
-  right: 0;
-  background: url("../img/rocket/rocket.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 113px;
-  height: 194px;
-  z-index: 2;
-  margin: 1em;
-  transition: transform 0.8s ease-in-out;
+    cursor: pointer;
+    position: fixed;
+    filter: drop-shadow(0 40px 15px rgb(255, 240, 25));
+    top: 10px;
+    right: 0;
+    background: url("../img/rocket/rocket.png") no-repeat center;
+    background-size: contain;
+    width: 113px;
+    height: 194px;
+    z-index: 2;
+    margin: 1em;
+    transition: transform 0.8s ease-in-out;
 }
 
 .svg_rocket.onspace {
-  background: url("../img/rocket/rocket_animation.png") 0px 0px;
-  background-size: 1100px 200px;
-  width: 75px;
-  height: 200px;
-  right: 19px;
-  animation: rocketFire 1s steps(15) infinite,
+    background: url("../img/rocket/rocket_animation.png") 0 0;
+    background-size: 1100px 200px;
+    width: 75px;
+    height: 200px;
+    right: 19px;
+    animation: rocketFire 1s steps(15) infinite,
     rocketMove 2s ease-in-out infinite;
-  /* 14 : le nombre de frames de la fusée */
+    /* 14 : le nombre de frames de la fusée */
 }
 
 .svg_rocket.landing {
-  background: url("../img/rocket/rocket_animation_small.png") 0px 0px;
-  background-size: 1100px 200px;
-  width: 74px;
-  height: 200px;
-  right: 19px;
-  animation: rocketFire 1s steps(15) infinite,
+    background: url("../img/rocket/rocket_animation_small.png") 0 0;
+    background-size: 1100px 200px;
+    width: 74px;
+    height: 200px;
+    right: 19px;
+    animation: rocketFire 1s steps(15) infinite,
     rocketMove 2s ease-in-out infinite;
 }
 
 #tooltip_rocket {
-  position: fixed;
-  margin: 20px;
-  padding: 15px;
-  top: 40px;
-  right: 100px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.777);
-  box-shadow: 0 0 10px #545454;
-  color: white;
-  z-index: 3;
-  opacity: 0;
-  width: 150px;
-  height: 52px;
-  transition: opacity 0.2s ease-in-out;
-  user-select: none;
+    position: fixed;
+    margin: 20px;
+    padding: 15px;
+    top: 40px;
+    right: 100px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.777);
+    box-shadow: 0 0 10px #545454;
+    color: white;
+    z-index: 3;
+    opacity: 0;
+    width: 150px;
+    height: 52px;
+    transition: opacity 0.2s ease-in-out;
+    user-select: none;
 }
 
 #tooltip_rocket:before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  position: absolute;
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-  border-left: 15px solid rgba(255, 255, 255, 0.777);
-  border-radius: 8px;
-  right: -14px;
-  top: 25px;
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid rgba(255, 255, 255, 0.777);
+    border-radius: 8px;
+    right: -14px;
+    top: 25px;
 }
 
 .tip {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#landingRocket, .launchRocket {
+    font-family: pixelart, serif;
+    font-size: 20px;
+    background-color: #ad2929;
+    color: white;
+    text-decoration: none;
+    border: solid 2px rgb(3, 15, 37);
+    padding: 10px 9px 7px 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transform-style: preserve-3d;
+    z-index: 3;
+    box-shadow: 0 10px 0 black;
+    transition: opacity 0.2s ease-in-out !important;
 }
 
 #landingRocket {
-  position: relative;
-  font-family: pixelart;
-  font-size: 20px;
-  background-color: #ad2929;
-  color: white;
-  text-decoration: none;
-  border: solid 2px rgb(3, 15, 37);
-  padding: 10px 9px 7px 10px;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transform-style: preserve-3d;
-  z-index: 3;
-  box-shadow: 0 10px 0 black;
-  transition: opacity 0.2s ease-in-out !important;
-  user-select: none;
+    position: relative;
+    user-select: none;
 }
 
 #landingRocket:active {
-  background: rgb(3, 15, 37);
-  box-shadow: 0 0 0 black;
-  transform: translate(0em, 10px) !important;
+    background: rgb(3, 15, 37);
+    box-shadow: 0 0 0 black;
+    transform: translate(0em, 10px) !important;
 }
 
 #landingRocket:hover {
-  background-color: #952f2f;
+    background-color: #952f2f;
 }
 
 #landingRocket:hover:active {
-  background: rgb(3, 15, 37);
+    background: rgb(3, 15, 37);
 }
 
 .windLine {
-  position: absolute;
-  bottom: 0;
-  width: 2px;
-  animation: wind 2s ease-out;
-  background-color: white;
+    position: absolute;
+    bottom: 0;
+    width: 2px;
+    animation: wind 2s ease-out;
+    background-color: white;
 }
 
 .windLine.animated {
-  animation: wind 2s ease-out;
+    animation: wind 2s ease-out;
 }
 
 @keyframes wind {
-  0% {
-    transform: translateY(0);
-  }
+    0% {
+        transform: translateY(0);
+    }
 
-  100% {
-    transform: translateY(-100px);
-  }
+    100% {
+        transform: translateY(-100px);
+    }
 }
 
 .launchRocket {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  font-family: pixelart;
-  font-size: 20px;
-  background-color: #ad2929;
-  color: white;
-  text-decoration: none;
-  border: solid 2px rgb(3, 15, 37);
-  padding: 10px 9px 7px 10px;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transform-style: preserve-3d;
-  z-index: 3;
-  box-shadow: 0 10px 0 black;
-  transition: opacity 0.2s ease-in-out !important;
-  animation: hideLaunchButton 0.4s ease-out forwards;
-  user-select: none;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    animation: hideLaunchButton 0.4s ease-out forwards;
+    user-select: none;
 }
 
 .launchRocket.show {
-  animation: showLaunchButton 0.4s ease-out forwards;
+    animation: showLaunchButton 0.4s ease-out forwards;
 }
 
 .launchRocket:active {
-  background: rgb(3, 15, 37);
-  box-shadow: 0 0 0 black;
-  transform: translate(0em, 10px) !important;
+    background: rgb(3, 15, 37);
+    box-shadow: 0 0 0 black;
+    transform: translate(0em, 10px) !important;
 }
 
 .launchRocket:hover {
-  background-color: #952f2f;
+    background-color: #952f2f;
 }
 
 .launchRocket:hover:active {
-  background: rgb(3, 15, 37);
+    background: rgb(3, 15, 37);
 }
 
 .pixelSmoke {
-  background-color: rgba(153, 153, 153, 0.774);
-  position: absolute;
-  z-index: 3;
-  transition: right 1.5s ease-out, bottom 1.5s ease-out, background-color 1s;
-  opacity: 0;
+    background-color: rgba(153, 153, 153, 0.774);
+    position: absolute;
+    z-index: 3;
+    transition: right 1.5s ease-out, bottom 1.5s ease-out, background-color 1s;
+    opacity: 0;
 }
 
 @keyframes rocketFire {
-  from {
-    background-position: 0 0;
-  }
+    from {
+        background-position: 0 0;
+    }
 
-  to {
-    background-position: -1100px 0;
-  }
+    to {
+        background-position: -1100px 0;
+    }
 }
 
 @keyframes showLaunchButton {
-  0% {
-    transform: scale(0);
-  }
+    0% {
+        transform: scale(0);
+    }
 
-  80% {
-    transform: scale(1.1);
-  }
+    80% {
+        transform: scale(1.1);
+    }
 
-  100% {
-    transform: scale(1);
-  }
+    100% {
+        transform: scale(1);
+    }
 }
 
 @keyframes hideLaunchButton {
-  0% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(1);
+    }
 
-  80% {
-    transform: scale(1.1);
-  }
+    80% {
+        transform: scale(1.1);
+    }
 
-  100% {
-    transform: scale(0);
-  }
+    100% {
+        transform: scale(0);
+    }
 }
 
 @keyframes rocketMove {
-  0% {
-    transform: translateY(5px);
-  }
+    0% {
+        transform: translateY(5px);
+    }
 
-  50% {
-    transform: translateY(-5px);
-  }
+    50% {
+        transform: translateY(-5px);
+    }
 
-  100% {
-    transform: translateY(5px);
-  }
+    100% {
+        transform: translateY(5px);
+    }
 }

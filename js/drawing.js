@@ -1,4 +1,4 @@
-import { detectMobile } from "./utils.js";
+import {detectMobile} from "./utils.js";
 
 const link_website = "https://lucasvaugrente.github.io/pixel_gallery/";
 
@@ -43,9 +43,8 @@ fetch(link_website + 'data/drawings.json')
 
         figures.forEach((img) => {
             if (!detectMobile()) {
-                img.addEventListener("click", (e) => {
-                    const imagePath = img.style.backgroundImage.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
-                    modalImg.src = imagePath;
+                img.addEventListener("click", () => {
+                    modalImg.src = img.style.backgroundImage.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
 
                     modal.classList.add("show");
 
@@ -248,7 +247,7 @@ if (isPhone) {
             const stuck = e.intersectionRatio === 0;
             filters.classList.toggle('ontop', stuck);
         },
-        { root: null, threshold: [0, 1] }
+        {root: null, threshold: [0, 1]}
     );
 
     ioDesktop.observe(desktopSentinel);
