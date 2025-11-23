@@ -1,6 +1,6 @@
 import {detectMobile} from "./utils.js";
 
-const link_website = "https://lucasvaugrente.github.io/pixel_gallery/";
+const link_website = "http://localhost:63342/pixel_gallery/";
 
 const container = document.querySelector('.container');
 
@@ -23,43 +23,51 @@ fetch(link_website + 'data/drawings.json')
 
             const title = data.drawings[index].title;
             const resolution = data.drawings[index].resolution;
-            let frames = data.drawings[index].frames !== undefined ? `${data.drawings[index].frames} frames` : "";
+            let frames = data.drawings[index].frames !== undefined ? `<p>${data.drawings[index].frames} frames</p>` : "";
+            const colors = data.drawings[index].colors;
+            const software = data.drawings[index].software;
+
+            const classDrawing = data.drawings[index].class;
 
             div.innerHTML = `
-                                <span>${title}</span>
                                 <div class="infos">
+                                    <p class="title_info">${title}</p>
                                     <p>${resolution}</p>
-                                    <p>${frames}</p>
+                                    <p>${colors} colors</p>
+                                    ${frames}
+                                    <p>Software : ${software}</p>
+                                    
+                                    <button class="seeDrawingButton ${classDrawing}">See</button>
                                 </div>
                             `;
-
             container.appendChild(div);
         }
         const modal = document.getElementById("imageViewer");
         const modalImg = document.getElementById("fullImage");
         const captionText = document.getElementById("caption");
 
-        const figures = document.querySelectorAll(".container > div");
+        const seeButtons = document.querySelectorAll(".seeDrawingButton");
 
-        figures.forEach((img) => {
+        seeButtons.forEach((button) => {
             if (!detectMobile()) {
-                img.addEventListener("click", () => {
-                    modalImg.src = img.style.backgroundImage.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
-
+                button.addEventListener("click", () => {
+                    modalImg.src = button.parentElement.parentElement.style.backgroundImage.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
                     modal.classList.add("show");
 
-                    const classDrawing = img.classList[0];
+                    const classDrawing = button.classList[1];
                     const drawingData = jsonData.drawings.find(drawing => drawing.class === classDrawing);
 
                     const title = drawingData.title;
                     const resolution = drawingData.resolution;
                     const software = drawingData.software;
                     let frames = drawingData.frames !== undefined ? `<p>${drawingData.frames} frames</p>` : "";
+                    const colors = drawingData.colors;
 
                     captionText.innerHTML = `
                                 <h3>Title : ${title}</h3>
                                 <p>Resolution : ${resolution}</p>
                                 <p>Software : ${software}</p>
+                                <p>Colors : ${colors}</p>
                                 ${frames}
                             `;
                     document.body.classList.add('no-scroll');

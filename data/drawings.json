@@ -311,6 +311,7 @@
       "image": "img/projects/Where_the_wind_rests.gif",
       "resolution": "270x250px",
       "type": "gif",
+      "frames": 16,
       "format": "square",
       "software": "Aseprite",
       "colors": 300
