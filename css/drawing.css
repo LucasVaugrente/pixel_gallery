@@ -246,20 +246,24 @@
   font-size: 50px;
 }
 
-.close {
+.close,
+.open_tab {
   position: absolute;
   top: 30px;
   right: 30px;
-  width: 20px;
-  height: 20px;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  padding: 10px;
   background-color: black;
-  border: 3px solid white;
+  border-radius: 10px;
   transition: 0.3s;
+}
+
+.open_tab {
+  right: 100px;
 }
 
 .close:hover {
@@ -269,6 +273,15 @@
 .close:active {
   transition: 0.1s;
   background-color: rgb(211, 23, 23);
+}
+
+.open_tab:hover {
+  background-color: rgb(53, 91, 214);
+}
+
+.open_tab:active {
+  transition: 0.1s;
+  background-color: rgb(34, 82, 240);
 }
 
 @media screen and (max-width: 940px) {

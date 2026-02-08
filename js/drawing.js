@@ -118,6 +118,13 @@ fetch(link_website + 'data/drawings.json')
             filters.classList.remove('modalDisplayed');
         });
 
+        const openTab = document.querySelector(".modal .open_tab");
+        openTab.addEventListener("click", () => {
+            if (modalImg.src) {
+                window.open(modalImg.src, '_blank');
+            }
+        });
+
         modalImg.addEventListener("click", () => {
             modalImg.classList.toggle("zoomed");
             modalImg.style.transform = modalImg.classList.contains("zoomed") ? "scale(2)" : "scale(1)";
