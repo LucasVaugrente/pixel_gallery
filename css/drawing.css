@@ -6,7 +6,7 @@
   margin-top: 20px;
 }
 
-.container > div {
+.drawing {
   position: relative;
   width: 350px;
   height: 450px;
@@ -19,20 +19,8 @@
   border: 3px solid white;
 }
 
-.container > div:hover {
+.drawing:hover {
   box-shadow: 0 0 20px #ffffff;
-}
-
-.container > div:active {
-  transform: scale(100%);
-}
-
-.container img {
-  width: 350px;
-  height: 450px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
 }
 
 .container img:last-child {
@@ -65,8 +53,27 @@
   font-size: 20px !important;
 }
 
+.title_info_mobile {
+  font-size: 25px !important;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
 .container > div:hover .infos {
   opacity: 1;
+}
+
+.infos_mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 0 0 40px 20px;
+}
+
+.infos_mobile p {
+  font-size: 15px;
 }
 
 .seeDrawingButton {
@@ -131,7 +138,6 @@
   border: solid 2px white;
   color: white;
   font-size: 15px;
-  border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
@@ -146,7 +152,6 @@
   border: solid 2px white;
   color: white;
   font-size: 15px;
-  border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
@@ -281,8 +286,7 @@
     max-height: 0;
     --pad-block: 0;
     padding: var(--pad-block) 20px;
-    border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.74);
+    background-color: rgb(0, 0, 0);
 
     transition:
       max-height 0.45s ease,
@@ -306,7 +310,6 @@
       opacity 0.25s ease 0.1s,
       transform 0.25s ease 0.1s;
     width: 100%;
-    border-radius: 10px;
     margin: 0;
   }
 
@@ -334,12 +337,8 @@
 @media screen and (max-width: 580px) {
   .container {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 40px;
-  }
-
-  .container > div {
-    width: 100%;
   }
 }

@@ -239,15 +239,24 @@ main {
 
 @media screen and (max-width: 580px) {
   main {
-    margin: 0 40px;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.849);
   }
 
   .container {
-    margin: 0;
+    margin: 0 !important;
   }
 
   .container .box {
     flex-wrap: unset;
+  }
+
+  .mobile-drawing {
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
+    display: block;
+    margin: 0;
   }
 }
 

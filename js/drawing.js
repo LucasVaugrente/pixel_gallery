@@ -18,24 +18,25 @@ fetch(link_website + 'data/drawings.json')
         jsonData.drawings = data.drawings;
         for (let index = data.drawings.length - 1; index >= 0; index--) {
 
-            const div = document.createElement('div');
+            if (!isPhone) {
+                const div = document.createElement('div');
 
-            div.id = 'drawing' + (index + 1);
-            div.classList.add(data.drawings[index].class);
-            div.classList.add(data.drawings[index].type);
-            div.classList.add(data.drawings[index].format);
-            div.classList.add('drawing');
-            div.style.backgroundImage = `url(${link_website + data.drawings[index].image})`;
+                div.id = 'drawing' + (index + 1);
+                div.classList.add(data.drawings[index].class);
+                div.classList.add(data.drawings[index].type);
+                div.classList.add(data.drawings[index].format);
+                div.classList.add('drawing');
+                div.style.backgroundImage = `url(${link_website + data.drawings[index].image})`;
 
-            const title = data.drawings[index].title;
-            const resolution = data.drawings[index].resolution;
-            let frames = data.drawings[index].frames !== undefined ? `<p>${data.drawings[index].frames} frames</p>` : "";
-            const colors = data.drawings[index].colors;
-            const software = data.drawings[index].software;
+                const title = data.drawings[index].title;
+                const resolution = data.drawings[index].resolution;
+                let frames = data.drawings[index].frames !== undefined ? `<p>${data.drawings[index].frames} frames</p>` : "";
+                const colors = data.drawings[index].colors;
+                const software = data.drawings[index].software;
 
-            const classDrawing = data.drawings[index].class;
+                const classDrawing = data.drawings[index].class;
 
-            div.innerHTML = `
+                div.innerHTML = `
                                 <div class="infos">
                                     <p class="title_info">${title}</p>
                                     <p>${resolution}</p>
@@ -46,7 +47,36 @@ fetch(link_website + 'data/drawings.json')
                                     <button class="seeDrawingButton ${classDrawing}">See</button>
                                 </div>
                             `;
-            container.appendChild(div);
+                container.appendChild(div);
+            } else {
+
+                const img = document.createElement('img');
+
+                img.classList.add('mobile-drawing');
+                img.classList.add(data.drawings[index].class);
+                img.classList.add(data.drawings[index].type);
+                img.classList.add(data.drawings[index].format);
+                img.src = link_website + data.drawings[index].image;
+
+                const title = data.drawings[index].title;
+                const resolution = data.drawings[index].resolution;
+                let frames = data.drawings[index].frames !== undefined ? `<p>${data.drawings[index].frames} frames</p>` : "";
+                const colors = data.drawings[index].colors;
+                const software = data.drawings[index].software;
+
+                const infos = document.createElement('div');
+                infos.classList.add('infos_mobile');
+                infos.innerHTML = `
+                                <p class="title_info_mobile">${title}</p>
+                                <p>${resolution}</p>
+                                <p>${colors} colors</p>
+                                ${frames}
+                                <p>${software}</p>
+                            `;
+
+                container.appendChild(img);
+                container.appendChild(infos);
+            }
         }
         const modal = document.getElementById("imageViewer");
         const modalImg = document.getElementById("fullImage");
