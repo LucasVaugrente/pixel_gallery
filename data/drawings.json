@@ -303,7 +303,7 @@
       "type": "png",
       "format": "portrait",
       "software": "Aseprite",
-      "colors": 319
+      "colors": 320
     },
     {
       "class": "Where_the_wind_rests",
@@ -324,7 +324,27 @@
       "type": "png",
       "format": "square",
       "software": "Aseprite",
-      "colors": 305
+      "colors": 300
+    },
+    {
+      "class": "hollow_quirrel",
+      "title": "Quirrel's Path",
+      "image": "img/projects/hollow_quirrel.png",
+      "resolution": "200x200px",
+      "type": "png",
+      "format": "landscape",
+      "software": "Aseprite",
+      "colors": 400
+    },
+    {
+      "class": "spaceview",
+      "title": "A New Journey",
+      "image": "img/projects/spaceview.png",
+      "resolution": "200x200px",
+      "type": "png",
+      "format": "square",
+      "software": "Aseprite",
+      "colors": 650
     }
   ]
 }
