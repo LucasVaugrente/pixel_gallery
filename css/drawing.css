@@ -1,332 +1,345 @@
 .container {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .container > div {
-    position: relative;
-    width: 350px;
-    height: 450px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: 3px solid white;
+  position: relative;
+  width: 350px;
+  height: 450px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 3px solid white;
 }
 
 .container > div:hover {
-    box-shadow: 0 0 20px #ffffff;
+  box-shadow: 0 0 20px #ffffff;
 }
 
 .container > div:active {
-    transform: scale(100%);
+  transform: scale(100%);
 }
 
 .container img {
-    width: 350px;
-    height: 450px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+  width: 350px;
+  height: 450px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .container img:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .container .infos {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 20px;
-    background-color: rgba(0, 0, 0, 0.63);
-    width: 100%;
-    height: 100%;
-    transition: all 0.2s ease-in-out;
-    opacity: 0;
-    box-sizing: border-box;
-    padding: 20px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: rgba(0, 0, 0, 0.63);
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  box-sizing: border-box;
+  padding: 20px;
 }
 
 .container .infos p {
-    user-select: none;
-    font-size: 15px;
+  user-select: none;
+  font-size: 15px;
 }
 
 .title_info {
-    font-size: 20px !important;
+  font-size: 20px !important;
 }
 
 .container > div:hover .infos {
-    opacity: 1;
+  opacity: 1;
 }
 
 .seeDrawingButton {
-    position: absolute;
-    bottom: 30px;
-    font-family: pixelart, serif;
-    font-size: 20px;
-    background-color: #364dac;
-    color: white;
-    text-decoration: none;
-    border: solid 2px rgb(3, 15, 37);
-    padding: 10px 9px 7px 10px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transform-style: preserve-3d;
-    box-shadow: 0 10px 0 black;
-    transition: opacity 0.2s ease-in-out !important;
+  position: absolute;
+  bottom: 30px;
+  font-family: pixelart, serif;
+  font-size: 20px;
+  background-color: #364dac;
+  color: white;
+  text-decoration: none;
+  border: solid 2px rgb(3, 15, 37);
+  padding: 10px 9px 7px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 0 black;
+  transition: opacity 0.2s ease-in-out !important;
 }
 
 .seeDrawingButton:active {
-    box-shadow: 0 0 0 black;
-    transform: translate(0em, 10px) !important;
+  box-shadow: 0 0 0 black;
+  transform: translate(0em, 10px) !important;
 }
 
 .seeDrawingButton:hover {
-    background-color: #2f428f;
+  background-color: #2f428f;
 }
 
 .filters {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    z-index: 3;
-    transition: all 0.1s ease-in-out;
-    position: sticky;
-    top: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  z-index: 3;
+  transition: all 0.1s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  position: sticky;
+  top: 0;
 }
 
 .filters p {
-    margin-left: 50px;
+  margin-left: 50px;
 }
 
 .filters.ontop {
-    background-color: #1b1434d9;
-    padding: 20px 0;
-    margin-left: 0;
-    width: 100%;
+  background-color: #1b1434d9;
+  padding: 20px 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.filters.modalDisplayed {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: -1;
 }
 
 .filter-button {
-    padding: 10px 20px;
-    background-color: #f0f0f000;
-    border: solid 2px white;
-    color: white;
-    font-size: 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+  padding: 10px 20px;
+  background-color: #f0f0f000;
+  border: solid 2px white;
+  color: white;
+  font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 #filtersSelectReponsive {
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    background-color: #f0f0f000;
-    border: solid 2px white;
-    color: white;
-    font-size: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: #f0f0f000;
+  border: solid 2px white;
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .container_button_filters_resp {
-    position: sticky;
-    top: 0;
-    margin-left: 40px;
-    z-index: 3;
+  position: sticky;
+  top: 0;
+  margin-left: 40px;
+  z-index: 3;
 }
 
 .container_button_filters_resp.ontop {
-    background-color: #1b1434d9;
-    margin-left: 0;
-    width: 100%;
-    padding: 20px 0;
+  background-color: #1b1434d9;
+  margin-left: 0;
+  width: 100%;
+  padding: 20px 0;
 }
 
 .container_button_filters_resp.ontop #filtersSelectReponsive {
-    margin-left: 35px;
+  margin-left: 35px;
 }
 
 .filter-button:hover,
 #filtersSelectReponsive:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .filter-button.selected {
-    background-color: rgba(255, 255, 255, 0.82);
-    color: black;
+  background-color: rgba(255, 255, 255, 0.82);
+  color: black;
 }
 
 .modal {
-    position: fixed;
-    display: none;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    background-color: rgb(0, 0, 0);
-    z-index: -1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-color: rgb(0, 0, 0);
+  z-index: -1;
+  transform: translateY(918px);
+  transition: all 0.3s ease-in-out;
 }
 
 .modal.show {
-    opacity: 1;
-    display: block;
-    z-index: 100;
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 1;
 }
 
 .modal-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 50px 0 50px;
-    gap: 50px;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 30px;
+  gap: 50px;
+  height: 100%;
 }
 
 .modal-content {
-    max-height: 70%;
-    max-width: 70%;
-    border-radius: 20px;
-    transition: transform 0.3s;
-    cursor: zoom-in;
+  max-height: 70%;
+  max-width: 70%;
+  transition: transform 0.3s;
+  cursor: zoom-in;
 }
 
 .modal-content.zoomed {
-    transform: scale(2);
-    cursor: zoom-out;
-    z-index: 200;
+  transform: scale(2);
+  cursor: zoom-out;
+  z-index: 200;
+}
+
+#fullImage {
+  margin-right: 100px;
+  border: 3px solid white;
 }
 
 #caption {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 50px;
-    position: absolute;
-    top: 50px;
-    left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
 }
 
 #caption h3 {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .close {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    padding: 15px;
-    background-color: black;
-    border: 5px solid white;
-    border-radius: 50px;
-    transition: 0.3s;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  background-color: black;
+  border: 3px solid white;
+  transition: 0.3s;
 }
 
 .close:hover {
-    background-color: rgb(109, 49, 49);
-    transform: scale(120%);
+  background-color: rgb(156, 54, 54);
 }
 
 .close:active {
-    transition: 0.1s;
-    background-color: rgb(167, 45, 45);
-    transform: scale(100%);
+  transition: 0.1s;
+  background-color: rgb(211, 23, 23);
 }
 
 @media screen and (max-width: 940px) {
-    #filtersSelectReponsive {
-        display: flex;
-    }
+  #filtersSelectReponsive {
+    display: flex;
+  }
 
-    .filters {
-        position: fixed;
-        top: 79px;
-        left: 0;
-        width: 200px;
+  .filters {
+    position: fixed;
+    top: 79px;
+    left: 0;
+    width: 200px;
 
-        overflow: hidden;
-        max-height: 0;
-        --pad-block: 0;
-        padding: var(--pad-block) 20px;
-        border-radius: 20px;
-        background-color: rgba(0, 0, 0, 0.74);
+    overflow: hidden;
+    max-height: 0;
+    --pad-block: 0;
+    padding: var(--pad-block) 20px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.74);
 
-        transition: max-height 0.45s ease, padding 0.45s ease,
-        border-color 0.45s ease;
-        z-index: 3;
-    }
+    transition:
+      max-height 0.45s ease,
+      padding 0.45s ease,
+      border-color 0.45s ease;
+    z-index: 3;
+  }
 
-    .filters.show {
-        border: 2px solid white;
-        max-height: 500px;
-        --pad-block: 20px;
-        top: 83px;
-    }
+  .filters.show {
+    border: 2px solid white;
+    max-height: 500px;
+    --pad-block: 20px;
+    top: 83px;
+  }
 
-    .filters p,
-    .filters .filter-button {
-        opacity: 0;
-        transform: translateY(-6px);
-        transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s;
-        width: 100%;
-        border-radius: 10px;
-        margin: 0;
-    }
+  .filters p,
+  .filters .filter-button {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      opacity 0.25s ease 0.1s,
+      transform 0.25s ease 0.1s;
+    width: 100%;
+    border-radius: 10px;
+    margin: 0;
+  }
 
-    .filters.show p,
-    .filters.show .filter-button {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  .filters.show p,
+  .filters.show .filter-button {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    #filtersSelectReponsive {
-        display: flex;
-    }
+  #filtersSelectReponsive {
+    display: flex;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    #caption h3 {
-        font-size: 30px;
-    }
+  #caption h3 {
+    font-size: 30px;
+  }
 
-    #caption p {
-        font-size: 15px;
-    }
+  #caption p {
+    font-size: 15px;
+  }
 }
 
 @media screen and (max-width: 580px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-    }
+  .container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
 
-    .container > div {
-        width: 100%;
-    }
+  .container > div {
+    width: 100%;
+  }
 }

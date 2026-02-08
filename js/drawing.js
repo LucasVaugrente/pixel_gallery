@@ -1,8 +1,14 @@
-import {detectMobile} from "./utils.js";
+import { detectMobile } from "./utils.js";
 
-const link_website = "http://localhost:63342/pixel_gallery/";
+const link_website = "https://lucasvaugrente.github.io/pixel_gallery/";
 
 const container = document.querySelector('.container');
+
+const isPhone = window.innerWidth < 580;
+
+const filtersSelectReponsive = document.getElementById('filtersSelectReponsive');
+const filters = document.querySelector('.filters');
+const container_button_filters_resp = document.querySelector('.container_button_filters_resp');
 
 const jsonData = {};
 
@@ -70,7 +76,8 @@ fetch(link_website + 'data/drawings.json')
                                 <p>Colors : ${colors}</p>
                                 ${frames}
                             `;
-                    document.body.classList.add('no-scroll');
+
+                    filters.classList.add('modalDisplayed');
                 });
             }
         });
@@ -78,34 +85,29 @@ fetch(link_website + 'data/drawings.json')
         const close = document.querySelector(".modal .close");
         close.addEventListener("click", () => {
             modal.classList.remove("show");
-            document.body.classList.remove('no-scroll');
+            filters.classList.remove('modalDisplayed');
         });
 
-        // Ajout un effet de zoom sur l'image quand l'utilisateur clique dessus
         modalImg.addEventListener("click", () => {
             modalImg.classList.toggle("zoomed");
             modalImg.style.transform = modalImg.classList.contains("zoomed") ? "scale(2)" : "scale(1)";
         });
 
-        // Suivi du mouvement de souris pour le zoom dynamique
         modalImg.addEventListener("mousemove", (e) => {
             if (!modalImg.classList.contains("zoomed")) return;
 
             const rect = modalImg.getBoundingClientRect();
 
-            // Position relative du curseur dans l'image
             const offsetX = e.clientX - rect.left;
             const offsetY = e.clientY - rect.top;
 
-            // Pourcentage par rapport à la taille de l'image
             const percentX = (offsetX / rect.width) * 100;
             const percentY = (offsetY / rect.height) * 100;
 
-            // Appliquer comme origine de transformation
             modalImg.style.transformOrigin = `${percentX}% ${percentY}%`;
         });
 
-        let zoomScale = 2; // valeur initiale (doit correspondre à celle dans .²)
+        let zoomScale = 2;
         const minScale = 1;
         const maxScale = 5;
         const zoomStep = 0.1;
@@ -124,7 +126,6 @@ fetch(link_website + 'data/drawings.json')
             modalImg.style.transform = `scale(${zoomScale})`;
         });
 
-        // reset zoom et transform-origin si on ferme la modal
         close.addEventListener("click", () => {
             modalImg.classList.remove("zoomed");
             modalImg.style.transformOrigin = "center center";
@@ -197,11 +198,7 @@ fetch(link_website + 'data/drawings.json')
     })
     .catch(error => console.error(error));
 
-const isPhone = window.innerWidth < 580;
 
-const filtersSelectReponsive = document.getElementById('filtersSelectReponsive');
-const filters = document.querySelector('.filters');
-const container_button_filters_resp = document.querySelector('.container_button_filters_resp');
 
 filtersSelectReponsive.addEventListener('click', () => {
     filters.classList.toggle('show');
@@ -253,7 +250,7 @@ if (isPhone) {
             const stuck = e.intersectionRatio === 0;
             filters.classList.toggle('ontop', stuck);
         },
-        {root: null, threshold: [0, 1]}
+        { root: null, threshold: [0, 1] }
     );
 
     ioDesktop.observe(desktopSentinel);
