@@ -246,13 +246,74 @@
   font-size: 50px;
 }
 
+#title_drawing {
+  font-size: 30px;
+  font-style: italic;
+}
+
+.header_modal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 15px;
+  border: solid 5px white;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#infos_drawing {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+#infos_drawing p {
+  font-size: 17px;
+}
+
+#help_modal {
+  opacity: 1;
+  transform: translateY(226px);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+  height: max-content;
+  background-color: black;
+  padding: 60px 20px 20px 20px;
+  z-index: 3;
+  transition: all 0.3s ease-in-out;
+  border: solid 3px white;
+}
+
+#help_modal p {
+  text-align: justify;
+}
+
+#help_modal.show {
+  transform: translateY(0);
+}
+
 .close,
 .open_tab {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,15 +323,36 @@
   transition: 0.3s;
 }
 
-.open_tab {
-  right: 100px;
+.help {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 10px;
 }
 
-.close:hover {
+.close_help {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close_help:hover {
   background-color: rgb(156, 54, 54);
 }
 
-.close:active {
+.close:active,
+.close_help:active {
   transition: 0.1s;
   background-color: rgb(211, 23, 23);
 }
@@ -282,6 +364,15 @@
 .open_tab:active {
   transition: 0.1s;
   background-color: rgb(34, 82, 240);
+}
+
+.help:hover {
+  background-color: rgb(42, 163, 48);
+}
+
+.help:active {
+  transition: 0.1s;
+  background-color: rgb(20, 185, 28);
 }
 
 @media screen and (max-width: 940px) {
@@ -353,5 +444,30 @@
     align-items: flex-start;
     justify-content: center;
     gap: 40px;
+    padding: 40px 0;
+  }
+
+  .container::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, #000000de);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .container::after {
+    content: "";
+    position: absolute;
+    bottom: -150px;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to top, transparent, #000000d4);
+    z-index: 1;
+    pointer-events: none;
   }
 }

@@ -49,7 +49,6 @@ fetch(link_website + 'data/drawings.json')
                             `;
                 container.appendChild(div);
             } else {
-
                 const img = document.createElement('img');
 
                 img.classList.add('mobile-drawing');
@@ -80,7 +79,7 @@ fetch(link_website + 'data/drawings.json')
         }
         const modal = document.getElementById("imageViewer");
         const modalImg = document.getElementById("fullImage");
-        const captionText = document.getElementById("caption");
+        const infos_drawing = document.getElementById("infos_drawing");
 
         const seeButtons = document.querySelectorAll(".seeDrawingButton");
 
@@ -93,14 +92,17 @@ fetch(link_website + 'data/drawings.json')
                     const classDrawing = button.classList[1];
                     const drawingData = jsonData.drawings.find(drawing => drawing.class === classDrawing);
 
+                    const titleText = document.getElementById("title_drawing");
+
                     const title = drawingData.title;
                     const resolution = drawingData.resolution;
                     const software = drawingData.software;
                     let frames = drawingData.frames !== undefined ? `<p>${drawingData.frames} frames</p>` : "";
                     const colors = drawingData.colors;
 
-                    captionText.innerHTML = `
-                                <h3>Title : ${title}</h3>
+                    titleText.innerHTML = `${title}.png`;
+
+                    infos_drawing.innerHTML = `
                                 <p>Resolution : ${resolution}</p>
                                 <p>Software : ${software}</p>
                                 <p>Colors : ${colors}</p>
@@ -123,6 +125,17 @@ fetch(link_website + 'data/drawings.json')
             if (modalImg.src) {
                 window.open(modalImg.src, '_blank');
             }
+        });
+
+        const help = document.querySelector(".help");
+        const help_modal = document.getElementById("help_modal");
+        help.addEventListener("click", () => {
+            help_modal.classList.add("show");
+        });
+
+        const close_help = document.querySelector(".close_help");
+        close_help.addEventListener("click", () => {
+            help_modal.classList.remove("show");
         });
 
         modalImg.addEventListener("click", () => {
@@ -262,7 +275,7 @@ function createSentinelBefore(targetEl, className) {
     return s;
 }
 
-if (isPhone) {
+if (window.innerWidth < 940) {
     mobileSentinel = createSentinelBefore(container_button_filters_resp, 'sticky-sentinel-mobile');
 
     const ioMobile = new IntersectionObserver(
