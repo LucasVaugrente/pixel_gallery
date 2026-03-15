@@ -1,4 +1,4 @@
-const JSON_WEBRING = "https://raw.githubusercontent.com/gablaxy/webring/main/webring.json";
+const JSON_WEBRING = "https://git.gablaxy.xyz/api/v1/repos/gablaxy/webring/raw/webring.json?ref=main";
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -56,7 +56,7 @@ template.innerHTML = `
 class Webring extends HTMLElement {
     connectedCallback() {
 
-        this.attachShadow({mode: "open"});
+        this.attachShadow({ mode: "open" });
 
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
