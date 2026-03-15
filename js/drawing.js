@@ -33,6 +33,7 @@ fetch(link_website + 'data/drawings.json')
                 let frames = data.drawings[index].frames !== undefined ? `<p>${data.drawings[index].frames} frames</p>` : "";
                 const colors = data.drawings[index].colors;
                 const software = data.drawings[index].software;
+                const date = data.drawings[index].date;
 
                 const classDrawing = data.drawings[index].class;
 
@@ -43,8 +44,9 @@ fetch(link_website + 'data/drawings.json')
                                     <p>${colors} colors</p>
                                     ${frames}
                                     <p>Software : ${software}</p>
+                                    <p>Release : ${date}</p>
                                     
-                                    <button class="seeDrawingButton ${classDrawing}">See</button>
+                                    <button class="seeDrawingButton ${classDrawing}">Open</button>
                                 </div>
                             `;
                 container.appendChild(div);
@@ -62,15 +64,17 @@ fetch(link_website + 'data/drawings.json')
                 let frames = data.drawings[index].frames !== undefined ? `<p>${data.drawings[index].frames} frames</p>` : "";
                 const colors = data.drawings[index].colors;
                 const software = data.drawings[index].software;
+                const date = data.drawings[index].date;
 
                 const infos = document.createElement('div');
                 infos.classList.add('infos_mobile');
                 infos.innerHTML = `
                                 <p class="title_info_mobile">${title}</p>
                                 <p>${resolution}</p>
+                                <p>${software}</p>
                                 <p>${colors} colors</p>
                                 ${frames}
-                                <p>${software}</p>
+                                <p>${date}</p>
                             `;
 
                 container.appendChild(img);
@@ -99,6 +103,7 @@ fetch(link_website + 'data/drawings.json')
                     const software = drawingData.software;
                     let frames = drawingData.frames !== undefined ? `<p>${drawingData.frames} frames</p>` : "";
                     const colors = drawingData.colors;
+                    const date = drawingData.date;
 
                     titleText.innerHTML = `${title}.png`;
 
@@ -107,6 +112,7 @@ fetch(link_website + 'data/drawings.json')
                                 <p>Software : ${software}</p>
                                 <p>Colors : ${colors}</p>
                                 ${frames}
+                                <p>Release : ${date}</p>
                             `;
 
                     filters.classList.add('modalDisplayed');

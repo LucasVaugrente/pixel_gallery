@@ -274,10 +274,15 @@
   position: absolute;
   top: 100px;
   left: 20px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 15px;
+}
+
+.description {
+  text-align: left;
 }
 
 #infos_drawing p {
