@@ -47,7 +47,7 @@ function slowScrollToBottom() {
 
 function slowScrollToTop() {
     const e = document.documentElement;
-    let floor = e.scrollHeight - e.scrollTop - e.clientHeight === 0;
+    let floor = e.scrollHeight - e.scrollTop - e.clientHeight < 0;
     if (floor) {
         ignoreScrollEvents = true;
         scrollTo(0, settings.slow);

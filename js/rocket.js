@@ -1,4 +1,4 @@
-import {getScrollPercentage, slowScrollToBottom, slowScrollToTop, easeInOutCuaic, settings} from "./utils.js";
+import { getScrollPercentage, slowScrollToBottom, slowScrollToTop, easeInOutCuaic, settings } from "./utils.js";
 
 const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket');
@@ -41,7 +41,7 @@ if (!isPhone) {
         const maxTop = window.innerHeight - footer.offsetHeight / 2;
         const newTop = (scrollPercentage / 100) * maxTop;
 
-        if (scrollPercentage >= 100) {
+        if (scrollPercentage >= 99.99) {
             rocket.style.filter = "none";
             rocket.classList.remove('landing');
             rocket.classList.remove('onspace');
@@ -53,7 +53,7 @@ if (!isPhone) {
             rocket.style.filter = "drop-shadow(0 40px 15px rgb(255, 240, 25))";
         }
 
-        if (!generateSmokeInProgress && scrollPercentage > 98 && scrollPercentage < 100) {
+        if (!generateSmokeInProgress && scrollPercentage > 98 && scrollPercentage < 99.99) {
             rocket.classList.add('landing');
             rocket.classList.remove('onspace');
             generateSmokeInProgress = true;
