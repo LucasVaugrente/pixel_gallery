@@ -401,6 +401,18 @@
       "software": "Aseprite",
       "colors": 327,
       "date": "2026-03-15"
+    },
+    {
+      "class": "bipper",
+      "title": "Bipper",
+      "image": "img/projects/bipper.gif",
+      "resolution": "200x130px",
+      "type": "gif",
+      "frames": 110,
+      "format": "landscape",
+      "software": "Aseprite",
+      "colors": 628,
+      "date": "2026-04-26"
     }
   ]
 }
