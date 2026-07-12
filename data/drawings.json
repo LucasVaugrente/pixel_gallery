@@ -413,6 +413,29 @@
       "software": "Aseprite",
       "colors": 628,
       "date": "2026-04-26"
+    },
+    {
+      "class": "sound_of_water",
+      "title": "Sound of Water",
+      "image": "img/projects/sound_of_water.png",
+      "resolution": "200x200px",
+      "type": "png",
+      "format": "square",
+      "software": "Aseprite",
+      "colors": 177,
+      "date": "2026-07-11"
+    },
+    {
+      "class": "ninjago",
+      "title": "The Duty to Remember",
+      "image": "img/projects/ninjago.gif",
+      "resolution": "200x200px",
+      "type": "gif",
+      "frames": 55,
+      "format": "square",
+      "software": "Aseprite",
+      "colors": 313,
+      "date": "2026-07-12"
     }
   ]
 }
