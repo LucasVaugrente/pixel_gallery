@@ -1,6 +1,6 @@
 import { detectMobile } from "./utils.js";
 
-const link_website = "http://127.0.0.1:5500/";
+const link_website = "https://lucasvaugrente.github.io/pixel_gallery/";
 
 const container = document.querySelector('.container');
 
