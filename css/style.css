@@ -94,7 +94,7 @@ p {
 }
 
 main {
-  margin: 0 150px 100px 50px;
+  margin: 0 150px 100px 90px;
   position: relative;
   z-index: 2;
 }
@@ -148,6 +148,103 @@ main {
 .logo_github {
   width: 20px;
   height: 20px;
+}
+
+#desktop-burger-menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background-color: #1b1434d9;
+  border: solid 3px white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#desktop-burger-menu.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#desktop-burger-menu svg {
+  width: 30px;
+  height: 30px;
+}
+
+#desktop-burger-menu.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#desktop-burger-menu:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#side-menu {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 250px;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  border-right: 3px solid white;
+  z-index: 11;
+  transition: left 0.3s ease;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+#side-menu.open {
+  left: 0;
+}
+
+.close-side-menu {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: solid 3px white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-side-menu:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.filters-side {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filters-side p {
+  color: white;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+.filters-side .filter-button {
+  width: 100%;
+  text-align: left;
+}
+
+@media screen and (max-width: 580px) {
+  #desktop-burger-menu,
+  #side-menu {
+    display: none !important;
+  }
 }
 
 @keyframes color-change {

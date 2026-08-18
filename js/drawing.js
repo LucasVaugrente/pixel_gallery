@@ -1,14 +1,13 @@
 import { detectMobile } from "./utils.js";
 
-const link_website = "https://lucasvaugrente.github.io/pixel_gallery/";
+const link_website = "http://127.0.0.1:5500/";
 
 const container = document.querySelector('.container');
 
 const isPhone = window.innerWidth < 580;
 
-const filtersSelectReponsive = document.getElementById('filtersSelectReponsive');
-const filters = document.querySelector('.filters');
-const container_button_filters_resp = document.querySelector('.container_button_filters_resp');
+const burgerMenu = document.getElementById('desktop-burger-menu');
+const sideMenu = document.getElementById('side-menu');
 
 const jsonData = {};
 
@@ -85,6 +84,8 @@ fetch(link_website + 'data/drawings.json')
         const modalImg = document.getElementById("fullImage");
         const infos_drawing = document.getElementById("infos_drawing");
 
+        let scrollPosition = 0;
+
         const seeButtons = document.querySelectorAll(".seeDrawingButton");
 
         seeButtons.forEach((button) => {
@@ -104,6 +105,7 @@ fetch(link_website + 'data/drawings.json')
                     let frames = drawingData.frames !== undefined ? `<p>${drawingData.frames} frames</p>` : "";
                     const colors = drawingData.colors;
                     const date = drawingData.date;
+                    const content = drawingData.content;
 
                     titleText.innerHTML = `${title}.png`;
 
@@ -113,9 +115,16 @@ fetch(link_website + 'data/drawings.json')
                                 <p>Colors : ${colors}</p>
                                 ${frames}
                                 <p>Release : ${date}</p>
+                                <p class="content">${content}</p>
                             `;
 
-                    filters.classList.add('modalDisplayed');
+                    scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+                    console.log(burgerMenu);
+
+                    burgerMenu.classList.add('hide');
+                    burgerMenu.classList.remove('visible');
+                    sideMenu.classList.remove('open');
                 });
             }
         });
@@ -123,7 +132,9 @@ fetch(link_website + 'data/drawings.json')
         const close = document.querySelector(".modal .close");
         close.addEventListener("click", () => {
             modal.classList.remove("show");
-            filters.classList.remove('modalDisplayed');
+            window.scrollTo(0, scrollPosition);
+            burgerMenu.classList.remove('hide');
+            burgerMenu.classList.add('visible');
         });
 
         const openTab = document.querySelector(".modal .open_tab");
@@ -187,64 +198,6 @@ fetch(link_website + 'data/drawings.json')
             modalImg.style.transformOrigin = "center center";
         });
 
-        const filterButtons = document.querySelectorAll('.filter-button');
-        const drawings = document.querySelectorAll('.drawing');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const filter = button.getAttribute('data-filter');
-
-                if (filter === 'all') {
-                    filterButtons.forEach(btn => btn.classList.remove('selected'));
-                    button.classList.add('selected');
-                    drawings.forEach(drawing => drawing.style.display = 'block');
-                    return;
-                }
-
-                button.classList.toggle('selected');
-
-                document.querySelector('[data-filter="all"]').classList.remove('selected');
-
-                const activeGroups = {};
-                const activeFilters = [];
-
-                filterButtons.forEach(btn => {
-                    if (btn.classList.contains('selected')) {
-                        const g = btn.getAttribute('data-group');
-                        const f = btn.getAttribute('data-filter');
-                        if (!activeGroups[g]) activeGroups[g] = [];
-                        activeGroups[g].push(f);
-                        activeFilters.push(f)
-                    }
-                });
-
-                if (activeFilters.length === 5 || Object.keys(activeGroups).length === 0) {
-                    document.querySelector('[data-filter="all"]').classList.add('selected');
-                    filterButtons.forEach(btn => {
-                        if (btn !== document.querySelector('[data-filter="all"]')) {
-                            btn.classList.remove('selected');
-                        }
-                    });
-                    drawings.forEach(drawing => drawing.style.display = 'block');
-                    return;
-                }
-
-                drawings.forEach(drawing => {
-                    let visible = true;
-                    for (const group in activeGroups) {
-                        const filters = activeGroups[group];
-                        const hasOne = filters.some(f => drawing.classList.contains(f));
-                        if (!hasOne) {
-                            visible = false;
-                            break;
-                        }
-                    }
-                    drawing.style.display = visible ? 'block' : 'none';
-                });
-            });
-        });
-
-
         if (detectMobile()) {
             const infosDrawings = document.querySelectorAll('.infos');
             infosDrawings.forEach(function (infoDrawing) {
@@ -253,61 +206,3 @@ fetch(link_website + 'data/drawings.json')
         }
     })
     .catch(error => console.error(error));
-
-
-
-filtersSelectReponsive.addEventListener('click', () => {
-    filters.classList.toggle('show');
-    filtersSelectReponsive.classList.toggle('open');
-
-    if (filters.classList.contains('show')) {
-        filtersSelectReponsive.textContent = 'Filters ▲';
-    } else {
-        filtersSelectReponsive.textContent = 'Filters ▼';
-    }
-});
-
-let mobileSentinel = null;
-let desktopSentinel = null;
-
-function createSentinelBefore(targetEl, className) {
-    const s = document.createElement('div');
-    s.className = className;
-    s.style.position = 'relative';
-    s.style.width = '100%';
-    s.style.height = '1px';
-    s.style.pointerEvents = 'none';
-    targetEl.parentNode.insertBefore(s, targetEl);
-    return s;
-}
-
-if (window.innerWidth < 940) {
-    mobileSentinel = createSentinelBefore(container_button_filters_resp, 'sticky-sentinel-mobile');
-
-    const ioMobile = new IntersectionObserver(
-        (entries) => {
-            const e = entries[0];
-            const stuck = e.intersectionRatio === 0;
-            container_button_filters_resp.classList.toggle('ontop', stuck);
-        },
-        {
-            root: null,
-            threshold: [0, 1],
-        }
-    );
-
-    ioMobile.observe(mobileSentinel);
-} else {
-    desktopSentinel = createSentinelBefore(filters, 'sticky-sentinel-desktop');
-
-    const ioDesktop = new IntersectionObserver(
-        (entries) => {
-            const e = entries[0];
-            const stuck = e.intersectionRatio === 0;
-            filters.classList.toggle('ontop', stuck);
-        },
-        { root: null, threshold: [0, 1] }
-    );
-
-    ioDesktop.observe(desktopSentinel);
-}

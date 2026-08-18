@@ -20,7 +20,7 @@
 }
 
 .drawing:hover {
-  box-shadow: 0 0 20px #ffffff;
+  box-shadow: 0 0 10px #ffffff;
 }
 
 .container img:last-child {
@@ -81,7 +81,7 @@
   bottom: 30px;
   font-family: pixelart, sans-serif;
   font-size: 20px;
-  background-color: #364dac;
+  background-color: rgb(36, 83, 237);
   color: white;
   text-decoration: none;
   border: solid 2px rgb(3, 15, 37);
@@ -90,17 +90,22 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   transform-style: preserve-3d;
-  box-shadow: 0 10px 0 black;
+  box-shadow: 0 7px 0 black;
   transition: opacity 0.2s ease-in-out !important;
 }
 
 .seeDrawingButton:active {
   box-shadow: 0 0 0 black;
-  transform: translate(0em, 10px) !important;
+  transform: translate(0em, 7px) !important;
 }
 
 .seeDrawingButton:hover {
-  background-color: #2f428f;
+  background-color: rgb(26, 71, 218);
+}
+
+.content {
+  text-align: left;
+  overflow-y: auto;
 }
 
 .filters {
@@ -142,43 +147,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-#filtersSelectReponsive {
-  display: none;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
-  background-color: #f0f0f000;
-  border: solid 2px white;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.container_button_filters_resp {
-  position: sticky;
-  top: 0;
-  margin-left: 40px;
-  z-index: 3;
-}
-
-.container_button_filters_resp.ontop {
-  background-color: #1b1434d9;
-  margin-left: 0;
-  width: 100%;
-  padding: 20px 0;
-}
-
-.container_button_filters_resp.ontop #filtersSelectReponsive {
-  margin-left: 35px;
-}
-
-.filter-button:hover,
-#filtersSelectReponsive:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
 .filter-button.selected {
   background-color: rgba(255, 255, 255, 0.82);
   color: black;
@@ -193,7 +161,7 @@
   opacity: 1;
   background-color: rgb(0, 0, 0);
   z-index: -1;
-  transform: translateY(918px);
+  transform: translateY(250rem);
   transition: all 0.3s ease-in-out;
 }
 
@@ -224,7 +192,7 @@
 .modal-content.zoomed {
   transform: scale(2);
   cursor: zoom-out;
-  z-index: 200;
+  z-index: 5;
 }
 
 #imgModal {
@@ -287,7 +255,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 20px;
+  padding: 20px 20px 40px 20px;
   min-width: 350px;
   gap: 15px;
   border: solid 3px white;
@@ -374,12 +342,12 @@
 }
 
 .open_tab:hover {
-  background-color: rgb(53, 91, 214);
+  background-color: rgb(16, 72, 255);
 }
 
 .open_tab:active {
   transition: 0.1s;
-  background-color: rgb(34, 82, 240);
+  background-color: rgb(0, 60, 255);
 }
 
 .help:hover {
@@ -392,10 +360,6 @@
 }
 
 @media screen and (max-width: 940px) {
-  #filtersSelectReponsive {
-    display: flex;
-  }
-
   .filters {
     position: fixed;
     top: 79px;
@@ -437,10 +401,6 @@
   .filters.show .filter-button {
     opacity: 1;
     transform: translateY(0);
-  }
-
-  #filtersSelectReponsive {
-    display: flex;
   }
 }
 
