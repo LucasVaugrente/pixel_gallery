@@ -1,11 +1,9 @@
-import {getScrollPercentage, slowScrollToBottom, slowScrollToTop, easeInOutCuaic, settings} from "./utils.js";
+import {getScrollPercentage, slowScrollToTop, easeInOutCuaic, settings} from "./utils.js";
 
 const rocket = document.querySelector('.svg_rocket');
-const tooltip_rocket = document.getElementById('tooltip_rocket');
 const listDrawingTooltip = document.querySelectorAll('.listDrawingTooltip');
 const footer = document.querySelector('footer');
 const launchButton = document.querySelector('.launchRocket');
-const landingButton = document.querySelector('#landingRocket');
 
 const isPhone = window.innerWidth < 580;
 
@@ -14,7 +12,8 @@ let generateSmokeZone = false;
 let generateSmokeInProgress = false;
 let previousScrollPercentage = getScrollPercentage();
 
-let tooltipTimer;
+let isDragging = false;
+let dragOffsetY = 0;
 
 const drawings = document.querySelectorAll(".figure img");
 const allDrawingLinkWebsite = {};
@@ -31,7 +30,6 @@ for (let i = 0; i < drawings.length; i++) {
 
 if (isPhone) {
     rocket.style.display = "none";
-    tooltip_rocket.style.display = "none";
 }
 else {
     document.addEventListener("scroll", function () {
@@ -44,7 +42,6 @@ else {
             rocket.style.filter = "none";
             rocket.classList.remove('landing');
             rocket.classList.remove('onspace');
-            landingButton.disabled = false;
             generateSmokeInProgress = false;
             generateSmokeZone = true;
             generateSmoke();
@@ -76,32 +73,48 @@ else {
         }
 
         rocket.style.top = newTop + 'px';
-        tooltip_rocket.style.top = newTop + 'px';
 
         previousScrollPercentage = scrollPercentage;
     });
+
+    rocket.addEventListener('mousedown', (e) => {
+        isDragging = true;
+
+        dragOffsetY = e.clientY - rocket.getBoundingClientRect().top;
+
+        document.body.style.userSelect = 'none';
+
+        document.documentElement.classList.remove('smooth-scroll');
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+
+        let newTop = e.clientY - dragOffsetY;
+
+        const maxTop = window.innerHeight - footer.offsetHeight / 2;
+
+        newTop = Math.max(0, Math.min(newTop, maxTop));
+
+        const scrollRatio = newTop / maxTop;
+
+        const maxScrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+        const targetScrollY = scrollRatio * maxScrollableHeight;
+
+        window.scrollTo({
+            top: targetScrollY,
+            behavior: 'auto'
+        });
+    });
+
+    window.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            document.body.style.userSelect = '';
+        }
+    });
 }
-
-rocket.addEventListener('mouseenter', () => {
-    tooltip_rocket.style.pointerEvents = "all";
-    tooltip_rocket.style.opacity = "1";
-});
-
-tooltip_rocket.addEventListener('mouseenter', () => {
-    clearTimeout(tooltipTimer);
-});
-
-rocket.addEventListener('mouseleave', () => {
-    tooltipTimer = setTimeout(() => {
-        tooltip_rocket.style.opacity = "0";
-        tooltip_rocket.style.pointerEvents = "none";
-    }, 300);
-});
-
-tooltip_rocket.addEventListener('mouseleave', () => {
-    tooltip_rocket.style.opacity = "0";
-    tooltip_rocket.style.pointerEvents = "none";
-});
 
 launchButton.addEventListener('click', () => {
     const titleWelcome = document.querySelector('.welcome_text');
@@ -113,16 +126,6 @@ launchButton.addEventListener('click', () => {
     settings.effect = easeInOutCuaic;
     generateSmoke();
     slowScrollToTop();
-});
-
-landingButton.addEventListener('click', () => {
-    if (getScrollPercentage() !== 100) {
-        landingButton.disabled = true;
-        document.documentElement.classList.add('smooth-scroll');
-        settings.slow = 12000;
-        settings.effect = easeInOutCuaic;
-        slowScrollToBottom();
-    }
 });
 
 /**

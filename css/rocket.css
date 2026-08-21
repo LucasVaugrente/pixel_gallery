@@ -19,6 +19,12 @@
         height: 200px;
         right: 19px;
         animation: rocketFire 1s steps(15) infinite, rocketMove 2s ease-in-out infinite; /* 15: le nombre de frames de la fusée */
+
+        &:active {
+            animation: rocketFire 1s steps(15) infinite, rocketMove 2s ease-in-out infinite, selectRocket 0.3s;
+
+            background-image: url("../img/rocket/rocket_animation_select.png");
+        }
     }
 
     &.landing {
@@ -28,6 +34,10 @@
         height: 200px;
         right: 19px;
         animation: rocketFire 1s steps(15) infinite, rocketMove 2s ease-in-out infinite;
+
+        &:active {
+            background-image: url("../img/rocket/rocket_animation_small_select.png");
+        }
     }
 }
 
@@ -240,4 +250,12 @@
     100% {
         transform: rotate(0deg);
     }
+}
+
+@keyframes selectRocket {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
 }
