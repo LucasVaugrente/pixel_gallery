@@ -12,6 +12,15 @@
   --credits-hover: #cd4e4e;
   --close-button: #c11e1e;
   --close-button-hover: #951515;
+
+  --modal-background-color: rgb(41, 41, 85);
+  --modal-header-background-color: rgb(35 35 73);
+  --modal-open-new-tab-button: rgb(44, 108, 66);
+  --modal-open-new-tab-button-hover: rgb(39 96 59);
+  --modal-close-button: #a63131;
+  --modal-close-button-hover: #8e2929;
+  --modal-help-button: #624697;
+  --modal-help-button-hover: #4d3775;
 }
 
 @font-face {
@@ -51,6 +60,10 @@ body {
   display: block;
   width: 100vw;
   height: 100vh;
+}
+
+.no-scroll {
+  overflow-y: hidden;
 }
 
 header {

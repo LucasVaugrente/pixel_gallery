@@ -1,4 +1,4 @@
-import { detectMobile } from "./utils.js";
+import {detectMobile} from "./utils.js";
 
 const link_website = "https://lucasvaugrente.github.io/pixel_gallery/";
 
@@ -17,6 +17,13 @@ fetch(link_website + 'data/drawings.json')
         jsonData.drawings = data.drawings;
         for (let index = data.drawings.length - 1; index >= 0; index--) {
 
+            const title = data.drawings[index].title;
+            const resolution = data.drawings[index].resolution;
+            let frames = data.drawings[index].frames !== undefined ? `<p>${data.drawings[index].frames} frames</p>` : "";
+            const colors = data.drawings[index].colors;
+            const software = data.drawings[index].software;
+            const date = data.drawings[index].date;
+
             if (!isPhone) {
                 const div = document.createElement('div');
 
@@ -26,13 +33,6 @@ fetch(link_website + 'data/drawings.json')
                 div.classList.add(data.drawings[index].format);
                 div.classList.add('drawing');
                 div.style.backgroundImage = `url(${link_website + data.drawings[index].image})`;
-
-                const title = data.drawings[index].title;
-                const resolution = data.drawings[index].resolution;
-                let frames = data.drawings[index].frames !== undefined ? `<p>${data.drawings[index].frames} frames</p>` : "";
-                const colors = data.drawings[index].colors;
-                const software = data.drawings[index].software;
-                const date = data.drawings[index].date;
 
                 const classDrawing = data.drawings[index].class;
 
@@ -57,13 +57,6 @@ fetch(link_website + 'data/drawings.json')
                 img.classList.add(data.drawings[index].type);
                 img.classList.add(data.drawings[index].format);
                 img.src = link_website + data.drawings[index].image;
-
-                const title = data.drawings[index].title;
-                const resolution = data.drawings[index].resolution;
-                let frames = data.drawings[index].frames !== undefined ? `<p>${data.drawings[index].frames} frames</p>` : "";
-                const colors = data.drawings[index].colors;
-                const software = data.drawings[index].software;
-                const date = data.drawings[index].date;
 
                 const infos = document.createElement('div');
                 infos.classList.add('infos_mobile');
@@ -94,6 +87,10 @@ fetch(link_website + 'data/drawings.json')
                     modalImg.src = button.parentElement.parentElement.style.backgroundImage.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
                     modal.classList.add("show");
 
+                    console.log(document.documentElement)
+
+                    document.documentElement.classList.add("no-scroll");
+
                     const classDrawing = button.classList[1];
                     const drawingData = jsonData.drawings.find(drawing => drawing.class === classDrawing);
 
@@ -120,8 +117,6 @@ fetch(link_website + 'data/drawings.json')
 
                     scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
-                    console.log(burgerMenu);
-
                     burgerMenu.classList.add('hide');
                     burgerMenu.classList.remove('visible');
                     sideMenu.classList.remove('open');
@@ -129,22 +124,24 @@ fetch(link_website + 'data/drawings.json')
             }
         });
 
-        const close = document.querySelector(".modal .close");
+        const close = document.querySelector(".modal .close-modal");
         close.addEventListener("click", () => {
             modal.classList.remove("show");
             window.scrollTo(0, scrollPosition);
             burgerMenu.classList.remove('hide');
             burgerMenu.classList.add('visible');
+            document.documentElement.classList.remove("no-scroll");
+
         });
 
-        const openTab = document.querySelector(".modal .open_tab");
+        const openTab = document.querySelector(".modal .open-new-tab");
         openTab.addEventListener("click", () => {
             if (modalImg.src) {
                 window.open(modalImg.src, '_blank');
             }
         });
 
-        const help = document.querySelector(".help");
+        const help = document.querySelector(".help-modal");
         const help_modal = document.getElementById("help_modal");
         help.addEventListener("click", () => {
             help_modal.classList.add("show");
