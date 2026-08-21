@@ -7,16 +7,16 @@
   background-color: var(--modal-background-color-dark);
   border: solid 4px var(--modal-border);
   box-shadow:
-          1px 1px 0 var(--modal-header-background-color),
-          2px 2px 0 var(--modal-header-background-color),
-          3px 3px 0 var(--modal-header-background-color),
-          4px 4px 0 var(--modal-header-background-color),
-          5px 5px 0 var(--modal-header-background-color),
-          6px 6px 0 var(--modal-header-background-color),
-          7px 7px 0 var(--modal-header-background-color),
-          8px 8px 0 var(--modal-header-background-color),
-          9px 9px 0 var(--modal-header-background-color),
-          10px 10px 0 var(--modal-header-background-color);
+          1px 1px 0 var(--modal-border),
+          2px 2px 0 var(--modal-border),
+          3px 3px 0 var(--modal-border),
+          4px 4px 0 var(--modal-border),
+          5px 5px 0 var(--modal-border),
+          6px 6px 0 var(--modal-border),
+          7px 7px 0 var(--modal-border),
+          8px 8px 0 var(--modal-border),
+          9px 9px 0 var(--modal-border),
+          10px 10px 0 var(--modal-border);
 
   z-index: -1;
   transform: translateY(250rem);
@@ -25,7 +25,7 @@
   &.show {
     transform: translateY(0);
     opacity: 1;
-    z-index: 3;
+    z-index: 4;
   }
 }
 
@@ -161,19 +161,19 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 5px;
-  border: solid 2px black;
+  border: solid 2px var(--modal-border);
   transform-style: preserve-3d;
   z-index: 3;
   box-shadow:
-          1px 1px 0 black,
-          2px 2px 0 black,
-          3px 3px 0 black,
-          4px 4px 0 black,
-          5px 5px 0 black;
+          1px 1px 0 var(--modal-border),
+          2px 2px 0 var(--modal-border),
+          3px 3px 0 var(--modal-border),
+          4px 4px 0 var(--modal-border),
+          5px 5px 0 var(--modal-border);
   transition: opacity 0.2s ease-in-out !important;
 
   &:active {
-    box-shadow: 0 0 0 black;
+    box-shadow: 0 0 0 var(--modal-border);
     transform: translate(5px, 5px) !important;
   }
 }

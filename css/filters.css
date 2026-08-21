@@ -14,9 +14,9 @@
     font-size: 17px;
     color: black;
     text-decoration: none;
-    border: solid 2px var(--modal-border);
+    border: solid 2px black;
     transform-style: preserve-3d;
-    z-index: 10;
+    z-index: 3;
     box-shadow:
             1px 1px 0 black,
             2px 2px 0 black,
@@ -26,7 +26,6 @@
     transition: opacity 0.2s ease-in-out !important;
 
     &:active {
-        background-color: rgb(239 7 7);
         box-shadow: 0 0 0 black;
         transform: translate(5px, 5px) !important;
     }
@@ -59,7 +58,7 @@
     height: 100vh;
     background-color: var(--modal-background-color-dark);
     border-right: 5px solid var(--modal-border);
-    z-index: 11;
+    z-index: 3;
     transition: left 0.3s ease;
     padding: 20px;
     display: flex;
@@ -82,20 +81,19 @@
     background-color: var(--modal-close-button);
     color: black;
     text-decoration: none;
-    border: solid 2px black;
+    border: solid 2px var(--modal-border);
     transform-style: preserve-3d;
     z-index: 3;
     box-shadow:
-            1px 1px 0 black,
-            2px 2px 0 black,
-            3px 3px 0 black,
-            4px 4px 0 black,
-            5px 5px 0 black;
+            1px 1px 0 var(--modal-border),
+            2px 2px 0 var(--modal-border),
+            3px 3px 0 var(--modal-border),
+            4px 4px 0 var(--modal-border),
+            5px 5px 0 var(--modal-border);
     transition: opacity 0.2s ease-in-out !important;
 
     &:active {
-        background: rgb(3, 15, 37);
-        box-shadow: 0 0 0 black;
+        box-shadow: 0 0 0 var(--modal-border);
         transform: translate(5px, 5px) !important;
     }
 
@@ -110,7 +108,7 @@
     font-size: 17px;
     color: white;
     text-decoration: none;
-    border: solid 2px black;
+    border: solid 2px var(--modal-border);
     padding: 10px 9px 7px 10px;
     text-transform: uppercase;
     cursor: pointer;
@@ -118,16 +116,16 @@
     transform-style: preserve-3d;
     z-index: 3;
     box-shadow:
-            1px 1px 0 black,
-            2px 2px 0 black,
-            3px 3px 0 black,
-            4px 4px 0 black,
-            5px 5px 0 black;
+            1px 1px 0 var(--modal-border),
+            2px 2px 0 var(--modal-border),
+            3px 3px 0 var(--modal-border),
+            4px 4px 0 var(--modal-border),
+            5px 5px 0 var(--modal-border);
     transition: opacity 0.2s ease-in-out !important;
 
     &:active {
         background: rgb(3, 15, 37);
-        box-shadow: 0 0 0 black;
+        box-shadow: 0 0 0 var(--modal-border);
         transform: translate(5px, 7px) !important;
     }
 

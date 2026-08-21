@@ -74,17 +74,22 @@
 .launchRocket {
     font-family: pixelart, serif;
     font-size: 20px;
-    background-color: #ad2929;
+    background-color: var(--modal-close-button);
     color: white;
     text-decoration: none;
-    border: solid 2px rgb(3, 15, 37);
+    border: solid 2px var(--modal-border);
     padding: 10px 9px 7px 10px;
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 2px;
     transform-style: preserve-3d;
     z-index: 3;
-    box-shadow: 0 10px 0 black;
+    box-shadow:
+            1px 1px 0 var(--modal-border),
+            2px 2px 0 var(--modal-border),
+            3px 3px 0 var(--modal-border),
+            4px 4px 0 var(--modal-border),
+            5px 5px 0 var(--modal-border);
     transition: opacity 0.2s ease-in-out !important;
 }
 
@@ -93,16 +98,16 @@
     user-select: none;
 
     &:active {
-        background: rgb(3, 15, 37);
+        background: var(--modal-border);
         box-shadow: 0 0 0 black;
-        transform: translate(0em, 10px) !important;
+        transform: translate(5px, 5px) !important;
     }
 
     &:hover {
         background-color: #952f2f;
 
         &:active {
-            background: rgb(3, 15, 37);
+            background: var(--modal-border);
         }
     }
 }
@@ -121,7 +126,7 @@
     &:active {
         background: rgb(3, 15, 37);
         box-shadow: 0 0 0 black;
-        transform: translate(0em, 10px) !important;
+        transform: translate(5px, 5px) !important;
     }
 
     &:hover {

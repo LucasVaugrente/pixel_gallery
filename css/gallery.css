@@ -81,26 +81,30 @@
   bottom: 30px;
   font-family: pixelart, sans-serif;
   font-size: 20px;
-  background-color: var(--button-open-blue);
+  background-color: var(--modal-background-color-light);
   color: white;
   text-decoration: none;
-  border: solid 2px rgb(3, 15, 37);
+  border: solid 2px var(--modal-border);
   padding: 10px 9px 7px 10px;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 2px;
   transform-style: preserve-3d;
-  box-shadow: 0 7px 0 black;
+  box-shadow:
+          1px 1px 0 var(--modal-border),
+          2px 2px 0 var(--modal-border),
+          3px 3px 0 var(--modal-border),
+          4px 4px 0 var(--modal-border),
+          5px 5px 0 var(--modal-border);
   transition: opacity 0.2s ease-in-out !important;
 
   &:hover {
-    background-color: var(--button-open-blue-hover);
+    background-color: var(--modal-background-color-dark);
   }
 
   &:active {
     box-shadow: 0 0 0 black;
-    background-color: var(--button-open-blue-active);
-    transform: translate(0em, 7px) !important;
+    transform: translate(5px, 5px) !important;
   }
 }
 

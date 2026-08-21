@@ -114,10 +114,6 @@ fetch(link_website + 'data/drawings.json')
                             `;
 
                     scrollPosition = window.scrollY || document.documentElement.scrollTop;
-
-                    burgerMenu.classList.add('hide');
-                    burgerMenu.classList.remove('visible');
-                    sideMenu.classList.remove('open');
                 });
             }
         });
@@ -126,8 +122,6 @@ fetch(link_website + 'data/drawings.json')
         close.addEventListener("click", () => {
             modal.classList.remove("show");
             window.scrollTo(0, scrollPosition);
-            burgerMenu.classList.remove('hide');
-            burgerMenu.classList.add('visible');
             document.documentElement.classList.remove("no-scroll");
 
         });
