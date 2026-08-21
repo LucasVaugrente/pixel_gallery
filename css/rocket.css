@@ -22,7 +22,6 @@
 
         &:active {
             animation: rocketFire 1s steps(15) infinite, rocketMove 2s ease-in-out infinite, selectRocket 0.3s;
-
             background-image: url("../img/rocket/rocket_animation_select.png");
         }
     }
@@ -36,6 +35,7 @@
         animation: rocketFire 1s steps(15) infinite, rocketMove 2s ease-in-out infinite;
 
         &:active {
+            animation: rocketFire 1s steps(15) infinite, rocketMove 2s ease-in-out infinite, selectRocket 0.3s;
             background-image: url("../img/rocket/rocket_animation_small_select.png");
         }
     }
