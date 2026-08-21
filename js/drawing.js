@@ -100,7 +100,7 @@ fetch(link_website + 'data/drawings.json')
                     let frames = drawingData.frames !== undefined ? `<p>${drawingData.frames} frames</p>` : "";
                     const colors = drawingData.colors;
                     const date = drawingData.date;
-                    const content = drawingData.content;
+                    const content = drawingData.content !== undefined ? drawingData.content : "";
 
                     titleText.innerHTML = `${title}`;
 

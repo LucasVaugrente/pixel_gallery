@@ -4,8 +4,8 @@
   top: 4.5%;
   width: 95%;
   height: 90%;
-  background-color: var(--modal-background-color);
-  border: solid 4px black;
+  background-color: var(--modal-background-color-dark);
+  border: solid 4px var(--modal-border);
   box-shadow:
           1px 1px 0 var(--modal-header-background-color),
           2px 2px 0 var(--modal-header-background-color),
@@ -42,7 +42,7 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 15px;
+  padding: 20px;
   flex-shrink: 0;
   background-color: var(--modal-header-background-color);
 }
@@ -107,7 +107,7 @@
 }
 
 #title_drawing {
-  font-size: 30px;
+  font-size: 36px;
   font-family: pixelart, sans-serif;
   margin-top: 5px;
 }
@@ -148,7 +148,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 .open-new-tab,

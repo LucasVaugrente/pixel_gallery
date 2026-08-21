@@ -10,13 +10,13 @@
     --button-close-red-active: #d62121;
 
     --credits-hover: #cd4e4e;
-    --close-button: #c11e1e;
-    --close-button-hover: #951515;
 
-    --modal-background-color: rgb(41, 41, 85);
-    --modal-header-background-color: rgb(35 35 73);
-    --modal-open-new-tab-button: rgb(44, 108, 66);
-    --modal-open-new-tab-button-hover: rgb(39 96 59);
+    --modal-border: #131037;
+    --modal-background-color-light: #393975;
+    --modal-background-color-dark: #292955ff;
+    --modal-header-background-color: #232349ff;
+    --modal-open-new-tab-button: #2c6c42ff;
+    --modal-open-new-tab-button-hover: #27603bff;
     --modal-close-button: #a63131;
     --modal-close-button-hover: #8e2929;
     --modal-help-button: #624697;
