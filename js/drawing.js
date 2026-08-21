@@ -6,8 +6,8 @@ const container = document.querySelector('.container');
 
 const isPhone = window.innerWidth < 580;
 
-const burgerMenu = document.getElementById('desktop-burger-menu');
-const sideMenu = document.getElementById('side-menu');
+const burgerMenu = document.getElementById('menu-filters-button');
+const sideMenu = document.getElementById('filters-sidebar');
 
 const jsonData = {};
 

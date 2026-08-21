@@ -1,4 +1,4 @@
-import { getScrollPercentage, slowScrollToBottom, slowScrollToTop, easeInOutCuaic, settings } from "./utils.js";
+import {getScrollPercentage, slowScrollToBottom, slowScrollToTop, easeInOutCuaic, settings} from "./utils.js";
 
 const rocket = document.querySelector('.svg_rocket');
 const tooltip_rocket = document.getElementById('tooltip_rocket');
@@ -16,11 +16,6 @@ let previousScrollPercentage = getScrollPercentage();
 
 let tooltipTimer;
 
-if (isPhone) {
-    rocket.style.display = "none";
-    tooltip_rocket.style.display = "none";
-}
-
 const drawings = document.querySelectorAll(".figure img");
 const allDrawingLinkWebsite = {};
 for (let i = 0; i < drawings.length; i++) {
@@ -34,7 +29,11 @@ for (let i = 0; i < drawings.length; i++) {
     listDrawingTooltip[0].appendChild(link);
 }
 
-if (!isPhone) {
+if (isPhone) {
+    rocket.style.display = "none";
+    tooltip_rocket.style.display = "none";
+}
+else {
     document.addEventListener("scroll", function () {
         const scrollPercentage = getScrollPercentage();
         const scrollDirection = scrollPercentage > previousScrollPercentage ? 'down' : 'up';

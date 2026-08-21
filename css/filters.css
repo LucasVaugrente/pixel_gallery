@@ -1,0 +1,151 @@
+#menu-filters-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    font-size: 17px;
+    color: black;
+    text-decoration: none;
+    border: solid 2px black;
+    transform-style: preserve-3d;
+    z-index: 10;
+    box-shadow: 0 5px 0 black;
+    transition: opacity 0.2s ease-in-out !important;
+
+    &:active {
+        background-color: rgb(239 7 7);
+        box-shadow: 0 0 0 black;
+        transform: translate(0em, 5px) !important;
+    }
+
+    &:hover {
+        background-color: rgb(255 255 255 / 0.42);
+    }
+
+    &.hide {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    &.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+#filters-sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 250px;
+    height: 100vh;
+    background-color: #254056;
+    border-right: 3px solid white;
+    z-index: 11;
+    transition: left 0.3s ease;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+
+    &.open {
+        left: 0;
+    }
+}
+
+.close-sidebar {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--close-button);
+    color: black;
+    text-decoration: none;
+    border: solid 2px black;
+    transform-style: preserve-3d;
+    z-index: 3;
+    box-shadow: 0 5px 0 black;
+    transition: opacity 0.2s ease-in-out !important;
+
+    &:active {
+        background: rgb(3, 15, 37);
+        box-shadow: 0 0 0 black;
+        transform: translate(0em, 5px) !important;
+    }
+
+    &:hover {
+        background-color: var(--close-button-hover);
+    }
+}
+
+.filter-button {
+    font-family: pixelart, serif;
+    background-color: #2a5d6c;
+    font-size: 17px;
+    color: #bff4ff;
+    text-decoration: none;
+    border: solid 2px black;
+    padding: 10px 9px 7px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transform-style: preserve-3d;
+    z-index: 3;
+    box-shadow: 0 7px 0 black;
+    transition: opacity 0.2s ease-in-out !important;
+
+    &:active {
+        background: rgb(3, 15, 37);
+        box-shadow: 0 0 0 black;
+        transform: translate(0em, 7px) !important;
+    }
+
+    &:hover {
+        background-color: #184350;
+    }
+
+    &.selected {
+        background-color: #3dabcc;
+        color: black;
+    }
+}
+
+.filters-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    p {
+        color: white;
+        margin-bottom: 10px;
+        font-family: inherit;
+    }
+
+    .filter-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    #menu-filters-button,
+    #filters-sidebar {
+        display: none !important;
+    }
+}

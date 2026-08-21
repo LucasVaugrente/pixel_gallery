@@ -1,6 +1,6 @@
-const burgerMenu = document.getElementById('desktop-burger-menu');
-const sideMenu = document.getElementById('side-menu');
-const closeSideMenu = document.querySelector('.close-side-menu');
+const burgerMenu = document.getElementById('menu-filters-button');
+const sideMenu = document.getElementById('filters-sidebar');
+const closeSideMenu = document.querySelector('.close-sidebar');
 
 const isPhone = window.innerWidth < 580;
 

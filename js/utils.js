@@ -32,12 +32,6 @@ function getScrollPercentage() {
     return scrollPercent * 100;
 }
 
-function slowScrollTo(positionTop) {
-    ignoreScrollEvents = true;
-    scrollTo(positionTop, settings.slow);
-    setTimeout(() => ignoreScrollEvents = false, 100);
-}
-
 function slowScrollToBottom() {
     const floor = footer.offsetTop - floor_gap;
     ignoreScrollEvents = true;
@@ -115,7 +109,6 @@ function detectMobile() {
 
 export {
     getScrollPercentage,
-    slowScrollTo,
     slowScrollToBottom,
     slowScrollToTop,
     scrollTo,
