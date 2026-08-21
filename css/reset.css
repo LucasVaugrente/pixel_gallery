@@ -131,3 +131,8 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+svg {
+    height: 100%;
+    width: 100%;
+}

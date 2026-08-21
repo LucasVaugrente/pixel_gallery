@@ -87,8 +87,6 @@ fetch(link_website + 'data/drawings.json')
                     modalImg.src = button.parentElement.parentElement.style.backgroundImage.split("url(")[1].split(")")[0].replace(/['"]/g, "").replace("../", "");
                     modal.classList.add("show");
 
-                    console.log(document.documentElement)
-
                     document.documentElement.classList.add("no-scroll");
 
                     const classDrawing = button.classList[1];

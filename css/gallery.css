@@ -1,0 +1,158 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+
+  img:last-child {
+    margin-bottom: 0;
+  }
+
+  .infos {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    background-color: rgba(0, 0, 0, 0.63);
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
+    box-sizing: border-box;
+    padding: 20px;
+
+    p {
+      user-select: none;
+      font-size: 15px;
+    }
+  }
+
+  > div:hover .infos {
+    opacity: 1;
+  }
+}
+
+.drawing {
+  position: relative;
+  width: 350px;
+  height: 450px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 3px solid white;
+
+  &:hover {
+    box-shadow: 0 0 10px #ffffff;
+  }
+}
+
+.title_info {
+  font-size: 20px !important;
+}
+
+.title_info_mobile {
+  font-size: 25px !important;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.infos_mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 0 0 40px 20px;
+
+  p {
+    font-size: 15px;
+  }
+}
+
+.seeDrawingButton {
+  position: absolute;
+  bottom: 30px;
+  font-family: pixelart, sans-serif;
+  font-size: 20px;
+  background-color: var(--button-open-blue);
+  color: white;
+  text-decoration: none;
+  border: solid 2px rgb(3, 15, 37);
+  padding: 10px 9px 7px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform-style: preserve-3d;
+  box-shadow: 0 7px 0 black;
+  transition: opacity 0.2s ease-in-out !important;
+
+  &:hover {
+    background-color: var(--button-open-blue-hover);
+  }
+
+  &:active {
+    box-shadow: 0 0 0 black;
+    background-color: var(--button-open-blue-active);
+    transform: translate(0em, 7px) !important;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .container .box {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .container {
+    margin: 0 !important;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 0;
+
+    .box {
+      flex-wrap: unset;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: linear-gradient(to bottom, transparent, #000000de);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -150px;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: linear-gradient(to top, transparent, #000000d4);
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+
+  .mobile-drawing {
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
+    display: block;
+    margin: 0;
+  }
+}
