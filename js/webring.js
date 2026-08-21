@@ -4,8 +4,8 @@ const template = document.createElement("template");
 template.innerHTML = `
 <style>
 @font-face {
-    font-family: lele;
-    src: url("../fonts/stolen.ttf");
+    font-family: normal;
+    src: url("../fonts/normal.ttf");
 }
 
 #webring-container {
@@ -20,7 +20,7 @@ template.innerHTML = `
 }
 
 #webring-title {
-    font-family: lele, sans-serif;
+    font-family: normal, sans-serif;
     color: #c296f5;
     margin-top: 0;
     margin-bottom: 3px;
@@ -40,7 +40,7 @@ template.innerHTML = `
 }
 
 #webring-inner {
-    font-family: lele, sans-serif;
+    font-family: normal, sans-serif;
     color: #c296f5;
     padding: 0 5px;
 }

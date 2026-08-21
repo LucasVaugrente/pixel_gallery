@@ -107,7 +107,7 @@ fetch(link_website + 'data/drawings.json')
                     const date = drawingData.date;
                     const content = drawingData.content;
 
-                    titleText.innerHTML = `${title}.png`;
+                    titleText.innerHTML = `${title}`;
 
                     infos_drawing.innerHTML = `
                                 <p>Resolution : ${resolution}</p>

@@ -81,7 +81,7 @@
   bottom: 30px;
   font-family: pixelart, sans-serif;
   font-size: 20px;
-  background-color: rgb(36, 83, 237);
+  background-color: var(--button-open-blue);
   color: white;
   text-decoration: none;
   border: solid 2px rgb(3, 15, 37);
@@ -94,62 +94,19 @@
   transition: opacity 0.2s ease-in-out !important;
 }
 
-.seeDrawingButton:active {
-  box-shadow: 0 0 0 black;
-  transform: translate(0em, 7px) !important;
+.seeDrawingButton:hover {
+  background-color: var(--button-open-blue-hover);
 }
 
-.seeDrawingButton:hover {
-  background-color: rgb(26, 71, 218);
+.seeDrawingButton:active {
+  box-shadow: 0 0 0 black;
+  background-color: var(--button-open-blue-active);
+  transform: translate(0em, 7px) !important;
 }
 
 .content {
   text-align: left;
   overflow-y: auto;
-}
-
-.filters {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  z-index: 3;
-  transition: all 0.1s ease-in-out;
-  transition: opacity 0.3s ease-in-out;
-  position: sticky;
-  top: 0;
-}
-
-.filters p {
-  margin-left: 50px;
-}
-
-.filters.ontop {
-  background-color: #1b1434d9;
-  padding: 20px 0;
-  margin-left: 0;
-  width: 100%;
-}
-
-.filters.modalDisplayed {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  z-index: -1;
-}
-
-.filter-button {
-  padding: 10px 20px;
-  background-color: #f0f0f000;
-  border: solid 2px white;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.filter-button.selected {
-  background-color: rgba(255, 255, 255, 0.82);
-  color: black;
 }
 
 .modal {
