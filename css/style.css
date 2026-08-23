@@ -33,17 +33,11 @@ html {
 }
 
 body {
-    background: linear-gradient(
-            black,
-            #230e70,
-            #1a0d46,
-            #020f24,
-            #020f24,
-            #4f8ea1,
-            #154fac,
-            #186bf1,
-            #59a0f2
-    );
+    background-image: url("../img/background-site.gif");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 0%;
 }
 
 #starfield {

@@ -38,6 +38,8 @@ else {
         const maxTop = window.innerHeight - footer.offsetHeight / 2;
         const newTop = (scrollPercentage / 100) * maxTop;
 
+        document.body.style.backgroundPositionY = `${scrollPercentage}%`;
+
         if (scrollPercentage >= 99.99) {
             rocket.style.filter = "none";
             rocket.classList.remove('landing');
